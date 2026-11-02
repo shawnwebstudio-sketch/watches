@@ -22,9 +22,9 @@
   /* hero poster */
   --sky1:#9EC3DE; --sky2:#FBDDB0; --sun:#FFE7B0; --sunglow:rgba(255,214,140,.55);
   --r1:#A7BBD0; --r2:#7E9AB8; --r3:#557797; --r4:#2C5263; --pine:#173A33; --snow:#FFFFFF; --snowshade:#C9D7E6; --hero-ink:#13261F; --road:#E9D6B2; --star:transparent;
-  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --display:"Bricolage Grotesque", "Hind Siliguri", "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --body:"Hind Siliguri", "Noto Sans Bengali", "Segoe UI", system-ui, sans-serif;
-  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --mono:"IBM Plex Mono", "Hind Siliguri", ui-monospace, "SFMono-Regular", Menlo, monospace;
   --r-lg:26px; --r-md:16px; --r-sm:10px;
   --gutter:max(16px, env(safe-area-inset-left, 0px));
   --gutter-r:max(16px, env(safe-area-inset-right, 0px));
@@ -95,6 +95,15 @@ button{font:inherit;color:inherit;cursor:pointer}
 .btn-block{width:100%}
 .hide-sm{display:none}
 
+.lang{display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 14px 0 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-weight:700;font-size:.92rem;font-family:var(--body);transition:background .2s,transform .2s}
+.lang:hover{transform:translateY(-1px)}
+.lang i{font-style:normal;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--marigold);color:var(--marigold-ink);font-size:.78rem;font-weight:700}
+@media (max-width:420px){.lang span{display:none}.lang{padding:0;width:44px;justify-content:center}.brand-txt b{font-size:.98rem}}
+html[lang="bn"] h1,html[lang="bn"] h2,html[lang="bn"] h3,html[lang="bn"] h4{line-height:1.28;letter-spacing:0;font-family:"Hind Siliguri",var(--body);font-weight:700}
+html[lang="bn"] .poster h1{font-size:clamp(2.2rem,8.6vw,4.6rem);line-height:1.18}
+html[lang="bn"] .eyebrow,html[lang="bn"] .tag,html[lang="bn"] .t-meta dt,html[lang="bn"] .d-quick dt,html[lang="bn"] .price small,html[lang="bn"] .field>.lbl,html[lang="bn"] .count span{letter-spacing:.02em;text-transform:none;font-family:var(--body)}
+html[lang="bn"] .eyebrow{font-size:.86rem}
+html[lang="bn"] .marquee-track span,html[lang="bn"] .board-route,html[lang="bn"] .price b,html[lang="bn"] .stop b,html[lang="bn"] .f b,html[lang="bn"] .step b,html[lang="bn"] .days b{font-family:"Hind Siliguri",var(--display)}
 /* ---------- hero poster ---------- */
 .hero{padding-block:14px 0}
 .poster{position:relative;border-radius:var(--r-lg);overflow:hidden;background:linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 72%);color:var(--hero-ink);isolation:isolate;box-shadow:var(--shadow)}
@@ -517,6 +526,7 @@ img.ph.ok{opacity:1;transform:none}
       <a href="#contact">Contact</a>
     </nav>
     <div class="top-actions">
+      <button class="lang" id="langBtn" type="button" aria-label="বাংলায় দেখুন"><i>অ</i><span>বাংলা</span></button>
       <a class="btn btn-wa btn-sm hide-sm wa-link" data-wa="general" href="https://wa.me/919903148926" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp</a>
       <button class="icon-btn" id="cartBtn" aria-label="Open my trip"><svg><use href="#i-bag"/></svg><span class="badge" data-n="0" id="cartCount">0</span></button>
     </div>
@@ -713,6 +723,88 @@ const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
 const inr = n => "₹" + Math.round(n).toLocaleString("en-IN");
 const GST = 0.05;
 
+/* ================= language (English / বাংলা) ================= */
+let LANG = "en";
+try{ const v=localStorage.getItem("ff-lang"); if(v==="bn"||v==="en") LANG=v; }catch(e){}
+const BN = {
+"4 meals a day":"দিনে ৪ বার খাবার","AC luxury bus":"এসি লাক্সারি বাস","Bakreswar · Tarapith · Bolpur":"বক্রেশ্বর · তারাপীঠ · বোলপুর","Book a seat":"সিট বুক করুন",
+"Book on WhatsApp":"হোয়াটসঅ্যাপে বুক করুন","Bowbazar, Kolkata 700012":"বউবাজার, কলকাতা ৭০০০১২","Call":"কল","Can I come with a big group?":"বড় গ্রুপ নিয়ে আসা যাবে?",
+"Chat on WhatsApp":"হোয়াটসঅ্যাপে কথা বলুন","Choose a tour and date":"ট্যুর আর তারিখ বাছুন","Come back with":"ফিরুন","stories.":"গল্প নিয়ে।","Leave Friday.":"শুক্রবার বেরিয়ে পড়ুন।",
+"Confirm and travel":"কনফার্ম করে বেড়িয়ে পড়ুন","Contact":"যোগাযোগ","Copy number":"নম্বর কপি করুন","Darshan made easy":"সহজে দর্শন",
+"Deluxe hotel, resort or holiday home, picked for each stop.":"প্রতিটি জায়গায় বেছে নেওয়া ডিলাক্স হোটেল, রিসর্ট বা হলিডে হোম।","Deluxe stays":"ডিলাক্স থাকার ব্যবস্থা",
+"Departures every Friday & Tuesday":"প্রতি শুক্রবার ও মঙ্গলবার যাত্রা","Dilip Pal":"দিলীপ পাল",
+"Dilip confirms seats, rooms and the advance amount. Then just pack your bag.":"দিলীপ সিট, রুম আর অ্যাডভান্সের পরিমাণ কনফার্ম করবেন। তারপর শুধু ব্যাগ গোছান।",
+"Every Friday & Tuesday":"প্রতি শুক্রবার ও মঙ্গলবার",
+"Every Friday and Tuesday, so you can fit a trip around work and school.":"প্রতি শুক্রবার ও মঙ্গলবার, তাই কাজ আর স্কুলের ফাঁকে সহজেই বেড়িয়ে আসুন।",
+"Every Friday and Tuesday. The Bakreswar, Tarapith and Bolpur tour leaves at 6 AM. The North Bengal tour leaves Esplanade at 8 PM by AC luxury bus.":"প্রতি শুক্রবার ও মঙ্গলবার। বক্রেশ্বর, তারাপীঠ, বোলপুর ট্যুর ছাড়ে সকাল ৬টায়। উত্তরবঙ্গ ট্যুর এসপ্ল্যানেড থেকে রাত ৮টায় এসি লাক্সারি বাসে ছাড়ে।",
+"Explore tours":"ট্যুর দেখুন","FAQ":"প্রশ্নোত্তর","Family & Friends":"ফ্যামিলি অ্যান্ড ফ্রেন্ডস",
+"Family & Friends Tour & Travels is a group of Kaiser. Beware of imitation.":"ফ্যামিলি অ্যান্ড ফ্রেন্ডস ট্যুর অ্যান্ড ট্রাভেলস, কাইজার গ্রুপের অংশ। নকল থেকে সাবধান।",
+"Family & Friends Tour & Travels, a group of Kaiser. Prices per head, GST extra. T&C apply.":"ফ্যামিলি অ্যান্ড ফ্রেন্ডস ট্যুর অ্যান্ড ট্রাভেলস, কাইজার গ্রুপের অংশ। দাম মাথাপিছু, জিএসটি আলাদা। শর্তাবলী প্রযোজ্য।",
+"Fixed departures every Friday and Tuesday. Prices are per head, plus GST. Add a tour to your trip, then send the whole booking to Dilip on WhatsApp in one tap.":"প্রতি শুক্রবার ও মঙ্গলবার নির্দিষ্ট যাত্রা। দাম মাথাপিছু, জিএসটি আলাদা। ট্যুরটি আপনার ট্রিপে যোগ করুন, তারপর এক ট্যাপে পুরো বুকিং হোয়াটসঅ্যাপে দিলীপকে পাঠান।",
+"Fri & Tue":"শুক্র ও মঙ্গল","Good to know":"জেনে রাখুন","Group & custom tours":"গ্রুপ ও কাস্টম ট্যুর",
+"Group tours from Kolkata for families and friends. Twice every week, with your stay, food and travel arranged by Dilip Pal.":"কলকাতা থেকে পরিবার ও বন্ধুদের জন্য গ্রুপ ট্যুর। প্রতি সপ্তাহে দু'বার। থাকা, খাওয়া আর যাতায়াতের সব ব্যবস্থা করেন দিলীপ পাল।",
+"Have another place in mind?":"অন্য কোথাও যেতে চান?",
+"Hindu non-veg food, four times a day. Bengali taste, no hunting for restaurants.":"দিনে চারবার হিন্দু নন-ভেজ খাবার। বাঙালি স্বাদ, রেস্টুরেন্ট খুঁজতে হবে না।",
+"Home":"হোম","How do I pay?":"টাকা কীভাবে দেব?","How to book":"কীভাবে বুক করবেন","Is vegetarian food available?":"নিরামিষ খাবার পাওয়া যাবে?",
+"Made for families & friends":"পরিবার ও বন্ধুদের জন্য","My trip":"আমার ট্রিপ","Next departure":"পরবর্তী যাত্রা",
+"No app, no forms to print. Message Dilip directly and get answers fast.":"কোনো অ্যাপ বা ফর্ম প্রিন্টের ঝামেলা নেই। সরাসরি দিলীপকে মেসেজ করুন, দ্রুত উত্তর পান।",
+"North Bengal tours board at Esplanade":"উত্তরবঙ্গ ট্যুর এসপ্ল্যানেড থেকে ছাড়ে",
+"North Bengal tours leave Esplanade at 8 PM by AC luxury bus.":"উত্তরবঙ্গ ট্যুর এসপ্ল্যানেড থেকে রাত ৮টায় এসি লাক্সারি বাসে ছাড়ে।",
+"One message and your seats are on hold.":"একটা মেসেজেই আপনার সিট রাখা থাকবে।","Photo credits":"ছবির সৌজন্য",
+"Photos from Wikimedia Commons, used under their free licences (CC BY-SA or public domain). Tap a name for the photographer and licence.":"ছবিগুলি উইকিমিডিয়া কমন্স থেকে, তাদের মুক্ত লাইসেন্সে (CC BY-SA বা পাবলিক ডোমেন) ব্যবহৃত। ফটোগ্রাফার ও লাইসেন্স দেখতে নামে ট্যাপ করুন।",
+"Pick a Friday or Tuesday departure and how many people are coming.":"শুক্রবার বা মঙ্গলবারের যাত্রা আর কতজন যাচ্ছেন বেছে নিন।",
+"Pick your trip. We'll save you a seat.":"ট্যুর বেছে নিন। সিট আমরা রেখে দেব।","Places you'll actually see.":"যে জায়গাগুলো সত্যিই দেখবেন।",
+"Planning for your family, office or para club? Tell Dilip where and when, and get a quote for a group trip.":"পরিবার, অফিস বা পাড়ার ক্লাবের জন্য প্ল্যান করছেন? কোথায় আর কবে যেতে চান দিলীপকে জানান, গ্রুপ ট্যুরের দাম জেনে নিন।",
+"Postcards from the route":"রুটের ছবি","Questions people ask.":"সবাই যা জানতে চান।","Route map":"রুট ম্যাপ","Routes":"রুট","SMS":"এসএমএস",
+"Sales & Marketing · SMS / WhatsApp":"সেলস ও মার্কেটিং · এসএমএস / হোয়াটসঅ্যাপ","Send it on WhatsApp":"হোয়াটসঅ্যাপে পাঠান",
+"Send your booking on WhatsApp first. Dilip will confirm seats and share the advance amount and payment details.":"প্রথমে হোয়াটসঅ্যাপে বুকিং পাঠান। দিলীপ সিট কনফার্ম করে অ্যাডভান্সের পরিমাণ আর পেমেন্টের তথ্য জানাবেন।",
+"Stay at a deluxe hotel, resort or holiday home and four Hindu non-veg meals a day. The Birbhum tour is ₹3,500 per head plus GST. Ask on WhatsApp for the North Bengal price and the full list of inclusions. T&C apply.":"ডিলাক্স হোটেল, রিসর্ট বা হলিডে হোমে থাকা আর দিনে চারবার হিন্দু নন-ভেজ খাবার। বীরভূম ট্যুর মাথাপিছু ₹৩,৫০০ + জিএসটি। উত্তরবঙ্গ ট্যুরের দাম আর পুরো তালিকা হোয়াটসঅ্যাপে জেনে নিন। শর্তাবলী প্রযোজ্য।",
+"Talk to Dilip":"দিলীপের সাথে কথা বলুন","Tap any stop to read what you will see there.":"যেকোনো স্টপে ট্যাপ করে দেখুন সেখানে কী দেখবেন।",
+"Tarapith and Bakreswar on one weekend, with the timings planned for you.":"এক সপ্তাহান্তে তারাপীঠ আর বক্রেশ্বর, সময়সূচি আমরাই ঠিক করে দিই।",
+"Temples at dawn, Tagore's ashram, monasteries in the clouds. Every stop below is on one of our two tours.":"ভোরের মন্দির, রবীন্দ্রনাথের আশ্রম, মেঘে ঢাকা মনাস্ট্রি। নিচের প্রতিটি জায়গা আমাদের দুটি ট্যুরের কোনো একটিতে আছে।",
+"The standard menu is Hindu non-veg. Tell Dilip when you book if anyone in your group needs vegetarian meals.":"সাধারণ মেনু হিন্দু নন-ভেজ। দলে কারো নিরামিষ খাবার লাগলে বুক করার সময় দিলীপকে জানান।",
+"Three steps to your seat.":"তিন ধাপে আপনার সিট।","Tour & Travels · Kolkata":"ট্যুর অ্যান্ড ট্রাভেলস · কলকাতা","Tour packages":"ট্যুর প্যাকেজ","Tours":"ট্যুর",
+"Travel in a friendly group with people from your own city. Elders, kids and first-time travellers are all welcome. All are cordially invited.":"নিজের শহরের মানুষের সাথে বন্ধুত্বপূর্ণ গ্রুপে বেড়ান। বয়স্ক, ছোটরা আর প্রথমবার যারা বেড়াতে যাচ্ছেন, সবাইকে স্বাগত। সকলকে সাদর আমন্ত্রণ।",
+"Two departures a week":"সপ্তাহে দুটি যাত্রা","Two lines out of Kolkata.":"কলকাতা থেকে দুটি রুট।","Website by Shawn Webstudio":"ওয়েবসাইট: শন ওয়েবস্টুডিও",
+"What does the price include?":"দামের মধ্যে কী কী আছে?","WhatsApp":"হোয়াটসঅ্যাপ","When do the tours leave?":"ট্যুর কখন ছাড়ে?","Why travel with us":"কেন আমাদের সাথে",
+"Yes. The tours are made for families and friends. For a large group, or to plan a trip to another place, send Dilip a message with your dates and group size.":"হ্যাঁ। ট্যুরগুলো পরিবার আর বন্ধুদের জন্যই। বড় গ্রুপ বা অন্য জায়গার ট্রিপের জন্য তারিখ আর লোকসংখ্যা জানিয়ে দিলীপকে মেসেজ করুন।",
+"You bring the family. We handle the rest.":"আপনি পরিবার আনুন। বাকিটা আমরা সামলাব।",
+"Your trip is turned into a ready message. Tap send and Dilip gets every detail.":"আপনার ট্রিপ একটি তৈরি মেসেজ হয়ে যাবে। সেন্ড করলেই দিলীপ সব তথ্য পেয়ে যাবেন।",
+"days":"দিন","hrs":"ঘণ্টা","min":"মিনিট","sec":"সেকেন্ড",
+/* dynamic UI strings */
+"All tours":"সব ট্যুর","Temples & pilgrimage":"মন্দির ও তীর্থ","Hills & Himalaya":"পাহাড় ও হিমালয়","Weekend breaks":"উইকেন্ড ট্রিপ","Culture & heritage":"সংস্কৃতি ও ঐতিহ্য","AC bus tours":"এসি বাস ট্যুর","Group & custom":"গ্রুপ ও কাস্টম",
+"Duration":"সময়কাল","Departs":"ছাড়ে","Time":"সময়","Per head":"মাথাপিছু","Ask for price":"দাম জানুন","Book now":"বুক করুন","View tour":"ট্যুর দেখুন","+ GST":"+ জিএসটি",
+"On request":"অনুরোধে","Ask for a quote":"দাম জানতে চান","See this tour":"এই ট্যুর দেখুন","Birbhum line":"বীরভূম রুট","North Bengal line":"উত্তরবঙ্গ রুট",
+"3D / 2N · 6 AM":"৩ দিন / ২ রাত · সকাল ৬টা","AC bus · 8 PM":"এসি বাস · রাত ৮টা","Kolkata":"কলকাতা","Start at 6 AM on Friday or Tuesday.":"শুক্র বা মঙ্গলবার সকাল ৬টায় যাত্রা শুরু।",
+"Food":"খাবার","Travel":"যাতায়াত","Where you'll go":"কোথায় যাবেন","What's included":"কী কী থাকছে","Day by day":"দিন অনুযায়ী",
+"Sample plan. The final day-wise plan, hotel names and pickup point are shared on WhatsApp when you book. T&C apply.":"নমুনা প্ল্যান। চূড়ান্ত দিনভিত্তিক প্ল্যান, হোটেলের নাম আর পিকআপ পয়েন্ট বুকিংয়ের সময় হোয়াটসঅ্যাপে জানানো হবে। শর্তাবলী প্রযোজ্য।",
+"Choose departure":"যাত্রার তারিখ বাছুন","Travellers":"যাত্রী","Adults":"বড়","12 years and above":"১২ বছর ও তার বেশি","Children":"ছোট","Price on request":"দাম অনুরোধে",
+"GST (5%)":"জিএসটি (৫%)","Estimated total":"আনুমানিক মোট","Price":"দাম","Dilip will reply with the price on WhatsApp.":"দিলীপ হোয়াটসঅ্যাপে দাম জানাবেন।",
+"Add to my trip":"আমার ট্রিপে যোগ করুন","Book now on WhatsApp":"হোয়াটসঅ্যাপে এখনই বুক করুন","Choose date":"তারিখ বাছুন","Check dates":"তারিখ দেখুন",
+"Added to your trip":"আপনার ট্রিপে যোগ হয়েছে","Your trip is empty":"আপনার ট্রিপ খালি","Pick a tour and a date. It will wait for you here.":"একটা ট্যুর আর তারিখ বাছুন, এখানে রাখা থাকবে।","Browse tours":"ট্যুর দেখুন",
+"Subtotal":"মোট (জিএসটি ছাড়া)","Your details":"আপনার তথ্য","Full name":"পুরো নাম","Mobile number":"মোবাইল নম্বর","Pickup area (e.g. Esplanade, Howrah)":"পিকআপের জায়গা (যেমন এসপ্ল্যানেড, হাওড়া)",
+"Anything Dilip should know? (veg meals, elders, room type)":"দিলীপকে কিছু জানাতে চান? (নিরামিষ, বয়স্ক, রুমের ধরন)","Please enter your name.":"আপনার নাম লিখুন।","Please enter a 10-digit mobile number.":"১০ সংখ্যার মোবাইল নম্বর লিখুন।",
+"Send booking on WhatsApp":"হোয়াটসঅ্যাপে বুকিং পাঠান","Open WhatsApp again":"আবার হোয়াটসঅ্যাপ খুলুন","Open WhatsApp to send":"পাঠাতে হোয়াটসঅ্যাপ খুলুন",
+"Your booking message is ready in WhatsApp. Tap <b>Send</b> there, and Dilip will confirm your seats.":"আপনার বুকিং মেসেজ হোয়াটসঅ্যাপে তৈরি। সেখানে <b>সেন্ড</b> চাপুন, দিলীপ সিট কনফার্ম করবেন।",
+"adult":"জন বড়","adults":"জন বড়","child":"জন ছোট","children":"জন ছোট","from":"থেকে","Esplanade":"এসপ্ল্যানেড","Copied":"কপি হয়েছে","Selected":"সিলেক্ট হয়েছে",
+"Departs":"ছাড়ে","Kanchenjunga":"কাঞ্চনজঙ্ঘা","North Bengal":"উত্তরবঙ্গ","Tarapith":"তারাপীঠ","Birbhum":"বীরভূম","Santiniketan":"শান্তিনিকেতন","Bolpur":"বোলপুর","Hot springs":"উষ্ণ প্রস্রবণ","Bakreswar":"বক্রেশ্বর",
+"Lava monastery":"লাভা মনাস্ট্রি","Kalimpong hills":"কালিম্পং পাহাড়","Adina Mosque":"আদিনা মসজিদ","Malda":"মালদা","Kalimpong":"কালিম্পং","Lolegaon":"লোলেগাঁও","Canopy walk":"ক্যানোপি ওয়াক","Teesta river":"তিস্তা নদী","Tarapith temple":"তারাপীঠ মন্দির","Kangchenjunga":"কাঞ্চনজঙ্ঘা","Siliguri":"শিলিগুড়ি",
+};
+const T = s => LANG==="bn" ? (BN[s] || s) : s;
+const L = (o, k) => (LANG==="bn" && o.bn && o.bn[k] != null) ? o.bn[k] : o[k];
+const textOrig = new WeakMap();
+function translateStatic(){
+  document.documentElement.lang = LANG==="bn" ? "bn" : "en";
+  ["#top",".tabbar","#view-home","footer",".dr-head"].forEach(sel=>{ const root=$(sel); if(!root) return;
+    const w=document.createTreeWalker(root, NodeFilter.SHOW_TEXT); let n;
+    while((n=w.nextNode())){ if(n.parentElement.closest("#catalog,#reqRow,#routeMap,#cards,#credits,#board .board-route,#board .board-when,.count b")) continue;
+      if(!textOrig.has(n)){ const k=n.nodeValue.replace(/\s+/g," ").trim(); if(!k || !BN[k]) continue; textOrig.set(n,{raw:n.nodeValue,k}); }
+      const o=textOrig.get(n); if(!o) continue;
+      n.nodeValue = LANG==="bn" ? o.raw.replace(o.raw.trim(), BN[o.k]) : o.raw; } });
+  const b=$("#langBtn"); if(b){ b.querySelector("span").textContent = LANG==="bn" ? "English" : "বাংলা"; b.querySelector("i").textContent = LANG==="bn" ? "A" : "অ"; b.setAttribute("aria-label", LANG==="bn" ? "Switch to English" : "বাংলায় দেখুন"); }
+}
+function setLang(l){ LANG=l; try{ localStorage.setItem("ff-lang",l); }catch(e){} rerenderAll(); }
+
 /* ================= procedural scenes ================= */
 function rng(seed){ let s = seed % 2147483647; if (s <= 0) s += 2147483646; return () => (s = s * 16807 % 2147483647) / 2147483647; }
 function ridge(base, amp, seed, step=50, W=800, H=500){
@@ -828,20 +920,25 @@ function heroSVG(){
 
 /* ================= data ================= */
 const STOPS = {
-  bakreswar:{name:"Bakreswar", photo:"bakreswar", scene:"springs", line:"birbhum", blurb:"Hot springs and old Shiva temples. One of the 51 Shakti Peethas."},
-  tarapith:{name:"Tarapith", photo:"tarapith", scene:"temple", line:"birbhum", blurb:"Maa Tara's temple on the Dwarka river, a famous Shakti Peetha."},
-  bolpur:{name:"Bolpur · Santiniketan", photo:"santiniketan", scene:"santiniketan", line:"birbhum", blurb:"Tagore's Visva-Bharati, red-soil Khoai and baul songs. A UNESCO World Heritage Site."},
-  esplanade:{name:"Esplanade", photo:"kolkata", scene:"plains", line:"north", blurb:"Board the AC luxury bus at 8 PM in central Kolkata."},
-  malda:{name:"Malda", photo:"malda", scene:"malda", line:"north", blurb:"Mango country and the old capitals of Gour and Pandua."},
-  siliguri:{name:"Siliguri", photo:"siliguri", scene:"plains", line:"north", blurb:"The gateway where the plains meet the hills."},
-  kalimpong:{name:"Kalimpong", photo:"kalimpong", scene:"tea", line:"north", blurb:"A calm hill town of monasteries, flower nurseries and big views."},
-  lava:{name:"Lava", photo:"lava", scene:"forest", line:"north", blurb:"Misty pine and fir forest at about 7,000 ft, beside Neora Valley."},
-  lolegaon:{name:"Lolegaon", photo:"lolegaon", scene:"himalaya", line:"north", blurb:"A quiet hill village with a canopy walk and Kanchenjunga at sunrise."},
+  bakreswar:{name:"Bakreswar", bn:{name:"বক্রেশ্বর", blurb:"উষ্ণ প্রস্রবণ আর প্রাচীন শিবমন্দির। ৫১ সতীপীঠের একটি।"}, photo:"bakreswar", scene:"springs", line:"birbhum", blurb:"Hot springs and old Shiva temples. One of the 51 Shakti Peethas."},
+  tarapith:{name:"Tarapith", bn:{name:"তারাপীঠ", blurb:"দ্বারকা নদীর তীরে মা তারার মন্দির, বিখ্যাত সতীপীঠ।"}, photo:"tarapith", scene:"temple", line:"birbhum", blurb:"Maa Tara's temple on the Dwarka river, a famous Shakti Peetha."},
+  bolpur:{name:"Bolpur · Santiniketan", bn:{name:"বোলপুর · শান্তিনিকেতন", blurb:"রবীন্দ্রনাথের বিশ্বভারতী, লাল মাটির খোয়াই আর বাউল গান। ইউনেস্কো ওয়ার্ল্ড হেরিটেজ সাইট।"}, photo:"santiniketan", scene:"santiniketan", line:"birbhum", blurb:"Tagore's Visva-Bharati, red-soil Khoai and baul songs. A UNESCO World Heritage Site."},
+  esplanade:{name:"Esplanade", bn:{name:"এসপ্ল্যানেড", blurb:"মধ্য কলকাতা থেকে রাত ৮টায় এসি লাক্সারি বাসে উঠুন।"}, photo:"kolkata", scene:"plains", line:"north", blurb:"Board the AC luxury bus at 8 PM in central Kolkata."},
+  malda:{name:"Malda", bn:{name:"মালদা", blurb:"আমের দেশ, গৌড় আর পাণ্ডুয়ার প্রাচীন রাজধানী।"}, photo:"malda", scene:"malda", line:"north", blurb:"Mango country and the old capitals of Gour and Pandua."},
+  siliguri:{name:"Siliguri", bn:{name:"শিলিগুড়ি", blurb:"যেখানে সমতল মেশে পাহাড়ে।"}, photo:"siliguri", scene:"plains", line:"north", blurb:"The gateway where the plains meet the hills."},
+  kalimpong:{name:"Kalimpong", bn:{name:"কালিম্পং", blurb:"মনাস্ট্রি, ফুলের নার্সারি আর বিশাল দৃশ্যের শান্ত পাহাড়ি শহর।"}, photo:"kalimpong", scene:"tea", line:"north", blurb:"A calm hill town of monasteries, flower nurseries and big views."},
+  lava:{name:"Lava", bn:{name:"লাভা", blurb:"নেওড়া ভ্যালির পাশে প্রায় ৭,০০০ ফুট উঁচুতে কুয়াশা ঢাকা পাইন-ফার বন।"}, photo:"lava", scene:"forest", line:"north", blurb:"Misty pine and fir forest at about 7,000 ft, beside Neora Valley."},
+  lolegaon:{name:"Lolegaon", bn:{name:"লোলেগাঁও", blurb:"ক্যানোপি ওয়াক আর ভোরের কাঞ্চনজঙ্ঘা দেখা শান্ত পাহাড়ি গ্রাম।"}, photo:"lolegaon", scene:"himalaya", line:"north", blurb:"A quiet hill village with a canopy walk and Kanchenjunga at sunrise."},
 };
 const TOURS = [
   { id:"birbhum", name:"Bakreswar · Tarapith · Bolpur", kicker:"Birbhum temple & Tagore weekend", region:"Birbhum, West Bengal", scene:"temple", photo:"tarapith",
     tags:["pilgrimage","weekend","heritage","family"], badges:[["Bestseller","hot"],["3D / 2N","gold"]],
     stops:["bakreswar","tarapith","bolpur"], duration:"3 Days / 2 Nights", nights:2, depart:"Fri & Tue · 6:00 AM", depDays:[2,5], depH:6, depM:0, from:"Kolkata",
+    bn:{name:"বক্রেশ্বর · তারাপীঠ · বোলপুর", kicker:"বীরভূমের মন্দির ও রবীন্দ্র-সফর", region:"বীরভূম, পশ্চিমবঙ্গ", duration:"৩ দিন / ২ রাত", short:"৩ দিন / ২ রাত", depart:"শুক্র ও মঙ্গল · সকাল ৬টা", meals:"৪ বার নন-ভেজ", travel:"কলকাতা থেকে সড়কপথে",
+      desc:"বক্রেশ্বরের উষ্ণ প্রস্রবণ, তারাপীঠে মা তারার দর্শন, আর শান্তিনিকেতনে রবীন্দ্রনাথের আশ্রমে একটা শান্ত দিন। তিন দিন, দুই রাত, খাওয়া সমেত। কলকাতা থেকে সবচেয়ে সহজ লম্বা উইকেন্ড।",
+      badges:[["বেস্টসেলার","hot"],["৩ দিন / ২ রাত","gold"]],
+      incl:["২ রাত থাকা","৪ বার নন-ভেজ খাবার","বক্রেশ্বর, তারাপীঠ ও বোলপুর দর্শন","পুরো ট্যুরে ট্যুর ম্যানেজার","প্রতি শুক্র ও মঙ্গলবার সকাল ৬টায় যাত্রা","পরিবার ও বন্ধুদের ছোট গ্রুপ"],
+      days:[["দিন ১","কলকাতা থেকে বক্রেশ্বর ও তারাপীঠ","সকাল ৬টায় যাত্রা। বক্রেশ্বরের উষ্ণ প্রস্রবণ ও মন্দির দর্শন, তারপর সন্ধ্যার আরতির জন্য তারাপীঠ।"],["দিন ২","তারাপীঠ থেকে বোলপুর","ভোরে মা তারার দর্শন। তারপর শান্তিনিকেতনে বিশ্বভারতী আর খোয়াই।"],["দিন ৩","বোলপুর থেকে কলকাতা","সকালে অবসর বা হস্তশিল্পের হাট। সন্ধ্যার মধ্যে কলকাতা ফেরা।"]]},
     price:3500, meals:"4 times non-veg", travel:"Road trip from Kolkata", stay:"Hotel stay, 2 nights",
     desc:"Hot springs at Bakreswar, darshan at Maa Tara's temple in Tarapith, and a slow day in Tagore's Santiniketan. Three days, two nights, food included. The easiest long weekend from Kolkata.",
     incl:["Stay for 2 nights","4 non-veg meals","Sightseeing at Bakreswar, Tarapith and Bolpur","Tour manager on the trip","Leaves 6 AM every Friday & Tuesday","Small family and friends groups"],
@@ -851,6 +948,11 @@ const TOURS = [
   { id:"north-bengal", name:"Malda · Siliguri · Kalimpong · Lava · Lolegaon", kicker:"North Bengal hills by AC bus", region:"North Bengal Himalaya", scene:"himalaya", photo:"kanchenjunga",
     tags:["hills","bus","family"], badges:[["AC luxury bus","gold"],["6 stops","hot"]],
     stops:["esplanade","malda","siliguri","kalimpong","lava","lolegaon"], duration:"5 Days & 6 Nights", nights:6, depart:"Fri & Tue · 8:00 PM", depDays:[2,5], depH:20, depM:0, from:"Esplanade",
+    bn:{name:"মালদা · শিলিগুড়ি · কালিম্পং · লাভা · লোলেগাঁও", kicker:"এসি বাসে উত্তরবঙ্গের পাহাড়", region:"উত্তরবঙ্গ হিমালয়", duration:"৫ দিন ও ৬ রাত", short:"৫ দিন / ৬ রাত", depart:"শুক্র ও মঙ্গল · রাত ৮টা", meals:"৪ বার হিন্দু নন-ভেজ", travel:"এসপ্ল্যানেড থেকে এসি লাক্সারি বাস",
+      desc:"শুক্র বা মঙ্গলবার রাতে এসপ্ল্যানেড থেকে এসি লাক্সারি বাসে উঠুন। ঘুম ভাঙবে পাহাড়ের পথে: কালিম্পংয়ের মনাস্ট্রি, লাভার পাইন বন আর লোলেগাঁও থেকে কাঞ্চনজঙ্ঘা। ডিলাক্স থাকা আর দিনে চারবার খাবার।",
+      badges:[["এসি লাক্সারি বাস","gold"],["৬টি জায়গা","hot"]],
+      incl:["এসপ্ল্যানেড থেকে এসি লাক্সারি বাস","ডিলাক্স হোটেল, রিসর্ট বা হলিডে হোম","দিনে ৪ বার হিন্দু নন-ভেজ খাবার","প্রতিটি জায়গায় দর্শন","প্রতি শুক্র ও মঙ্গলবার রাত ৮টায় যাত্রা","দাম মাথাপিছু, জিএসটি আলাদা"],
+      days:[["রাত ১","এসপ্ল্যানেড থেকে মালদা","রাত ৮টায় এসি লাক্সারি বাসে ওঠা। সারা রাত উত্তরের পথে।"],["দিন ১","মালদা, শিলিগুড়ি, কালিম্পং","ব্রেকফাস্টের বিরতি, তারপর শিলিগুড়ি থেকে পাহাড়ে কালিম্পং।"],["দিন ২","কালিম্পং","মনাস্ট্রি, ফুলের নার্সারি আর ডেলো থেকে দৃশ্য।"],["দিন ৩","লাভা","পাইন বনের ভেতর। মনাস্ট্রি দর্শন আর কুয়াশায় ঢাকা সন্ধ্যা।"],["দিন ৪","লোলেগাঁও","ক্যানোপি ওয়াক আর কাঞ্চনজঙ্ঘার সূর্যোদয়।"],["দিন ৫","কলকাতা ফেরা","শিলিগুড়ি নেমে রাতের বাসে বাড়ি।"]]},
     price:null, meals:"4-time Hindu non-veg", travel:"AC luxury bus from Esplanade", stay:"Deluxe hotel, resort or holiday home",
     desc:"Board an AC luxury bus at Esplanade on Friday or Tuesday night. Wake up on the road to the hills: Kalimpong's monasteries, Lava's pine forest and Kanchenjunga from Lolegaon. Deluxe stays and four meals a day.",
     incl:["AC luxury bus from Esplanade","Deluxe hotel, resort or holiday home","4-time Hindu non-veg food","Sightseeing at every stop","Leaves 8 PM every Friday & Tuesday","Price per head, GST extra"],
@@ -862,11 +964,11 @@ const TOURS = [
           ["Day 5","Back to Kolkata","Down to Siliguri and the overnight bus home."]] },
 ];
 const REQUESTS = [
-  {name:"Digha & Mandarmani", scene:"sea", photo:"digha", blurb:"Beach weekend on the Bay of Bengal."},
-  {name:"Puri", scene:"sea", photo:"puri", blurb:"Jagannath darshan and the golden beach."},
-  {name:"Darjeeling", scene:"himalaya", photo:"darjeeling", blurb:"Toy train, tea gardens and Tiger Hill."},
-  {name:"Sundarbans", scene:"mangrove", photo:"sundarbans", blurb:"Boat safari in the mangrove forest."},
-  {name:"Mayapur", scene:"temple", photo:"mayapur", blurb:"ISKCON temple day trip on the Ganga."},
+  {bn:{name:"দীঘা ও মন্দারমণি", blurb:"বঙ্গোপসাগরের তীরে বিচ উইকেন্ড।"}, name:"Digha & Mandarmani", scene:"sea", photo:"digha", blurb:"Beach weekend on the Bay of Bengal."},
+  {bn:{name:"পুরী", blurb:"জগন্নাথ দর্শন আর সোনালি সৈকত।"}, name:"Puri", scene:"sea", photo:"puri", blurb:"Jagannath darshan and the golden beach."},
+  {bn:{name:"দার্জিলিং", blurb:"টয় ট্রেন, চা বাগান আর টাইগার হিল।"}, name:"Darjeeling", scene:"himalaya", photo:"darjeeling", blurb:"Toy train, tea gardens and Tiger Hill."},
+  {bn:{name:"সুন্দরবন", blurb:"ম্যানগ্রোভ অরণ্যে নৌকা সাফারি।"}, name:"Sundarbans", scene:"mangrove", photo:"sundarbans", blurb:"Boat safari in the mangrove forest."},
+  {bn:{name:"মায়াপুর", blurb:"গঙ্গার তীরে ইসকন মন্দির, এক দিনের ট্রিপ।"}, name:"Mayapur", scene:"temple", photo:"mayapur", blurb:"ISKCON temple day trip on the Ganga."},
 ];
 const CATS = [
   ["all","All tours"],["pilgrimage","Temples & pilgrimage"],["hills","Hills & Himalaya"],["weekend","Weekend breaks"],["heritage","Culture & heritage"],["bus","AC bus tours"],["custom","Group & custom"]
@@ -885,8 +987,10 @@ function departures(t, count){
   return out;
 }
 const WD=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"], MO=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-function fmtDate(ms, long){ const q=istParts(ms); return long? `${WD[q.wd]}, ${q.d} ${MO[q.m]} ${q.y}` : `${WD[q.wd]} ${q.d} ${MO[q.m]}`; }
-function fmtTime(t){ const h=t.depH%12||12; return `${h}:${String(t.depM).padStart(2,"0")} ${t.depH<12?"AM":"PM"}`; }
+const WDB=["রবি","সোম","মঙ্গল","বুধ","বৃহস্পতি","শুক্র","শনি"], MOB=["জানু","ফেব্রু","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টে","অক্টো","নভে","ডিসে"];
+const wdN = i => LANG==="bn"?WDB[i]:WD[i], moN = i => LANG==="bn"?MOB[i]:MO[i];
+function fmtDate(ms, long, en){ const q=istParts(ms); const w=en?WD[q.wd]:wdN(q.wd), m=en?MO[q.m]:moN(q.m); return long? `${w}, ${q.d} ${m} ${q.y}` : `${w} ${q.d} ${m}`; }
+function fmtTime(t, en){ const h=t.depH%12||12, mm=String(t.depM).padStart(2,"0"); if(LANG==="bn" && !en) return `${t.depH<12?"সকাল":"রাত"} ${h}:${mm}`; return `${h}:${mm} ${t.depH<12?"AM":"PM"}`; }
 
 /* ================= cart ================= */
 let cart=[];
@@ -900,7 +1004,7 @@ function lineTotal(c){ const t=tourById(c.id); return t.price ? t.price*c.adults
 function addToCart(item, fromEl){
   const ex = cart.find(c=>c.id===item.id && c.date===item.date);
   if(ex){ ex.adults=item.adults; ex.kids=item.kids; } else cart.push(item);
-  saveCart(); fly(fromEl); toast("Added to your trip");
+  saveCart(); fly(fromEl); toast(T("Added to your trip"));
 }
 function fly(fromEl){
   if(!fromEl || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -923,25 +1027,26 @@ const wa = text => `https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`;
 function setGeneralWA(){ $$('.wa-link[data-wa="general"]').forEach(a=> a.href = wa("Namaste Dilip ji, I saw your website. Please share details of your Family & Friends tours.")); }
 
 /* ================= render: home ================= */
-function stopChain(t){ return t.stops.map(s=>`<span>${STOPS[s].name.split(" · ")[0]}</span>`).join("<i></i>"); }
-function priceHTML(t){ return t.price ? `<small>Per head</small><b>${inr(t.price)}<sub>+ GST</sub></b>` : `<small>Per head</small><b class="ask">Ask for price</b>`; }
+function stopChain(t){ return t.stops.map(s=>`<span>${L(STOPS[s],"name").split(" · ")[0]}</span>`).join("<i></i>"); }
+function priceHTML(t){ return t.price ? `<small>${T("Per head")}</small><b>${inr(t.price)}<sub>${T("+ GST")}</sub></b>` : `<small>${T("Per head")}</small><b class="ask">${T("Ask for price")}</b>`; }
 function ticket(t){
   return `<article class="ticket in" data-tags="${t.tags.join(" ")}">
-    <a class="t-art" href="#tour-${t.id}" aria-label="${t.name}">${scene(t.scene)}${photo(t.photo)}<span class="loc"><svg><use href="#i-pin"/></svg>${PHOTOS[t.photo][1]}</span><div class="t-tags">${t.badges.map(([b,c])=>`<span class="tag ${c}">${b}</span>`).join("")}</div></a>
-    <div class="t-body"><span class="t-region">${t.region}</span><h3><a href="#tour-${t.id}">${t.kicker}</a></h3>
+    <a class="t-art" href="#tour-${t.id}" aria-label="${t.name}">${scene(t.scene)}${photo(t.photo)}<span class="loc"><svg><use href="#i-pin"/></svg>${T(PHOTOS[t.photo][1])}</span><div class="t-tags">${L(t,"badges").map(([b,c])=>`<span class="tag ${c}">${b}</span>`).join("")}</div></a>
+    <div class="t-body"><span class="t-region">${L(t,"region")}</span><h3><a href="#tour-${t.id}">${L(t,"kicker")}</a></h3>
       <div class="t-stops">${stopChain(t)}</div>
-      <dl class="t-meta"><div><dt>Duration</dt><dd>${t.duration.replace(" Days","D").replace(" Nights","N").replace(" & "," / ")}</dd></div><div><dt>Departs</dt><dd>${t.depart.split(" · ")[0]}</dd></div><div><dt>Time</dt><dd class="tnum">${fmtTime(t)}</dd></div></dl>
+      <dl class="t-meta"><div><dt>${T("Duration")}</dt><dd>${LANG==="bn"?t.bn.short:t.duration.replace(" Days","D").replace(" Nights","N").replace(" & "," / ")}</dd></div><div><dt>${T("Departs")}</dt><dd>${L(t,"depart").split(" · ")[0]}</dd></div><div><dt>${T("Time")}</dt><dd class="tnum">${fmtTime(t)}</dd></div></dl>
     </div>
     <div class="perf"></div>
     <div class="t-foot"><div class="price">${priceHTML(t)}</div>
-      <div class="t-actions"><a class="btn btn-ghost btn-sm" href="${wa(`Namaste Dilip ji, please share details for the ${t.kicker} tour (${t.name}).`)}" target="_blank" rel="noopener" aria-label="Ask on WhatsApp"><svg style="color:var(--wa)"><use href="#i-wa"/></svg></a><a class="btn btn-primary btn-sm" href="#tour-${t.id}">${t.price?"Book now":"View tour"}</a></div>
+      <div class="t-actions"><a class="btn btn-ghost btn-sm" href="${wa(`Namaste Dilip ji, please share details for the ${t.kicker} tour (${t.name}).`)}" target="_blank" rel="noopener" aria-label="Ask on WhatsApp"><svg style="color:var(--wa)"><use href="#i-wa"/></svg></a><a class="btn btn-primary btn-sm" href="#tour-${t.id}">${T(t.price?"Book now":"View tour")}</a></div>
     </div></article>`;
 }
 function renderCatalog(){
   $("#catalog").innerHTML = TOURS.map(ticket).join("");
-  $("#reqRow").innerHTML = REQUESTS.map(r=>`<div class="req"><div class="r-art">${scene(r.scene)}${photo(r.photo,500)}</div><div class="r-body"><span class="tag" style="align-self:flex-start;background:var(--surface-2)">On request</span><h4>${r.name}</h4><p>${r.blurb}</p><a href="${wa(`Namaste Dilip ji, we are planning a group trip to ${r.name}. Please share a quote.`)}" target="_blank" rel="noopener"><svg style="width:18px;height:18px;color:var(--wa)"><use href="#i-wa"/></svg>Ask for a quote</a></div></div>`).join("");
+  $("#reqRow").innerHTML = REQUESTS.map(r=>`<div class="req"><div class="r-art">${scene(r.scene)}${photo(r.photo,500)}</div><div class="r-body"><span class="tag" style="align-self:flex-start;background:var(--surface-2)">${T("On request")}</span><h4>${L(r,"name")}</h4><p>${L(r,"blurb")}</p><a href="${wa(`Namaste Dilip ji, we are planning a group trip to ${r.name}. Please share a quote.`)}" target="_blank" rel="noopener"><svg style="width:18px;height:18px;color:var(--wa)"><use href="#i-wa"/></svg>${T("Ask for a quote")}</a></div></div>`).join("");
   const counts = {all:TOURS.length, custom:REQUESTS.length}; TOURS.forEach(t=>t.tags.forEach(g=>counts[g]=(counts[g]||0)+1));
-  $("#chips").innerHTML = CATS.map(([k,l],i)=>`<button class="chip" data-cat="${k}" aria-pressed="${i===0}">${l}<small>${counts[k]||0}</small></button>`).join("");
+  $("#chips").innerHTML = CATS.map(([k,l],i)=>`<button class="chip" data-cat="${k}" aria-pressed="${i===0}">${T(l)}<small>${counts[k]||0}</small></button>`).join("");
+  if(renderCatalog.wired) return; renderCatalog.wired=true;
   $("#chips").addEventListener("click", e=>{
     const b=e.target.closest(".chip"); if(!b) return; const k=b.dataset.cat;
     $$(".chip").forEach(c=>c.setAttribute("aria-pressed", c===b));
@@ -951,15 +1056,15 @@ function renderCatalog(){
 }
 function renderCards(){
   const C=[["kanchenjunga","himalaya","Kanchenjunga","North Bengal","wide"],["tarapith","temple","Tarapith","Birbhum","tall"],["santiniketan","santiniketan","Santiniketan","Bolpur",""],["bakreswar","springs","Hot springs","Bakreswar",""],["lava","forest","Lava monastery","Kalimpong hills",""],["malda","malda","Adina Mosque","Malda",""],["kalimpong","tea","Kalimpong","North Bengal","wide"],["lolegaon","himalaya","Lolegaon","Canopy walk",""],["siliguri","plains","Teesta river","Siliguri",""]];
-  $("#cards").innerHTML = C.map(([p,sc,t,sub,cl])=>`<figure class="pc ${cl}">${scene(sc)}${photo(p, cl==="wide"?1280:960)}<figcaption><span>${sub}</span><b>${t}</b></figcaption></figure>`).join("");
+  $("#cards").innerHTML = C.map(([p,sc,t,sub,cl])=>`<figure class="pc ${cl}">${scene(sc)}${photo(p, cl==="wide"?1280:960)}<figcaption><span>${T(sub)}</span><b>${T(t)}</b></figcaption></figure>`).join("");
 }
-function renderMarquee(){ const names=["Tarapith","Bakreswar","Santiniketan","Malda","Siliguri","Kalimpong","Lava","Lolegaon","Every Friday & Tuesday","4 meals a day","AC luxury bus"]; const s=names.map(n=>`<span>${n}</span>`).join(""); $("#marq").innerHTML = s+s; }
+function renderMarquee(){ const names=(LANG==="bn"?["তারাপীঠ","বক্রেশ্বর","শান্তিনিকেতন","মালদা","শিলিগুড়ি","কালিম্পং","লাভা","লোলেগাঁও","প্রতি শুক্র ও মঙ্গলবার","দিনে ৪ বার খাবার","এসি লাক্সারি বাস"]:["Tarapith","Bakreswar","Santiniketan","Malda","Siliguri","Kalimpong","Lava","Lolegaon","Every Friday & Tuesday","4 meals a day","AC luxury bus"]); const s=names.map(n=>`<span>${n}</span>`).join(""); $("#marq").innerHTML = s+s; }
 function renderRoutes(){
   const lines=[["birbhum","Birbhum line","3D / 2N · 6 AM","var(--sindoor)",["kolkata","bakreswar","tarapith","bolpur"]],["north","North Bengal line","AC bus · 8 PM","var(--tea)",["esplanade","malda","siliguri","kalimpong","lava","lolegaon"]]];
-  const kol={name:"Kolkata", blurb:"Start at 6 AM on Friday or Tuesday."};
-  $("#routeMap").innerHTML = lines.map(([id,title,meta,c,stops])=>`<div class="line" style="--lc:${c}"><div class="line-h"><span class="pill" style="background:${c}">${meta}</span><b>${title}</b></div>
-    <ol class="stops">${stops.map((s,i)=>{const S=s==="kolkata"?kol:STOPS[s];return `<li class="stop${i===0||i===stops.length-1?" end":""}" tabindex="0" data-stop="${s}"><span class="dot"></span><div><b>${S.name}</b><span>${S.blurb}</span></div></li>`}).join("")}</ol>
-    <a class="btn btn-ghost btn-sm" style="align-self:flex-start;margin-top:10px" href="#tour-${id==="north"?"north-bengal":"birbhum"}">See this tour <svg><use href="#i-arrow"/></svg></a></div>`).join("");
+  const kol={name:T("Kolkata"), blurb:T("Start at 6 AM on Friday or Tuesday.")};
+  $("#routeMap").innerHTML = lines.map(([id,title,meta,c,stops])=>`<div class="line" style="--lc:${c}"><div class="line-h"><span class="pill" style="background:${c}">${T(meta)}</span><b>${T(title)}</b></div>
+    <ol class="stops">${stops.map((s,i)=>{const S=s==="kolkata"?kol:STOPS[s];return `<li class="stop${i===0||i===stops.length-1?" end":""}" tabindex="0" data-stop="${s}"><span class="dot"></span><div><b>${L(S,"name")}</b><span>${L(S,"blurb")}</span></div></li>`}).join("")}</ol>
+    <a class="btn btn-ghost btn-sm" style="align-self:flex-start;margin-top:10px" href="#tour-${id==="north"?"north-bengal":"birbhum"}">${T("See this tour")} <svg><use href="#i-arrow"/></svg></a></div>`).join("");
   $$(".stop").forEach(s=>{ const act=()=>{ $$(".stop").forEach(x=>x.classList.remove("active")); s.classList.add("active"); }; s.addEventListener("click",act); s.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault();act();} }); });
 }
 
@@ -968,8 +1073,8 @@ let cdTimer;
 function startCountdown(){
   const all = TOURS.flatMap(t=>departures(t,2).map(ms=>({t,ms}))).sort((a,b)=>a.ms-b.ms);
   const next = all[0]; if(!next) return;
-  $("#bRoute").textContent = next.t.name;
-  $("#bWhen").textContent = `${fmtDate(next.ms,true)} · ${fmtTime(next.t)} from ${next.t.from}`;
+  $("#bRoute").textContent = L(next.t,"name");
+  $("#bWhen").textContent = LANG==="bn" ? `${fmtDate(next.ms,true)} · ${fmtTime(next.t)} · ${T(next.t.from)} থেকে` : `${fmtDate(next.ms,true)} · ${fmtTime(next.t)} from ${next.t.from}`;
   $("#bBook").href = `#tour-${next.t.id}`;
   const tick=()=>{ let s=Math.max(0,Math.floor((next.ms-Date.now())/1000)); if(s<=0){ clearInterval(cdTimer); startCountdown(); return; }
     const d=Math.floor(s/86400); s%=86400; const h=Math.floor(s/3600); s%=3600; const m=Math.floor(s/60); s%=60;
@@ -983,44 +1088,45 @@ function renderTour(t){
   const st = {date:deps[0], adults:2, kids:0};
   const el = $("#view-tour");
   el.innerHTML = `<div class="wrap">
-    <a class="back" href="#tours"><svg><use href="#i-left"/></svg>All tours</a>
-    <div class="d-hero">${scene(t.scene)}${photo(t.photo,1920)}<span class="loc"><svg><use href="#i-pin"/></svg>${PHOTOS[t.photo][1]}</span><div class="t-tags">${t.badges.map(([b,c])=>`<span class="tag ${c}">${b}</span>`).join("")}</div></div>
+    <a class="back" href="#tours"><svg><use href="#i-left"/></svg>${T("All tours")}</a>
+    <div class="d-hero">${scene(t.scene)}${photo(t.photo,1920)}<span class="loc"><svg><use href="#i-pin"/></svg>${T(PHOTOS[t.photo][1])}</span><div class="t-tags">${L(t,"badges").map(([b,c])=>`<span class="tag ${c}">${b}</span>`).join("")}</div></div>
     <div class="d-grid">
       <div class="d-main">
-        <div class="d-title"><span class="eyebrow">${t.region}</span><h1>${t.name}</h1><p>${t.desc}</p></div>
+        <div class="d-title"><span class="eyebrow">${L(t,"region")}</span><h1>${L(t,"name")}</h1><p>${L(t,"desc")}</p></div>
         <dl class="d-quick">
-          <div><dt>Duration</dt><dd>${t.duration}</dd></div>
-          <div><dt>Departs</dt><dd>${t.depart}</dd></div>
-          <div><dt>Food</dt><dd>${t.meals}</dd></div>
-          <div><dt>Travel</dt><dd>${t.travel}</dd></div>
+          <div><dt>${T("Duration")}</dt><dd>${L(t,"duration")}</dd></div>
+          <div><dt>${T("Departs")}</dt><dd>${L(t,"depart")}</dd></div>
+          <div><dt>${T("Food")}</dt><dd>${L(t,"meals")}</dd></div>
+          <div><dt>${T("Travel")}</dt><dd>${L(t,"travel")}</dd></div>
         </dl>
-        <div class="d-sec"><h2>Where you'll go</h2><div class="stops-scroll">${t.stops.map(s=>`<div class="stop-tile"><div class="a">${scene(STOPS[s].scene)}${photo(STOPS[s].photo,500)}</div><div class="b"><b>${STOPS[s].name}</b><span>${STOPS[s].blurb}</span></div></div>`).join("")}</div></div>
-        <div class="d-sec"><h2>What's included</h2><ul class="incl">${t.incl.map(i=>`<li><svg><use href="#i-check"/></svg><span>${i}</span></li>`).join("")}</ul></div>
-        <div class="d-sec"><h2>Day by day</h2><ol class="days">${t.days.map(([a,b,c])=>`<li><small>${a}</small><b>${b}</b><p>${c}</p></li>`).join("")}</ol>
-          <p class="note">Sample plan. The final day-wise plan, hotel names and pickup point are shared on WhatsApp when you book. T&amp;C apply.</p></div>
+        <div class="d-sec"><h2>${T("Where you'll go")}</h2><div class="stops-scroll">${t.stops.map(s=>`<div class="stop-tile"><div class="a">${scene(STOPS[s].scene)}${photo(STOPS[s].photo,500)}</div><div class="b"><b>${L(STOPS[s],"name")}</b><span>${L(STOPS[s],"blurb")}</span></div></div>`).join("")}</div></div>
+        <div class="d-sec"><h2>${T("What's included")}</h2><ul class="incl">${L(t,"incl").map(i=>`<li><svg><use href="#i-check"/></svg><span>${i}</span></li>`).join("")}</ul></div>
+        <div class="d-sec"><h2>${T("Day by day")}</h2><ol class="days">${L(t,"days").map(([a,b,c])=>`<li><small>${a}</small><b>${b}</b><p>${c}</p></li>`).join("")}</ol>
+          <p class="note">${T("Sample plan. The final day-wise plan, hotel names and pickup point are shared on WhatsApp when you book. T&C apply.")}</p></div>
       </div>
       <aside class="book" id="book">
         <div class="book-head"><div class="price">${priceHTML(t)}</div></div>
         <div class="book-body">
-          <div class="field"><span class="lbl">Choose departure</span><div class="dates" id="dates">${deps.map((ms,i)=>{const q=istParts(ms);return `<button type="button" class="date" data-ms="${ms}" aria-pressed="${i===0}"><span>${WD[q.wd]}</span><b>${q.d}</b><span>${MO[q.m]}</span></button>`}).join("")}</div></div>
-          <div class="field"><span class="lbl">Travellers</span>
-            <div class="pax"><div><b>Adults</b><small>12 years and above</small></div><div class="stepper"><button type="button" data-k="adults" data-d="-1" aria-label="Fewer adults">−</button><output id="o-adults">2</output><button type="button" data-k="adults" data-d="1" aria-label="More adults">+</button></div></div>
-            <div class="pax"><div><b>Children</b><small>Price on request</small></div><div class="stepper"><button type="button" data-k="kids" data-d="-1" aria-label="Fewer children">−</button><output id="o-kids">0</output><button type="button" data-k="kids" data-d="1" aria-label="More children">+</button></div></div>
+          <div class="field"><span class="lbl">${T("Choose departure")}</span><div class="dates" id="dates">${deps.map((ms,i)=>{const q=istParts(ms);return `<button type="button" class="date" data-ms="${ms}" aria-pressed="${i===0}"><span>${wdN(q.wd)}</span><b>${q.d}</b><span>${moN(q.m)}</span></button>`}).join("")}</div></div>
+          <div class="field"><span class="lbl">${T("Travellers")}</span>
+            <div class="pax"><div><b>${T("Adults")}</b><small>${T("12 years and above")}</small></div><div class="stepper"><button type="button" data-k="adults" data-d="-1" aria-label="Fewer adults">−</button><output id="o-adults">2</output><button type="button" data-k="adults" data-d="1" aria-label="More adults">+</button></div></div>
+            <div class="pax"><div><b>${T("Children")}</b><small>${T("Price on request")}</small></div><div class="stepper"><button type="button" data-k="kids" data-d="-1" aria-label="Fewer children">−</button><output id="o-kids">0</output><button type="button" data-k="kids" data-d="1" aria-label="More children">+</button></div></div>
           </div>
           <div class="sum tnum" id="sum"></div>
-          <button class="btn btn-primary btn-block" id="addTrip" type="button"><svg><use href="#i-bag"/></svg>Add to my trip</button>
-          <a class="btn btn-wa btn-block" id="bookNow" target="_blank" rel="noopener" href="#"><svg><use href="#i-wa"/></svg>Book now on WhatsApp</a>
+          <button class="btn btn-primary btn-block" id="addTrip" type="button"><svg><use href="#i-bag"/></svg>${T("Add to my trip")}</button>
+          <a class="btn btn-wa btn-block" id="bookNow" target="_blank" rel="noopener" href="#"><svg><use href="#i-wa"/></svg>${T("Book now on WhatsApp")}</a>
         </div>
       </aside>
     </div></div>
-    <div class="bookbar" id="bookbar"><div class="price">${priceHTML(t)}</div><button class="btn btn-primary btn-sm" type="button" id="toBook">${t.price?"Choose date":"Check dates"}</button></div>`;
+    <div class="bookbar" id="bookbar"><div class="price">${priceHTML(t)}</div><button class="btn btn-primary btn-sm" type="button" id="toBook">${T(t.price?"Choose date":"Check dates")}</button></div>`;
   $("#toBook").addEventListener("click",()=>$("#book").scrollIntoView({behavior:"smooth",block:"start"}));
   if("IntersectionObserver" in window){ const io=new IntersectionObserver(es=>es.forEach(en=>$("#bookbar")&&$("#bookbar").classList.toggle("away",en.isIntersecting)),{threshold:.15}); io.observe($("#book")); }
   const upd=()=>{
     const sub = t.price ? t.price*st.adults : null;
     $("#o-adults").textContent=st.adults; $("#o-kids").textContent=st.kids;
-    $("#sum").innerHTML = sub!=null ? `<div><span>${inr(t.price)} × ${st.adults} adult${st.adults>1?"s":""}</span><span>${inr(sub)}</span></div>${st.kids?`<div><span>${st.kids} child${st.kids>1?"ren":""}</span><span>On request</span></div>`:""}<div><span>GST (5%)</span><span>${inr(sub*GST)}</span></div><div class="tot"><span>Estimated total</span><span>${inr(sub*(1+GST))}</span></div><small>Departs ${fmtDate(st.date,true)}, ${fmtTime(t)}</small>`
-      : `<div><span>Travellers</span><span>${st.adults} adult${st.adults>1?"s":""}${st.kids?`, ${st.kids} child${st.kids>1?"ren":""}`:""}</span></div><div class="tot"><span>Price</span><span style="color:var(--sindoor)">On request</span></div><small>Departs ${fmtDate(st.date,true)}, ${fmtTime(t)}. Dilip will reply with the price on WhatsApp.</small>`;
+    const ad=n=>`${n} ${T(n>1?"adults":"adult")}`, kd=n=>`${n} ${T(n>1?"children":"child")}`;
+    $("#sum").innerHTML = sub!=null ? `<div><span>${inr(t.price)} × ${ad(st.adults)}</span><span>${inr(sub)}</span></div>${st.kids?`<div><span>${kd(st.kids)}</span><span>${T("On request")}</span></div>`:""}<div><span>${T("GST (5%)")}</span><span>${inr(sub*GST)}</span></div><div class="tot"><span>${T("Estimated total")}</span><span>${inr(sub*(1+GST))}</span></div><small>${T("Departs")} ${fmtDate(st.date,true)}, ${fmtTime(t)}</small>`
+      : `<div><span>${T("Travellers")}</span><span>${ad(st.adults)}${st.kids?`, ${kd(st.kids)}`:""}</span></div><div class="tot"><span>${T("Price")}</span><span style="color:var(--sindoor)">${T("On request")}</span></div><small>${T("Departs")} ${fmtDate(st.date,true)}, ${fmtTime(t)}. ${T("Dilip will reply with the price on WhatsApp.")}</small>`;
     $("#bookNow").href = wa(bookingText([{id:t.id,date:st.date,adults:st.adults,kids:st.kids}], null));
   };
   $("#dates").addEventListener("click",e=>{ const b=e.target.closest(".date"); if(!b) return; st.date=+b.dataset.ms; $$(".date").forEach(x=>x.setAttribute("aria-pressed",x===b)); upd(); });
@@ -1034,7 +1140,7 @@ function bookingText(items, who){
   let s = "Namaste Dilip ji, I would like to book:\n";
   let grand=0, allPriced=true;
   items.forEach((c,i)=>{ const t=tourById(c.id); const sub=lineTotal(c);
-    s += `\n${i+1}) ${t.name} (${t.duration})\n   Departure: ${fmtDate(c.date,true)}, ${fmtTime(t)}\n   Travellers: ${c.adults} adult${c.adults>1?"s":""}${c.kids?`, ${c.kids} child${c.kids>1?"ren":""}`:""}\n   ${sub!=null?`Estimate: ${inr(sub)} + GST`:"Price: please share"}\n`;
+    s += `\n${i+1}) ${t.name} (${t.duration})\n   Departure: ${fmtDate(c.date,true,1)}, ${fmtTime(t,1)}\n   Travellers: ${c.adults} adult${c.adults>1?"s":""}${c.kids?`, ${c.kids} child${c.kids>1?"ren":""}`:""}\n   ${sub!=null?`Estimate: ${inr(sub)} + GST`:"Price: please share"}\n`;
     if(sub!=null) grand+=sub; else allPriced=false; });
   if(grand) s += `\nEstimated total: ${inr(grand*(1+GST))} incl. 5% GST${allPriced?"":" (plus tours priced on request)"}\n`;
   if(who){ s += `\nName: ${who.name}\nPhone: ${who.phone}`; if(who.pickup) s+=`\nPickup: ${who.pickup}`; if(who.note) s+=`\nNote: ${who.note}`; s+="\n"; }
@@ -1046,29 +1152,29 @@ let draft={name:"",phone:"",pickup:"",note:""};
 try{ Object.assign(draft, JSON.parse(sessionStorage.getItem("ff-draft")||"{}")); }catch(e){}
 function renderDrawer(){
   const body=$("#drBody");
-  if(!cart.length){ body.innerHTML = `<div class="empty"><svg viewBox="0 0 120 80" aria-hidden="true"><rect x="10" y="20" width="100" height="44" rx="10" fill="var(--surface-2)"/><path d="M10 38h100" stroke="var(--line)" stroke-width="2" stroke-dasharray="4 4"/><circle cx="34" cy="70" r="7" fill="var(--ink)"/><circle cx="86" cy="70" r="7" fill="var(--ink)"/><rect x="20" y="27" width="26" height="9" rx="2" fill="var(--marigold)"/><rect x="52" y="27" width="26" height="9" rx="2" fill="var(--marigold)"/><rect x="84" y="27" width="18" height="9" rx="2" fill="var(--marigold)"/></svg><b style="font-family:var(--display);font-size:1.3rem">Your trip is empty</b><p>Pick a tour and a date. It will wait for you here.</p><a class="btn btn-primary" href="#tours" id="emptyGo">Browse tours</a></div>`; $("#emptyGo").addEventListener("click",closeDrawer); return; }
+  if(!cart.length){ body.innerHTML = `<div class="empty"><svg viewBox="0 0 120 80" aria-hidden="true"><rect x="10" y="20" width="100" height="44" rx="10" fill="var(--surface-2)"/><path d="M10 38h100" stroke="var(--line)" stroke-width="2" stroke-dasharray="4 4"/><circle cx="34" cy="70" r="7" fill="var(--ink)"/><circle cx="86" cy="70" r="7" fill="var(--ink)"/><rect x="20" y="27" width="26" height="9" rx="2" fill="var(--marigold)"/><rect x="52" y="27" width="26" height="9" rx="2" fill="var(--marigold)"/><rect x="84" y="27" width="18" height="9" rx="2" fill="var(--marigold)"/></svg><b style="font-family:var(--display);font-size:1.3rem">${T("Your trip is empty")}</b><p>${T("Pick a tour and a date. It will wait for you here.")}</p><a class="btn btn-primary" href="#tours" id="emptyGo">${T("Browse tours")}</a></div>`; $("#emptyGo").addEventListener("click",closeDrawer); return; }
   let grand=0; cart.forEach(c=>{ const v=lineTotal(c); if(v!=null) grand+=v; });
-  body.innerHTML = cart.map((c,i)=>{ const t=tourById(c.id), sub=lineTotal(c); return `<div class="ci"><div class="th">${scene(t.scene)}${photo(t.photo,330)}</div><div style="min-width:0"><b>${t.kicker}</b><span>${fmtDate(c.date)} · ${fmtTime(t)}</span><span>${c.adults} adult${c.adults>1?"s":""}${c.kids?` + ${c.kids} child`:""} · <strong style="color:var(--ink)">${sub!=null?inr(sub)+" + GST":"Price on request"}</strong></span></div><button class="rm" data-i="${i}" aria-label="Remove"><svg><use href="#i-x"/></svg></button></div>`; }).join("")
-  + (grand?`<div class="sum tnum"><div><span>Subtotal</span><span>${inr(grand)}</span></div><div><span>GST (5%)</span><span>${inr(grand*GST)}</span></div><div class="tot"><span>Estimated total</span><span>${inr(grand*(1+GST))}</span></div></div>`:"")
+  body.innerHTML = cart.map((c,i)=>{ const t=tourById(c.id), sub=lineTotal(c); return `<div class="ci"><div class="th">${scene(t.scene)}${photo(t.photo,330)}</div><div style="min-width:0"><b>${L(t,"kicker")}</b><span>${fmtDate(c.date)} · ${fmtTime(t)}</span><span>${c.adults} ${T(c.adults>1?"adults":"adult")}${c.kids?` + ${c.kids} ${T(c.kids>1?"children":"child")}`:""} · <strong style="color:var(--ink)">${sub!=null?inr(sub)+" "+T("+ GST"):T("Price on request")}</strong></span></div><button class="rm" data-i="${i}" aria-label="Remove"><svg><use href="#i-x"/></svg></button></div>`; }).join("")
+  + (grand?`<div class="sum tnum"><div><span>${T("Subtotal")}</span><span>${inr(grand)}</span></div><div><span>${T("GST (5%)")}</span><span>${inr(grand*GST)}</span></div><div class="tot"><span>${T("Estimated total")}</span><span>${inr(grand*(1+GST))}</span></div></div>`:"")
   + `<form class="form" id="checkout" novalidate>
-      <b style="font-family:var(--display);font-size:1.2rem;margin-top:6px">Your details</b>
-      <div class="two"><input id="f-name" placeholder="Full name" autocomplete="name" value="${esc(draft.name)}"><input id="f-phone" placeholder="Mobile number" inputmode="tel" autocomplete="tel" value="${esc(draft.phone)}"></div>
-      <input id="f-pickup" placeholder="Pickup area (e.g. Esplanade, Howrah)" value="${esc(draft.pickup)}">
-      <textarea id="f-note" rows="2" placeholder="Anything Dilip should know? (veg meals, elders, room type)">${esc(draft.note)}</textarea>
+      <b style="font-family:var(--display);font-size:1.2rem;margin-top:6px">${T("Your details")}</b>
+      <div class="two"><input id="f-name" placeholder="${T("Full name")}" autocomplete="name" value="${esc(draft.name)}"><input id="f-phone" placeholder="${T("Mobile number")}" inputmode="tel" autocomplete="tel" value="${esc(draft.phone)}"></div>
+      <input id="f-pickup" placeholder="${T("Pickup area (e.g. Esplanade, Howrah)")}" value="${esc(draft.pickup)}">
+      <textarea id="f-note" rows="2" placeholder="${T("Anything Dilip should know? (veg meals, elders, room type)")}">${esc(draft.note)}</textarea>
       <p class="err" id="f-err" hidden></p>
-      <button class="btn btn-wa btn-block" type="submit"><svg><use href="#i-wa"/></svg>Send booking on WhatsApp</button>
-      <a class="btn btn-ghost btn-block" id="sendLink" target="_blank" rel="noopener" hidden>Open WhatsApp again</a>
-      <div class="ready" id="ready" hidden>Your booking message is ready in WhatsApp. Tap <b>Send</b> there, and Dilip will confirm your seats.</div>
+      <button class="btn btn-wa btn-block" type="submit"><svg><use href="#i-wa"/></svg>${T("Send booking on WhatsApp")}</button>
+      <a class="btn btn-ghost btn-block" id="sendLink" target="_blank" rel="noopener" hidden>${T("Open WhatsApp again")}</a>
+      <div class="ready" id="ready" hidden>${T("Your booking message is ready in WhatsApp. Tap <b>Send</b> there, and Dilip will confirm your seats.")}</div>
     </form>`;
   $$(".rm",body).forEach(b=>b.addEventListener("click",()=>{ cart.splice(+b.dataset.i,1); saveCart(); renderDrawer(); }));
   ["name","phone","pickup","note"].forEach(k=>$("#f-"+k).addEventListener("input",e=>{ draft[k]=e.target.value; try{sessionStorage.setItem("ff-draft",JSON.stringify(draft));}catch(_){} }));
   $("#checkout").addEventListener("submit",e=>{
     e.preventDefault(); const err=$("#f-err");
-    if(!draft.name.trim()){ err.textContent="Please enter your name."; err.hidden=false; $("#f-name").focus(); return; }
-    if(draft.phone.replace(/\D/g,"").length<10){ err.textContent="Please enter a 10-digit mobile number."; err.hidden=false; $("#f-phone").focus(); return; }
+    if(!draft.name.trim()){ err.textContent=T("Please enter your name."); err.hidden=false; $("#f-name").focus(); return; }
+    if(draft.phone.replace(/\D/g,"").length<10){ err.textContent=T("Please enter a 10-digit mobile number."); err.hidden=false; $("#f-phone").focus(); return; }
     err.hidden=true; const url=wa(bookingText(cart,draft));
     const a=$("#sendLink"); a.href=url; a.hidden=false; $("#ready").hidden=false;
-    const w = window.open(url,"_blank","noopener"); if(!w){ a.textContent="Open WhatsApp to send"; }
+    const w = window.open(url,"_blank","noopener"); if(!w){ a.textContent=T("Open WhatsApp to send"); }
   });
 }
 function esc(s){ return String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
@@ -1079,7 +1185,7 @@ $("#closeDrawer").addEventListener("click",closeDrawer); $("#scrim").addEventLis
 document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeDrawer(); });
 
 /* copy */
-$("#copyNum").addEventListener("click",async e=>{ const span=e.currentTarget.querySelector("span"); try{ await navigator.clipboard.writeText("+91 99031 48926"); span.textContent="Copied"; }catch(_){ const r=document.createRange(); r.selectNodeContents($("#num")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); span.textContent="Selected"; } setTimeout(()=>span.textContent="Copy number",1800); });
+$("#copyNum").addEventListener("click",async e=>{ const span=e.currentTarget.querySelector("span"); try{ await navigator.clipboard.writeText("+91 99031 48926"); span.textContent=T("Copied"); }catch(_){ const r=document.createRange(); r.selectNodeContents($("#num")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); span.textContent=T("Selected"); } setTimeout(()=>span.textContent=T("Copy number"),1800); });
 
 /* ================= routing ================= */
 function route(){
@@ -1105,7 +1211,15 @@ addEventListener("scroll",()=>{ sy=Math.min(scrollY,600); $("#top").classList.to
 
 $("#credits").innerHTML = Object.values(PHOTOS).map(([f,n])=>`<li><a href="${commons(f)}" target="_blank" rel="noopener">${n}</a></li>`).join("");
 $("#yr").textContent = istParts(Date.now()).y;
-setGeneralWA(); renderCatalog(); renderCards(); renderMarquee(); renderRoutes(); startCountdown(); renderCount(); route();
+function rerenderAll(){
+  const active = ($(".chip[aria-pressed='true']")||{}).dataset; const cat = active ? active.cat : "all";
+  translateStatic(); renderCatalog(); renderCards(); renderMarquee(); renderRoutes(); startCountdown();
+  if(cat && cat!=="all"){ const b=$(`.chip[data-cat="${cat}"]`); if(b) b.click(); }
+  const m = location.hash.match(/^#tour-(.+)$/); const t = m && tourById(m[1]); if(t) renderTour(t);
+  if($("#drawer").classList.contains("on")) renderDrawer();
+}
+$("#langBtn").addEventListener("click",()=>{ setLang(LANG==="bn"?"en":"bn"); toast(LANG==="bn"?"বাংলায় দেখানো হচ্ছে":"Showing English"); });
+setGeneralWA(); translateStatic(); renderCatalog(); renderCards(); renderMarquee(); renderRoutes(); startCountdown(); renderCount(); route();
 })();
 </script>
 
