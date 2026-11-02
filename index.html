@@ -1,0 +1,1287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A0C18">
+<title>Surya Telecom</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Surya Telecom, Bhiwandi: RD smartwatches delivered all over India. Pay by UPI, cash on delivery, or order on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hind:wght@400;500;600;700&family=Michroma&display=swap">
+<style>
+/* Layout: a night sky where every watch sits in front of its own rising sun. Sticky store chrome, app-style bottom bar on phones. */
+:root{
+  color-scheme:dark;
+  --night:#0A0C18; --night-2:#10132A; --panel:#171B34; --panel-2:#1F2446; --line:rgba(214,220,255,.11); --line-2:rgba(214,220,255,.2);
+  --text:#F4F2EC; --muted:#A4A9C6; --dim:#6F7598;
+  --sun:#FFB627; --sun-2:#FFD27A; --ember:#FF6B2C; --wa:#25D366; --ok:#3DDC97; --bad:#FF5D6C;
+  --f-model:'Michroma','Eurostile','Arial Black',sans-serif;
+  --f-head:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --f-body:'Hind','Noto Sans Devanagari','Segoe UI',system-ui,sans-serif;
+  --r:18px; --r-sm:12px;
+  --gut-l:max(16px, env(safe-area-inset-left,0px)); --gut-r:max(16px, env(safe-area-inset-right,0px));
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+body{background:var(--night);color:var(--text);font-family:var(--f-body);font-size:16px;line-height:1.55;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--night)}
+img{max-width:100%;display:block}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sun);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.model{font-family:var(--f-model);letter-spacing:.08em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--f-head);text-wrap:balance;margin:0;line-height:1.05}
+h2{font-size:clamp(28px,5vw,46px);font-weight:800;letter-spacing:-.02em}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--sun);font-weight:600}
+.lead{color:var(--muted);max-width:60ch}
+.rupee{font-variant-numeric:tabular-nums}
+section{padding-block:clamp(56px,9vw,104px)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:28px}
+.sec-head > div{display:grid;gap:10px;min-width:0}
+
+/* ---------- announcement + header ---------- */
+.announce{background:linear-gradient(90deg,var(--ember),var(--sun));color:#1B0E02;font-weight:600;font-size:13px;overflow:hidden;white-space:nowrap}
+.announce .track{display:inline-flex;gap:40px;padding-block:7px;animation:marq 28s linear infinite}
+.announce span::before{content:"✦";margin-right:10px;opacity:.6}
+@keyframes marq{to{transform:translateX(-50%)}}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(10,12,24,.78);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.brand svg{flex:none}
+.brand b{display:block;font-family:var(--f-head);font-weight:800;font-size:19px;letter-spacing:-.01em;line-height:1}
+.brand small{display:block;color:var(--muted);font-size:11.5px;line-height:1.3;margin-top:3px}
+.nav{display:none;gap:24px;margin-left:28px;font-weight:500;color:var(--muted)}
+.nav a{text-decoration:none;transition:color .2s}.nav a:hover{color:var(--text)}
+.top-actions{margin-left:auto;display:flex;align-items:center;gap:6px}
+.icon-btn{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;position:relative;transition:background .2s}
+.icon-btn:hover{background:var(--panel)}
+.badge{position:absolute;top:4px;right:2px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--sun);color:#1B0E02;font-size:11px;font-weight:700;display:grid;place-items:center;transform:scale(0);transition:transform .3s var(--ease)}
+.badge.on{transform:scale(1)}
+.badge.bump{animation:bump .5s var(--ease)}
+@keyframes bump{40%{transform:scale(1.5)}}
+.lang{display:flex;border:1px solid var(--line-2);border-radius:999px;padding:3px;font-size:12.5px;font-weight:600}
+.lang button{padding:4px 10px;border-radius:999px;color:var(--muted)}
+.lang button[aria-pressed="true"]{background:var(--text);color:var(--night)}
+@media (min-width:900px){.nav{display:flex}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding-block:8px 40px;isolation:isolate}
+.hero::after{content:"";position:absolute;inset:auto 0 0;height:120px;background:linear-gradient(transparent,var(--night));z-index:-1}
+.stars{position:absolute;inset:0;z-index:-2;opacity:.55;background-image:radial-gradient(1px 1px at 12% 22%,#fff,transparent),radial-gradient(1px 1px at 72% 12%,#fff,transparent),radial-gradient(1.5px 1.5px at 88% 46%,#fff,transparent),radial-gradient(1px 1px at 30% 70%,#fff,transparent),radial-gradient(1px 1px at 52% 34%,#fff,transparent),radial-gradient(1px 1px at 8% 88%,#fff,transparent),radial-gradient(1.5px 1.5px at 62% 82%,#fff,transparent)}
+.hero-grid{display:grid;gap:8px;align-items:center}
+.hero-copy{display:grid;gap:18px;position:relative;z-index:2}
+.hero h1{font-size:clamp(38px,8.4vw,78px);font-weight:800;letter-spacing:-.035em}
+.hero h1 em{font-style:normal;background:linear-gradient(100deg,var(--sun-2),var(--sun) 40%,var(--ember));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln > span{display:inline-block;animation:rise 1s var(--ease) both}
+.hero h1 .ln:nth-child(2) > span{animation-delay:.12s}
+@keyframes rise{from{transform:translateY(105%)}}
+.hero-copy p{color:var(--muted);font-size:17px;max-width:44ch;margin:0}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:52px;padding:0 22px;border-radius:14px;font-weight:600;font-size:16px;text-decoration:none;transition:transform .2s var(--ease),box-shadow .2s,background .2s;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn-sun{background:linear-gradient(135deg,var(--sun-2),var(--sun) 45%,var(--ember));color:#1B0E02;box-shadow:0 10px 30px -10px rgba(255,140,40,.7)}
+.btn-sun:hover{box-shadow:0 14px 40px -10px rgba(255,140,40,.9);transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:#04210F}
+.btn-wa:hover{transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--line-2);color:var(--text)}
+.btn-ghost:hover{background:var(--panel)}
+.btn-block{width:100%}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--muted);font-size:14px}
+.hero-meta span{display:inline-flex;align-items:center;gap:7px}
+.hero-meta svg{color:var(--ok)}
+
+.stage{position:relative;aspect-ratio:1/1;max-width:min(100%,560px);width:100%;margin:0 auto;display:grid;place-items:center;touch-action:pan-y}
+.sun{position:absolute;width:74%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 42%,var(--m1) 0%,var(--m2) 58%,color-mix(in srgb,var(--m2) 30%,transparent) 72%,transparent 73%);transition:background 1s var(--ease);filter:saturate(1.1);animation:breathe 6s ease-in-out infinite}
+.sun-glow{position:absolute;width:100%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--m2) 55%,transparent) 0%,transparent 62%);transition:background 1s;filter:blur(10px)}
+.rays{position:absolute;width:118%;aspect-ratio:1;border-radius:50%;background:repeating-conic-gradient(from 0deg,color-mix(in srgb,var(--m1) 22%,transparent) 0deg 2deg,transparent 2deg 12deg);-webkit-mask:radial-gradient(circle,transparent 36%,#000 40%,transparent 70%);mask:radial-gradient(circle,transparent 36%,#000 40%,transparent 70%);animation:spin 60s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes breathe{50%{transform:scale(1.035)}}
+.ghost-name{position:absolute;top:6%;left:50%;transform:translateX(-50%);font-family:var(--f-model);font-size:clamp(46px,13vw,104px);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.16);white-space:nowrap;pointer-events:none;transition:opacity .4s}
+.hero-watch{position:relative;width:76%;height:76%;display:grid;place-items:center;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s var(--ease)}
+.hero-watch img{position:absolute;max-height:100%;max-width:100%;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));animation:float 5s ease-in-out infinite}
+.hero-watch img.out{animation:wout .55s var(--ease) forwards}
+.hero-watch img.in{animation:win .8s var(--ease) both, float 5s ease-in-out .8s infinite}
+@keyframes float{50%{transform:translateY(-12px) rotate(-1.5deg)}}
+@keyframes wout{to{opacity:0;transform:translateX(-40%) scale(.7) rotate(-14deg)}}
+@keyframes win{from{opacity:0;transform:translateX(40%) scale(.7) rotate(14deg)}}
+.spec-chip{position:absolute;z-index:3;background:rgba(16,19,42,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line-2);border-radius:14px;padding:8px 12px;font-size:12.5px;line-height:1.25;display:grid;animation:chipfloat 6s ease-in-out infinite}
+.spec-chip b{font-family:var(--f-head);font-size:18px;font-weight:700}
+.spec-chip small{color:var(--muted)}
+.chip-a{left:0;top:30%}
+.chip-b{right:0;bottom:22%;animation-delay:-3s}
+.chip-c{right:4%;top:12%;animation-delay:-1.5s;background:linear-gradient(135deg,var(--sun),var(--ember));color:#1B0E02;border:0;font-weight:700}
+.chip-c small{color:#3a1d05}
+@keyframes chipfloat{50%{transform:translateY(-8px)}}
+.picker{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+.picker button{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border-radius:999px;border:1px solid var(--line);font-size:12px;color:var(--muted);transition:all .3s var(--ease)}
+.picker button img{width:28px;height:28px;object-fit:contain;border-radius:50%;background:var(--panel)}
+.picker button[aria-current="true"]{border-color:var(--sun);color:var(--text);background:var(--panel)}
+.picker .model{font-size:10px}
+.hero-now{display:flex;align-items:baseline;justify-content:center;gap:12px;margin-top:14px;flex-wrap:wrap;text-align:center}
+.hero-now .model{font-size:20px}
+.hero-now .p{font-family:var(--f-head);font-weight:800;font-size:22px;color:var(--sun)}
+.hero-now s{color:var(--dim)}
+.hero-grid > div:last-child{order:-1}
+.stage{max-width:min(100%,380px)}
+@media (min-width:900px){
+  .hero-grid > div:last-child{order:0}
+  .stage{max-width:min(100%,560px)}
+  .hero{padding-block:48px 64px}
+  .hero-grid{grid-template-columns:1.05fr 1fr;gap:40px}
+}
+
+/* ---------- trust ---------- */
+.trust{padding-block:0}
+.trust-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.trust-item{background:var(--night-2);padding:18px 16px;display:flex;gap:12px;align-items:center}
+.trust-item .ic{width:42px;height:42px;border-radius:12px;flex:none;display:grid;place-items:center;background:color-mix(in srgb,var(--sun) 14%,transparent);color:var(--sun)}
+.trust-item b{display:block;font-size:15px;line-height:1.2}
+.trust-item small{color:var(--muted);font-size:13px;line-height:1.3;display:block;margin-top:2px}
+@media (min-width:760px){.trust-grid{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.trust-grid{grid-template-columns:repeat(6,1fr)}.trust-item{flex-direction:column;align-items:flex-start}}
+
+/* ---------- categories ---------- */
+.cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.cat{position:relative;border-radius:var(--r);overflow:hidden;background:var(--panel);border:1px solid var(--line);padding:16px;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;transition:transform .35s var(--ease),border-color .3s;isolation:isolate}
+.cat:hover{transform:translateY(-4px);border-color:var(--line-2)}
+.cat::before{content:"";position:absolute;width:150px;aspect-ratio:1;right:-30px;bottom:-30px;border-radius:50%;background:radial-gradient(circle,var(--m1),var(--m2) 60%,transparent 72%);z-index:-1;opacity:.9;transition:transform .5s var(--ease)}
+.cat:hover::before{transform:scale(1.12)}
+.cat img{position:absolute;right:-6px;bottom:-4px;width:58%;max-height:72%;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(0,0,0,.5));z-index:-1;transition:transform .5s var(--ease)}
+.cat:hover img{transform:rotate(-6deg) scale(1.05)}
+.cat b{font-family:var(--f-head);font-size:19px;font-weight:700;line-height:1.15;display:block;max-width:62%}
+.cat small{color:var(--muted);font-size:13px;display:block}
+.cat .count{font-size:12px;font-weight:600;color:var(--sun);display:inline-flex;gap:6px;align-items:center}
+.cat-wide{grid-column:span 2}
+@media (min-width:900px){.cats{grid-template-columns:repeat(3,minmax(0,1fr))}.cat-wide{grid-column:auto}.cat{min-height:230px}}
+
+/* ---------- offer ---------- */
+.offer{position:relative;border-radius:28px;overflow:hidden;padding:clamp(24px,5vw,48px);background:radial-gradient(120% 140% at 100% 0%,#5A2A0B 0%,transparent 55%),radial-gradient(90% 120% at 0% 100%,#3B1C5E 0%,transparent 60%),var(--night-2);border:1px solid rgba(255,182,39,.28);display:grid;gap:24px;isolation:isolate}
+.offer .diyas{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.offer .diyas i{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--sun-2);box-shadow:0 0 12px 4px rgba(255,182,39,.6);animation:flicker 2.4s ease-in-out infinite}
+@keyframes flicker{50%{opacity:.35;transform:scale(.7)}}
+.offer h2{font-size:clamp(30px,6vw,56px)}
+.offer h2 em{font-style:normal;color:var(--sun)}
+.offer-copy{display:grid;gap:14px}
+.code{display:inline-flex;align-items:center;gap:10px;border:1.5px dashed var(--sun);border-radius:12px;padding:8px 8px 8px 14px;font-family:var(--f-model);font-size:14px;letter-spacing:.12em;width:max-content;max-width:100%}
+.code button{background:var(--sun);color:#1B0E02;font-family:var(--f-body);font-weight:700;letter-spacing:0;font-size:13px;padding:6px 12px;border-radius:8px}
+.countdown{display:flex;gap:10px}
+.countdown div{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:14px;padding:10px 0;width:72px;text-align:center}
+.countdown b{display:block;font-family:var(--f-head);font-weight:800;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.countdown small{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.offer-pts{display:grid;gap:8px;margin:0;padding:0;list-style:none;color:var(--muted)}
+.offer-pts li{display:flex;gap:10px;align-items:flex-start}
+.offer-pts li::before{content:"";width:8px;height:8px;margin-top:8px;flex:none;border-radius:50%;background:var(--sun)}
+@media (min-width:900px){.offer{grid-template-columns:1.3fr 1fr;align-items:center}}
+
+/* ---------- shop ---------- */
+.toolbar{grid-template-columns:minmax(0,1fr);position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px);z-index:20;background:rgba(10,12,24,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding-block:10px;margin-bottom:18px;display:grid;gap:10px;border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:8px 14px;border-radius:999px;border:1px solid var(--line-2);font-size:14px;font-weight:500;color:var(--muted);transition:all .25s}
+.chip[aria-pressed="true"]{background:var(--text);color:var(--night);border-color:var(--text)}
+.tool-row{display:flex;gap:8px}
+.search{flex:1;min-width:0;display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:0 12px;height:42px}
+.search input{flex:1;min-width:0;background:none;border:0;outline:0;font-size:15px}
+.search input::placeholder{color:var(--dim)}
+select.sort{background:var(--panel);border:1px solid var(--line);border-radius:12px;height:42px;padding:0 10px;font-size:14px;max-width:44%}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (min-width:760px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}}
+@media (min-width:1100px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.card{position:relative;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .35s var(--ease),border-color .3s,box-shadow .35s;animation:cardin .6s var(--ease) both;animation-delay:calc(var(--i,0) * 60ms)}
+@keyframes cardin{from{opacity:0;transform:translateY(18px)}}
+.card:hover{transform:translateY(-6px);border-color:var(--line-2);box-shadow:0 24px 50px -24px rgba(0,0,0,.8)}
+.card-stage{position:relative;aspect-ratio:1/1;display:grid;place-items:center;overflow:hidden;cursor:pointer;background:radial-gradient(circle at 50% 120%,color-mix(in srgb,var(--m2) 35%,transparent),transparent 70%)}
+.card-stage::before{content:"";position:absolute;width:72%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 40%,var(--m1),var(--m2) 62%,transparent 72%);transition:transform .6s var(--ease)}
+.card:hover .card-stage::before{transform:scale(1.12)}
+.card-stage img{position:relative;width:84%;height:84%;object-fit:contain;filter:drop-shadow(0 16px 20px rgba(0,0,0,.55));transition:transform .6s var(--ease)}
+.card:hover .card-stage img{transform:scale(1.06) rotate(-4deg)}
+.card-stage svg.prod{position:relative;width:62%;height:62%}
+.tag{position:absolute;top:10px;left:10px;z-index:2;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--sun);color:#1B0E02}
+.tag.new{background:var(--ok);color:#04210F}
+.tag.amoled{background:linear-gradient(90deg,#FF5D6C,#FFB627,#3DDC97,#4AA3FF);color:#120a02}
+.fav{position:absolute;top:6px;right:6px;z-index:2;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:rgba(10,12,24,.45);backdrop-filter:blur(6px);color:var(--text);transition:transform .2s}
+.fav[aria-pressed="true"]{color:var(--bad)}
+.fav[aria-pressed="true"] svg{fill:currentColor;animation:bump .4s}
+.card-body{padding:12px 12px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card-body .model{font-size:14px;line-height:1.2}
+.card-body .sub{font-size:12.5px;color:var(--muted);line-height:1.3}
+.rate{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--muted)}
+.rate b{display:inline-flex;align-items:center;gap:3px;background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok);padding:1px 6px;border-radius:6px;font-weight:700}
+.price-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px;margin-top:auto}
+.price{font-family:var(--f-head);font-weight:800;font-size:20px}
+.mrp{color:var(--dim);font-size:13px;text-decoration:line-through}
+.off{color:var(--ok);font-size:13px;font-weight:700}
+.add{margin-top:6px;height:42px;border-radius:12px;background:var(--panel-2);border:1px solid var(--line-2);font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .25s,color .25s,transform .15s}
+.add:hover{background:var(--sun);color:#1B0E02;border-color:var(--sun)}
+.add:active{transform:scale(.96)}
+.add.done{background:var(--ok);color:#04210F;border-color:var(--ok)}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:48px 16px;border:1px dashed var(--line-2);border-radius:var(--r)}
+
+/* ---------- features ---------- */
+.feat-wrap{display:grid;gap:28px;align-items:center}
+.feat-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.feat{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:8px;align-content:start}
+.feat .big{font-family:var(--f-head);font-weight:800;font-size:clamp(28px,4vw,38px);line-height:1;background:linear-gradient(100deg,var(--sun-2),var(--ember));-webkit-background-clip:text;background-clip:text;color:transparent}
+.feat b{font-size:15px;line-height:1.3}
+.feat small{color:var(--muted);font-size:13px;line-height:1.4}
+.size-ruler{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px}
+.size-ruler h3{font-size:20px}
+.bar-row{display:grid;grid-template-columns:86px 1fr 44px;gap:10px;align-items:center;font-size:13px}
+.bar-row .model{font-size:10.5px}
+.bar{height:10px;border-radius:5px;background:var(--panel-2);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--m2),var(--m1));width:var(--w);transform-origin:left;animation:grow 1.2s var(--ease) both}
+@keyframes grow{from{transform:scaleX(0)}}
+.bar-row span:last-child{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+@media (min-width:900px){.feat-wrap{grid-template-columns:1.2fr 1fr}}
+
+/* ---------- lookbook ---------- */
+.look{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin;scrollbar-color:var(--panel-2) transparent}
+.look figure{flex:none;width:min(72vw,300px);margin:0;scroll-snap-align:start;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);position:relative;cursor:pointer;background:var(--panel)}
+.look img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .8s var(--ease)}
+.look figure:hover img{transform:scale(1.05)}
+.look figcaption{position:absolute;inset:auto 10px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px;background:rgba(10,12,24,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:12px;padding:8px 12px;font-size:13px}
+.look figcaption .model{font-size:12px}
+.look figcaption b{color:var(--sun)}
+
+/* ---------- steps ---------- */
+.steps{display:grid;gap:12px;counter-reset:s}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:start}
+.step .n{grid-row:span 2;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--sun);color:var(--sun);display:grid;place-items:center;font-family:var(--f-head);font-weight:800;font-size:18px}
+.step b{font-size:17px}
+.step small{color:var(--muted);font-size:14px}
+.pay-logos{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pay-logos span{border:1px solid var(--line-2);border-radius:10px;padding:6px 12px;font-size:13px;font-weight:600;color:var(--muted)}
+@media (min-width:900px){.steps{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- reviews ---------- */
+.reviews{display:grid;gap:12px}
+.review{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:12px;align-content:start}
+.review .stars-r{color:var(--sun);letter-spacing:2px}
+.review p{margin:0;font-size:15.5px}
+.review footer{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.review footer i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:700;background:var(--panel-2);color:var(--sun)}
+.sample-note{font-size:12px;color:var(--dim);border:1px dashed var(--line-2);border-radius:999px;padding:3px 10px}
+@media (min-width:900px){.reviews{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- store ---------- */
+.store{display:grid;gap:16px;border-radius:28px;padding:clamp(22px,4vw,40px);background:linear-gradient(160deg,var(--panel-2),var(--night-2));border:1px solid var(--line)}
+.store .phone{font-family:var(--f-head);font-size:clamp(28px,6vw,44px);font-weight:800;letter-spacing:-.01em;user-select:all}
+.store-actions{display:flex;flex-wrap:wrap;gap:10px}
+.store-info{display:grid;gap:10px;color:var(--muted)}
+.store-info div{display:flex;gap:10px;align-items:flex-start}
+.store-info svg{flex:none;color:var(--sun);margin-top:3px}
+@media (min-width:900px){.store{grid-template-columns:1.2fr 1fr;align-items:center}}
+
+/* ---------- faq ---------- */
+.faq{display:grid;gap:10px;max-width:820px}
+.faq details{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-sm);padding:0 18px}
+.faq summary{list-style:none;cursor:pointer;padding:16px 0;font-weight:600;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:22px;line-height:1;color:var(--sun);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin:0 0 16px;color:var(--muted)}
+
+footer.foot{border-top:1px solid var(--line);padding-block:40px 120px;color:var(--muted);font-size:14px}
+.foot .wrap{display:grid;gap:24px}
+.foot-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.foot h4{color:var(--text);margin:0 0 8px;font-size:14px}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.foot a{text-decoration:none}.foot a:hover{color:var(--text)}
+.credit{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:18px;font-size:13px}
+@media (min-width:900px){.foot-cols{grid-template-columns:2fr 1fr 1fr 1fr}footer.foot{padding-bottom:48px}}
+
+/* ---------- floating + bottom nav ---------- */
+.fab{position:fixed;z-index:40;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(84px + env(safe-area-inset-bottom,0px));width:58px;height:58px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px -6px rgba(37,211,102,.6);text-decoration:none}
+.fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--wa);animation:ping 2.2s ease-out infinite}
+@keyframes ping{to{transform:scale(1.6);opacity:0}}
+.fab-tip{position:absolute;right:66px;white-space:nowrap;background:var(--text);color:var(--night);font-size:13px;font-weight:600;padding:6px 12px;border-radius:10px;animation:tip 7s ease-in-out 2s both}
+@keyframes tip{0%,100%{opacity:0;transform:translateX(8px)}10%,85%{opacity:1;transform:none}}
+.bnav{position:fixed;z-index:45;left:0;right:0;bottom:0;padding:6px var(--gut-r) calc(6px + env(safe-area-inset-bottom,0px)) var(--gut-l);background:rgba(16,19,42,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}
+.bnav a,.bnav button{display:grid;justify-items:center;gap:2px;font-size:11px;color:var(--muted);text-decoration:none;padding:6px 0;position:relative}
+.bnav .badge{top:0;right:calc(50% - 22px)}
+.bnav .wa{color:var(--wa)}
+@media (min-width:900px){.bnav{display:none}.fab{bottom:calc(24px + env(safe-area-inset-bottom,0px))}}
+
+/* ---------- sheets ---------- */
+.scrim{position:fixed;inset:0;z-index:70;background:rgba(4,5,12,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .35s}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:80;left:0;right:0;bottom:0;max-height:92vh;max-height:92dvh;display:flex;flex-direction:column;background:var(--night-2);border:1px solid var(--line-2);border-bottom:0;border-radius:24px 24px 0 0;transform:translateY(105%);transition:transform .5s var(--ease);visibility:hidden}
+.sheet.on{transform:none;visibility:visible}
+.sheet-head{display:flex;align-items:center;gap:10px;padding:14px var(--gut-r) 10px var(--gut-l);border-bottom:1px solid var(--line);flex:none}
+.sheet-head::before{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:40px;height:4px;border-radius:2px;background:var(--line-2)}
+.sheet-head h3{font-size:19px;flex:1;min-width:0}
+.sheet-body{overflow-y:auto;padding:16px var(--gut-r) 16px var(--gut-l);flex:1;overscroll-behavior:contain}
+.sheet-foot{flex:none;padding:12px var(--gut-r) calc(12px + env(safe-area-inset-bottom,0px)) var(--gut-l);border-top:1px solid var(--line);display:grid;gap:8px;background:var(--night-2)}
+@media (min-width:900px){
+  .sheet{left:auto;top:0;bottom:0;right:0;width:480px;max-height:none;border-radius:24px 0 0 24px;border:1px solid var(--line-2);border-right:0;transform:translateX(105%)}
+  .sheet.wide{width:min(980px,92vw)}
+  .sheet-head::before{display:none}
+}
+
+/* product sheet */
+.pd{display:grid;gap:20px}
+.pd-gallery{position:relative;border-radius:var(--r);overflow:hidden;background:var(--panel)}
+.pd-slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.pd-slides::-webkit-scrollbar{display:none}
+.pd-slide{flex:none;width:100%;scroll-snap-align:start;aspect-ratio:1/1;display:grid;place-items:center;position:relative;overflow:hidden}
+.pd-slide.stage-s::before{content:"";position:absolute;width:74%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 40%,var(--m1),var(--m2) 62%,transparent 72%)}
+.pd-slide.stage-s img{position:relative;width:84%;height:84%;object-fit:contain;filter:drop-shadow(0 20px 26px rgba(0,0,0,.5));animation:float 5s ease-in-out infinite}
+.pd-slide.poster img{width:100%;height:100%;object-fit:cover}
+.pd-slide svg.prod{position:relative;width:60%;height:60%}
+.dots{position:absolute;bottom:10px;left:0;right:0;display:flex;justify-content:center;gap:6px}
+.dots i{width:7px;height:7px;border-radius:4px;background:rgba(255,255,255,.35);transition:width .3s}
+.dots i.on{width:20px;background:#fff}
+.pd-info{display:grid;gap:12px;align-content:start}
+.pd-info .model{font-size:clamp(24px,4vw,32px)}
+.pd-info .codes{color:var(--muted);font-size:14px}
+.pd-price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.pd-price .price{font-size:32px}
+.save{font-size:13px;color:var(--ok)}
+.specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.specs div{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.specs small{display:block;color:var(--muted);font-size:12px}
+.specs b{font-size:15px}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line-2);border-radius:12px;height:44px}
+.qty button{width:40px;height:100%;font-size:20px}
+.qty span{min-width:28px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.pin{display:flex;gap:8px}
+.pin input,.field input,.field select,.field textarea{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line-2);border-radius:12px;height:46px;padding:0 14px;font-size:16px;outline:0;transition:border-color .2s}
+.pin input:focus,.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--sun)}
+.pin button{padding:0 16px;border-radius:12px;background:var(--panel-2);border:1px solid var(--line-2);font-weight:600}
+.pin-msg{font-size:14px;min-height:1.4em}
+.pin-msg.ok{color:var(--ok)}.pin-msg.bad{color:var(--bad)}
+.mini-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:12px;color:var(--muted);text-align:center}
+.mini-trust div{display:grid;justify-items:center;gap:4px;background:var(--panel);border-radius:12px;padding:10px 4px}
+.mini-trust svg{color:var(--sun)}
+.foot-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (min-width:900px){.pd{grid-template-columns:1fr 1fr;gap:28px}}
+
+/* cart */
+.line{display:grid;grid-template-columns:76px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.line .thumb{width:76px;height:76px;border-radius:14px;background:var(--panel);display:grid;place-items:center;position:relative;overflow:hidden}
+.line .thumb::before{content:"";position:absolute;width:80%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--m1),var(--m2) 62%,transparent 72%)}
+.line .thumb img,.line .thumb svg{position:relative;width:86%;height:86%;object-fit:contain}
+.line .model{font-size:13px}
+.line small{color:var(--muted);font-size:12.5px;display:block}
+.line .qty{height:34px;margin-top:6px}.line .qty button{width:32px;font-size:17px}
+.line .rm{color:var(--dim);font-size:12px;text-decoration:underline;justify-self:end}
+.line .lp{font-weight:700;text-align:right;display:grid;gap:6px;justify-items:end}
+.ship-bar{background:var(--panel);border-radius:14px;padding:12px 14px;font-size:14px;display:grid;gap:8px}
+.ship-bar .bar i{background:linear-gradient(90deg,var(--sun),var(--ok));animation:none;transition:width .5s var(--ease)}
+.sum{display:grid;gap:6px;font-size:15px;margin-top:14px}
+.sum div{display:flex;justify-content:space-between;gap:12px}
+.sum .muted{color:var(--muted)}
+.sum .disc{color:var(--ok)}
+.sum .tot{font-size:19px;font-weight:700;border-top:1px dashed var(--line-2);padding-top:10px;margin-top:4px}
+.coupon{display:flex;gap:8px;margin-top:14px}
+.coupon input{flex:1;min-width:0;background:var(--panel);border:1px dashed var(--line-2);border-radius:12px;height:44px;padding:0 12px;text-transform:uppercase;outline:0}
+.coupon button{padding:0 16px;border-radius:12px;background:var(--panel-2);font-weight:600}
+.cart-empty{text-align:center;padding:40px 10px;display:grid;gap:14px;justify-items:center;color:var(--muted)}
+
+/* checkout */
+.stepper{display:flex;gap:6px;margin-bottom:18px}
+.stepper div{flex:1;display:grid;gap:6px;font-size:12px;color:var(--dim)}
+.stepper div i{height:4px;border-radius:2px;background:var(--panel-2);overflow:hidden;position:relative}
+.stepper div i::after{content:"";position:absolute;inset:0;background:var(--sun);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.stepper div.on{color:var(--text)}
+.stepper div.on i::after{transform:none}
+.form{display:grid;gap:12px}
+.field{display:grid;gap:6px}
+.field label{font-size:13px;color:var(--muted);font-weight:500}
+.field textarea{height:auto;padding:12px 14px;resize:vertical;min-height:76px}
+.field.err input,.field.err textarea{border-color:var(--bad)}
+.field .em{font-size:12px;color:var(--bad);display:none}
+.field.err .em{display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.demo-fill{font-size:13px;color:var(--sun);text-decoration:underline;justify-self:start}
+.pay-opts{display:grid;gap:10px}
+.pay-opt{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:14px;border-radius:14px;border:1.5px solid var(--line-2);background:var(--panel);text-align:left;transition:border-color .2s,background .2s}
+.pay-opt[aria-checked="true"]{border-color:var(--sun);background:color-mix(in srgb,var(--sun) 8%,var(--panel))}
+.pay-opt .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--panel-2)}
+.pay-opt b{display:block}
+.pay-opt small{color:var(--muted);font-size:13px;display:block;line-height:1.35}
+.pay-opt .pill{font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok);white-space:nowrap}
+.radio{width:20px;height:20px;border-radius:50%;border:2px solid var(--line-2);display:grid;place-items:center}
+.pay-opt[aria-checked="true"] .radio{border-color:var(--sun)}
+.pay-opt[aria-checked="true"] .radio::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--sun)}
+.upi-box{display:grid;gap:14px;justify-items:center;text-align:center;background:var(--panel);border-radius:var(--r);padding:20px;margin-top:4px}
+.qr{width:180px;height:180px;background:#fff;border-radius:14px;padding:10px;position:relative}
+.qr canvas{width:100%;height:100%;image-rendering:pixelated}
+.qr .demo{position:absolute;inset:auto 0 50%;transform:translateY(50%) rotate(-12deg);background:var(--ember);color:#fff;font-weight:700;font-size:12px;letter-spacing:.1em;padding:3px 0}
+.apps{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.apps button{padding:8px 14px;border-radius:10px;background:var(--panel-2);border:1px solid var(--line-2);font-size:13px;font-weight:600}
+.upi-id{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--muted)}
+.upi-id code{color:var(--text);font-family:var(--f-body);font-weight:600}
+.processing{display:grid;gap:14px;justify-items:center;padding:40px 0;text-align:center}
+.spinner{width:56px;height:56px;border-radius:50%;border:4px solid var(--panel-2);border-top-color:var(--sun);animation:spin 1s linear infinite}
+.success{display:grid;gap:14px;justify-items:center;text-align:center;padding:10px 0 4px}
+.tick{width:96px;height:96px;border-radius:50%;background:var(--ok);display:grid;place-items:center;color:#04210F;animation:pop .6s var(--ease) both}
+@keyframes pop{from{transform:scale(0)}60%{transform:scale(1.15)}}
+.tick svg path{stroke-dasharray:40;stroke-dashoffset:40;animation:draw .5s .4s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.order-card{width:100%;background:var(--panel);border-radius:var(--r);padding:16px;display:grid;gap:8px;text-align:left;font-size:14px}
+.order-card div{display:flex;justify-content:space-between;gap:10px}
+.order-card span{color:var(--muted)}
+.timeline{display:grid;gap:0;width:100%;text-align:left;margin-top:4px}
+.timeline div{display:grid;grid-template-columns:20px 1fr;gap:12px;font-size:14px;padding-bottom:14px;position:relative}
+.timeline div::before{content:"";width:12px;height:12px;border-radius:50%;border:2px solid var(--line-2);margin-top:5px;background:var(--night-2);position:relative;z-index:1}
+.timeline div.done::before{background:var(--ok);border-color:var(--ok)}
+.timeline div:not(:last-child)::after{content:"";position:absolute;left:5px;top:18px;bottom:0;width:2px;background:var(--line-2)}
+.timeline small{color:var(--muted);display:block}
+#confetti{position:fixed;inset:0;z-index:100;pointer-events:none}
+
+.toast{position:fixed;z-index:110;left:50%;top:calc(76px + env(safe-area-inset-top,0px));transform:translate(-50%,-30px);opacity:0;background:var(--text);color:var(--night);font-weight:600;font-size:14px;padding:10px 16px;border-radius:12px;display:flex;align-items:center;gap:10px;transition:all .35s var(--ease);pointer-events:none;max-width:calc(100% - 32px)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.toast img{width:30px;height:30px;object-fit:contain}
+
+.reveal{animation:revealIn linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+@keyframes revealIn{from{transform:translateY(48px) scale(.97)}}
+@supports not (animation-timeline:view()){.reveal{animation:none}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{animation:none}
+}
+</style>
+</head>
+<body>
+
+
+<div class="announce" aria-label="Offers">
+  <div class="track" id="marq"></div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="Surya Telecom home">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD27A"/><stop offset=".5" stop-color="#FFB627"/><stop offset="1" stop-color="#FF6B2C"/></linearGradient></defs>
+        <rect width="40" height="40" rx="11" fill="#171B34"/>
+        <g stroke="url(#lg)" stroke-width="2.2" stroke-linecap="round"><path d="M20 7v4M9.5 11.5l2.8 2.8M30.5 11.5l-2.8 2.8M5.5 22h4M30.5 22h4"/></g>
+        <path d="M11 26a9 9 0 0 1 18 0z" fill="url(#lg)"/>
+        <path d="M7 29.5h26" stroke="#F4F2EC" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span><b>Surya Telecom</b><small>सूर्या टेलिकॉम · Bhiwandi</small></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#shop" data-t="nShop">Shop</a>
+      <a href="#categories" data-t="nCats">Categories</a>
+      <a href="#offer" data-t="nOffer">Diwali Offer</a>
+      <a href="#store" data-t="nContact">Contact</a>
+    </nav>
+    <div class="top-actions">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" id="lang-en" aria-pressed="true">EN</button>
+        <button type="button" id="lang-hi" aria-pressed="false">हिं</button>
+      </div>
+      <button class="icon-btn" type="button" id="open-cart" aria-label="Open cart">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="badge" id="cart-badge">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="home">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="stars" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow" data-t="heroEyebrow">RD smartwatches · Delivered all over India</span>
+        <h1>
+          <span class="ln"><span data-t="h1a">One step ahead,</span></span>
+          <span class="ln"><span><em data-t="h1b">on every wrist.</em></span></span>
+        </h1>
+        <p data-t="heroP">Original RD watches from our Bhiwandi store to your doorstep. Pay with UPI, choose cash on delivery, or just order on WhatsApp.</p>
+        <div class="cta-row">
+          <a class="btn btn-sun" href="#shop"><span data-t="shopNow">Shop watches</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-wa" id="hero-wa" target="_blank" rel="noopener" href="#">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>
+            <span data-t="waOrder">Order on WhatsApp</span></a>
+        </div>
+        <div class="hero-meta">
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg><span data-t="m1">Cash on Delivery</span></span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg><span data-t="m2">UPI payments</span></span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg><span data-t="m3">Free delivery all India</span></span>
+        </div>
+      </div>
+
+      <div>
+        <div class="stage" id="stage" style="--m1:#D9D3F7;--m2:#6F63C9">
+          <div class="sun-glow" aria-hidden="true"></div>
+          <div class="rays" aria-hidden="true"></div>
+          <div class="sun" aria-hidden="true"></div>
+          <div class="ghost-name" id="ghost" aria-hidden="true">FORGE</div>
+          <div class="hero-watch" id="hero-watch"><img id="hero-img" src="img/forge.webp" alt="RD Forge X-90 smartwatch"></div>
+          <div class="spec-chip chip-a"><b id="chip-size">1.99″</b><small data-t="chipDisp">Display</small></div>
+          <div class="spec-chip chip-b"><b id="chip-shape">Ultra</b><small data-t="chipDesign">Design</small></div>
+          <div class="spec-chip chip-c"><b id="chip-off">67%</b><small data-t="chipOff">OFF today</small></div>
+        </div>
+        <div class="hero-now">
+          <span class="model" id="hero-name">Forge</span>
+          <span class="p rupee" id="hero-price">₹2,299</span>
+          <s class="rupee" id="hero-mrp">₹6,999</s>
+          <button class="btn btn-ghost" style="height:40px;padding:0 14px;font-size:14px" id="hero-view" type="button" data-t="viewWatch">View watch</button>
+        </div>
+        <div class="picker" id="picker" role="tablist" aria-label="Choose a watch"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust">
+    <div class="wrap">
+      <div class="trust-grid" id="trust"></div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section id="categories">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow" data-t="catEyebrow">Shop by style</span>
+          <h2 data-t="catTitle">Find the watch that fits you</h2>
+        </div>
+      </div>
+      <div class="cats" id="cats"></div>
+    </div>
+  </section>
+
+  <!-- OFFER -->
+  <section id="offer" style="padding-top:0">
+    <div class="wrap">
+      <div class="offer reveal">
+        <div class="diyas" id="diyas" aria-hidden="true"></div>
+        <div class="offer-copy">
+          <span class="eyebrow" data-t="offEyebrow">Diwali Dhamaka · Limited time</span>
+          <h2><span data-t="offT1">Up to</span> <em>70% OFF</em><br><span data-t="offT2">+ extra 10% with code</span></h2>
+          <ul class="offer-pts">
+            <li data-t="offP1">Extra 5% off on every prepaid UPI order</li>
+            <li data-t="offP2">Free delivery anywhere in India, COD available</li>
+            <li data-t="offP3">Gift-ready box with every watch</li>
+          </ul>
+          <div class="code"><span>DIWALI10</span><button type="button" id="copy-code" data-t="copy">Copy</button></div>
+        </div>
+        <div style="display:grid;gap:14px">
+          <span style="color:var(--muted);font-size:14px" data-t="endsIn">Offer ends Diwali night, 8 Nov</span>
+          <div class="countdown" id="countdown">
+            <div><b id="cd-d">00</b><small data-t="days">Days</small></div>
+            <div><b id="cd-h">00</b><small data-t="hrs">Hrs</small></div>
+            <div><b id="cd-m">00</b><small data-t="min">Min</small></div>
+            <div><b id="cd-s">00</b><small data-t="sec">Sec</small></div>
+          </div>
+          <a class="btn btn-sun" href="#shop" data-t="grabDeal">Grab the deal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP -->
+  <section id="shop" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow" data-t="shopEyebrow">The full catalogue</span>
+          <h2 data-t="shopTitle">All RD watches &amp; gadgets</h2>
+        </div>
+      </div>
+      <div class="toolbar">
+        <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+        <div class="tool-row">
+          <label class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--dim)"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input id="q" type="search" placeholder="Search Lexon, Forge, earbuds…" aria-label="Search products"></label>
+          <select class="sort" id="sort" aria-label="Sort">
+            <option value="pop">Popular</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+            <option value="off">Biggest discount</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section style="padding-top:0">
+    <div class="wrap feat-wrap">
+      <div style="display:grid;gap:22px">
+        <div class="sec-head reveal" style="margin:0">
+          <div>
+            <span class="eyebrow" data-t="whyEyebrow">Why RD from Surya Telecom</span>
+            <h2 data-t="whyTitle">Big screens. Small prices.</h2>
+          </div>
+        </div>
+        <div class="feat-list">
+          <div class="feat reveal"><span class="big">2.09″</span><b data-t="f1">Biggest AMOLED</b><small data-t="f1s">Serion's Super AMOLED screen stays bright even in direct sunlight.</small></div>
+          <div class="feat reveal"><span class="big">6</span><b data-t="f2">New-launch models</b><small data-t="f2s">Square, round and Ultra designs from RD's latest lineup.</small></div>
+          <div class="feat reveal"><span class="big">100+</span><b data-t="f3">Sport modes</b><small data-t="f3s">Walking, running, cycling, yoga, cricket and many more.</small></div>
+          <div class="feat reveal"><span class="big">₹0</span><b data-t="f4">Delivery charge</b><small data-t="f4s">Free shipping on every watch, anywhere in India.</small></div>
+        </div>
+      </div>
+      <div class="size-ruler reveal">
+        <h3 data-t="rulerTitle">Compare screen sizes</h3>
+        <div id="ruler" style="display:grid;gap:12px"></div>
+        <small style="color:var(--muted)" data-t="rulerNote">Display size measured diagonally, in inches.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOOKBOOK -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow" data-t="lookEyebrow">New launches</span>
+          <h2 data-t="lookTitle">The RD 2026 collection</h2>
+        </div>
+        <span style="color:var(--muted);font-size:14px" data-t="swipe">Swipe →</span>
+      </div>
+      <div class="look" id="look"></div>
+    </div>
+  </section>
+
+  <!-- HOW TO ORDER -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow" data-t="howEyebrow">Ordering is easy</span>
+          <h2 data-t="howTitle">From Bhiwandi to your door in 3 steps</h2>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><span class="n">1</span><b data-t="s1">Pick your watch</b><small data-t="s1s">Add to cart, or tap "Order on WhatsApp" on any watch.</small></div>
+        <div class="step reveal"><span class="n">2</span><b data-t="s2">Pay your way</b><small data-t="s2s">UPI (GPay, PhonePe, Paytm), or cash when it arrives.</small></div>
+        <div class="step reveal"><span class="n">3</span><b data-t="s3">Delivered in 2 to 6 days</b><small data-t="s3s">Tracking updates on WhatsApp. Next-day delivery in Bhiwandi and Thane.</small></div>
+      </div>
+      <div class="pay-logos"><span>UPI</span><span>Google Pay</span><span>PhonePe</span><span>Paytm</span><span>BHIM</span><span data-t="cod">Cash on Delivery</span></div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow" data-t="revEyebrow">Customer love</span>
+          <h2 data-t="revTitle">What buyers say</h2>
+        </div>
+        <span class="sample-note" data-t="sample">Sample reviews for demo</span>
+      </div>
+      <div class="reviews">
+        <article class="review reveal"><span class="stars-r">★★★★★</span><p>"Forge ka Ultra look ekdum premium hai. Bhiwandi se order kiya, agle din mil gaya."</p><footer><i>R</i><span>Rahul · Thane · Forge X-90</span></footer></article>
+        <article class="review reveal"><span class="stars-r">★★★★★</span><p>"Serion's AMOLED screen is super bright. Paid with UPI, got it in 3 days in Pune."</p><footer><i>P</i><span>Priya · Pune · Serion XR-250</span></footer></article>
+        <article class="review reveal"><span class="stars-r">★★★★☆</span><p>"WhatsApp pe order kiya, COD se payment. Papa ko gift diya Novex, bahut pasand aaya."</p><footer><i>A</i><span>Aamir · Bhiwandi · Novex XR-240</span></footer></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORE -->
+  <section id="store" style="padding-top:0">
+    <div class="wrap">
+      <div class="store reveal">
+        <div style="display:grid;gap:14px">
+          <span class="eyebrow" data-t="storeEyebrow">Talk to us</span>
+          <h2 data-t="storeTitle">Questions? Call or WhatsApp the store.</h2>
+          <div class="phone" id="phone-text">+91 97667 30839</div>
+          <div class="store-actions">
+            <a class="btn btn-wa" id="store-wa" target="_blank" rel="noopener" href="#"><span data-t="waChat">WhatsApp us</span></a>
+            <a class="btn btn-ghost" href="tel:+919766730839" data-t="callNow">Call now</a>
+            <button class="btn btn-ghost" type="button" id="copy-phone" data-t="copyNum">Copy number</button>
+          </div>
+        </div>
+        <div class="store-info">
+          <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b style="color:var(--text)">Surya Telecom</b><br>Bhiwandi, Maharashtra · <a href="https://www.google.com/maps/search/Surya+Telecom+Bhiwandi" target="_blank" rel="noopener" data-t="dir">Get directions</a></span></div>
+          <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg><span data-t="info2">Shipping to every pincode in India, with store pickup in Bhiwandi.</span></div>
+          <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span data-t="info3">100% original RD products with brand warranty and 7-day replacement.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal"><div><span class="eyebrow">FAQ</span><h2 data-t="faqTitle">Common questions</h2></div></div>
+      <div class="faq" id="faq"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-cols">
+      <div style="display:grid;gap:10px">
+        <b style="color:var(--text);font-family:var(--f-head);font-size:20px">Surya Telecom</b>
+        <span data-t="footAbout">Mobile accessories and RD smartwatches in Bhiwandi, now delivering all over India.</span>
+        <span>WhatsApp / Call: +91 97667 30839</span>
+      </div>
+      <div><h4 data-t="nShop">Shop</h4><ul><li><a href="#shop" data-cat="square" class="fcat">Square watches</a></li><li><a href="#shop" data-cat="round" class="fcat">Round watches</a></li><li><a href="#shop" data-cat="ultra" class="fcat">Ultra watches</a></li><li><a href="#shop" data-cat="audio" class="fcat">Earbuds &amp; audio</a></li></ul></div>
+      <div><h4 data-t="help">Help</h4><ul><li><a href="#store">Track order</a></li><li><a href="#store">Shipping policy</a></li><li><a href="#store">Returns &amp; replacement</a></li><li><a href="#store">Warranty</a></li></ul></div>
+      <div><h4 data-t="pay">Payments</h4><ul><li>UPI</li><li>Cash on Delivery</li><li>WhatsApp order</li></ul></div>
+    </div>
+    <div class="credit"><span>© 2026 Surya Telecom, Bhiwandi</span><span>Website by Shawn Webstudio</span></div>
+  </div>
+</footer>
+
+<!-- floating WhatsApp -->
+<a class="fab" id="fab" target="_blank" rel="noopener" href="#" aria-label="Chat on WhatsApp">
+  <span class="fab-tip" data-t="fabTip">Need help? Chat with us</span>
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>
+</a>
+
+<nav class="bnav" aria-label="Quick">
+  <a href="#home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg><span data-t="home">Home</span></a>
+  <a href="#shop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="6" width="10" height="12" rx="3"/><path d="M9 6V3h6v3M9 18v3h6v-3"/></svg><span data-t="nShop">Shop</span></a>
+  <button type="button" id="bnav-cart"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span data-t="cart">Cart</span><span class="badge" id="cart-badge2">0</span></button>
+  <a class="wa" id="bnav-wa" target="_blank" rel="noopener" href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg><span>WhatsApp</span></a>
+</nav>
+
+<div class="scrim" id="scrim"></div>
+
+<!-- product sheet -->
+<aside class="sheet wide" id="pd-sheet" role="dialog" aria-modal="true" aria-labelledby="pd-title">
+  <div class="sheet-head"><h3 id="pd-title">Product</h3><button class="icon-btn close" type="button" aria-label="Close"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="sheet-body" id="pd-body"></div>
+  <div class="sheet-foot"><div class="foot-row"><button class="btn btn-ghost" type="button" id="pd-add" data-t="addCart">Add to cart</button><button class="btn btn-sun" type="button" id="pd-buy" data-t="buyNow">Buy now</button></div><a class="btn btn-wa btn-block" id="pd-wa" target="_blank" rel="noopener" href="#" style="height:46px"><span data-t="waThis">Order this on WhatsApp</span></a></div>
+</aside>
+
+<!-- cart sheet -->
+<aside class="sheet" id="cart-sheet" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+  <div class="sheet-head"><h3 id="cart-title" data-t="yourCart">Your cart</h3><button class="icon-btn close" type="button" aria-label="Close"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="sheet-body" id="cart-body"></div>
+  <div class="sheet-foot" id="cart-foot"></div>
+</aside>
+
+<!-- checkout sheet -->
+<aside class="sheet" id="co-sheet" role="dialog" aria-modal="true" aria-labelledby="co-title">
+  <div class="sheet-head"><h3 id="co-title" data-t="checkout">Checkout</h3><button class="icon-btn close" type="button" aria-label="Close"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="sheet-body" id="co-body"></div>
+  <div class="sheet-foot" id="co-foot"></div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<canvas id="confetti"></canvas>
+
+<script>
+(function(){
+const WA = '919766730839';
+const PHONE = '+91 97667 30839';
+const OFFER_END = new Date('2026-11-08T23:59:59+05:30');
+
+/* ---------------- catalogue ---------------- */
+const PRODUCTS = [
+  {id:'forge', name:'Forge', code:'X-90', type:'watch', cats:['ultra'], shape:'Ultra', disp:1.99, panel:'HD', price:2299, mrp:6999, rate:4.7, n:312, tag:'Bestseller', m:['#DCD6FA','#6F63C9'],
+   en:'Titanium-tone Ultra case, orange-ring crown and a soft ocean loop strap. Built to look premium and take a beating.',
+   hi:'टाइटेनियम-टोन अल्ट्रा केस, ऑरेंज क्राउन और ओशन लूप स्ट्रैप। प्रीमियम लुक, मज़बूत बिल्ड।', strap:'Ocean loop (silicone)'},
+  {id:'serion', name:'Serion', code:'XR-250', type:'watch', cats:['square','amoled'], shape:'Square', disp:2.09, panel:'Super AMOLED', price:2499, mrp:7999, rate:4.8, n:204, tag:'AMOLED', m:['#EEF2F1','#7FA79A'],
+   en:'The biggest screen in the range: a 2.09″ Super AMOLED display with deep blacks and punchy colours, plus a red-ring crown.',
+   hi:'रेंज की सबसे बड़ी स्क्रीन: 2.09″ सुपर AMOLED डिस्प्ले, गहरे काले और चमकीले रंग।', strap:'Sport silicone'},
+  {id:'lexon', name:'Lexon', code:'XR-230', type:'watch', cats:['square'], shape:'Square', disp:2.01, panel:'HD', price:1799, mrp:5999, rate:4.6, n:428, tag:'Top rated', m:['#F1CB8A','#8A5A2B'],
+   en:'A 2.01″ display with a gold-accent dial, slim black case and a comfortable silicone strap for all-day wear.',
+   hi:'2.01″ डिस्प्ले, गोल्ड-एक्सेंट डायल, स्लिम ब्लैक केस और दिन भर आरामदायक स्ट्रैप।', strap:'Soft silicone'},
+  {id:'syncro', name:'Syncro', code:'X-70', type:'watch', cats:['square'], shape:'Square', disp:2.01, panel:'HD', price:1699, mrp:5499, rate:4.5, n:167, tag:'New', m:['#F4CFA0','#A5672E'],
+   en:'A sporty 2.01″ square watch with rich analog-style faces, activity rings and a rotating crown.',
+   hi:'स्पोर्टी 2.01″ स्क्वेयर वॉच, एनालॉग-स्टाइल फ़ेस, एक्टिविटी रिंग और घूमने वाला क्राउन।', strap:'Sport silicone'},
+  {id:'novex', name:'Novex', code:'XR-240', type:'watch', cats:['round'], shape:'Round', disp:1.46, panel:'HD', price:1999, mrp:6499, rate:4.7, n:256, tag:'New', m:['#F7A15A','#2F4BB5'],
+   en:'A bold round watch with a sports bezel, red tachymeter markings and a chunky crown. Looks like a luxury diver.',
+   hi:'स्पोर्ट्स बेज़ल और रेड मार्किंग वाली बोल्ड राउंड वॉच। लग्ज़री डाइवर जैसा लुक।', strap:'Sport silicone'},
+  {id:'nexzon', name:'Nexzon', code:'XR-260', type:'watch', cats:['round'], shape:'Round', disp:1.52, panel:'HD', price:1599, mrp:4999, rate:4.5, n:189, tag:'Value pick', m:['#CFE3F6','#4A86C9'],
+   en:'A clean, classic round watch with a 1.52″ screen and slim bezel. Office to gym, it fits everywhere.',
+   hi:'1.52″ स्क्रीन और स्लिम बेज़ल वाली क्लासिक राउंड वॉच। ऑफिस से जिम तक हर जगह फिट।', strap:'Soft silicone'},
+  {id:'ws105', name:'WS-105', code:'TWS Earbuds', type:'buds', cats:['audio'], price:899, mrp:2999, rate:4.4, n:96, m:['#F1CB8A','#8A5A2B'],
+   en:'True wireless earbuds with a pocket charging case, touch controls and low-latency gaming mode.', hi:'पॉकेट चार्जिंग केस, टच कंट्रोल और गेमिंग मोड वाले वायरलेस ईयरबड्स।'},
+  {id:'em500', name:'EM-500', code:'Neckband', type:'neck', cats:['audio'], price:699, mrp:1999, rate:4.3, n:74, m:['#CFE3F6','#4A86C9'],
+   en:'Wireless neckband with magnetic earbuds, deep bass and long battery backup for the daily commute.', hi:'मैग्नेटिक ईयरबड्स, डीप बास और लंबी बैटरी वाला वायरलेस नेकबैंड।'},
+  {id:'b350', name:'B-350', code:'Bluetooth Speaker', type:'speaker', cats:['audio'], price:1299, mrp:3499, rate:4.4, n:58, m:['#F7A15A','#2F4BB5'],
+   en:'Portable Bluetooth speaker with loud, clear sound, FM and USB playback. Perfect for parties.', hi:'तेज़ और साफ़ आवाज़ वाला पोर्टेबल ब्लूटूथ स्पीकर। FM और USB सपोर्ट।'},
+  {id:'charger', name:'Fast Charger', code:'RD Charger', type:'charger', cats:['power'], price:399, mrp:999, rate:4.5, n:142, m:['#EEF2F1','#7FA79A'],
+   en:'RD fast wall charger with cable. Safe charging for Android phones and smartwatches.', hi:'केबल के साथ RD फ़ास्ट वॉल चार्जर। फ़ोन और स्मार्टवॉच के लिए सुरक्षित चार्जिंग।'},
+  {id:'power', name:'Power Bank', code:'RD Powerbank', type:'powerbank', cats:['power'], price:999, mrp:2499, rate:4.4, n:88, m:['#DCD6FA','#6F63C9'],
+   en:'Slim RD power bank to keep your phone and watch charged on the go.', hi:'फ़ोन और वॉच को चलते-फिरते चार्ज रखने के लिए स्लिम RD पावर बैंक।'},
+];
+PRODUCTS.forEach((p,i)=>{p.idx=i; if(p.type==='watch'){p.img='img/'+p.id+'.webp'; p.poster='img/'+p.id+'-poster.webp';}});
+const byId = id => PRODUCTS.find(p=>p.id===id);
+const WATCHES = PRODUCTS.filter(p=>p.type==='watch');
+
+const CATS = [
+  {id:'all', en:'All', hi:'सभी'},
+  {id:'square', en:'Square watches', hi:'स्क्वेयर वॉच', sub:'Big 2″+ screens', subhi:'2″+ बड़ी स्क्रीन', pic:'lexon', m:['#F1CB8A','#8A5A2B']},
+  {id:'round', en:'Round watches', hi:'राउंड वॉच', sub:'Classic & sporty', subhi:'क्लासिक और स्पोर्टी', pic:'novex', m:['#F7A15A','#2F4BB5']},
+  {id:'ultra', en:'Ultra series', hi:'अल्ट्रा सीरीज़', sub:'Rugged premium look', subhi:'रग्ड प्रीमियम लुक', pic:'forge', m:['#DCD6FA','#6F63C9']},
+  {id:'amoled', en:'AMOLED', hi:'AMOLED', sub:'Brightest display', subhi:'सबसे चमकदार डिस्प्ले', pic:'serion', m:['#EEF2F1','#7FA79A']},
+  {id:'audio', en:'Earbuds & audio', hi:'ईयरबड्स और ऑडियो', sub:'TWS, neckband, speaker', subhi:'TWS, नेकबैंड, स्पीकर', svg:'buds', m:['#CFE3F6','#4A86C9']},
+  {id:'power', en:'Chargers & power', hi:'चार्जर और पावर', sub:'Fast charge, powerbank', subhi:'फ़ास्ट चार्ज, पावर बैंक', svg:'powerbank', m:['#F4CFA0','#A5672E']},
+];
+
+/* simple product illustrations for non-watch items */
+function prodSVG(type){
+  const g='<defs><linearGradient id="pg'+type+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a3f5c"/><stop offset="1" stop-color="#0d0f1c"/></linearGradient></defs>';
+  const f='url(#pg'+type+')';
+  const shapes={
+    buds:'<rect x="22" y="44" width="56" height="40" rx="18" fill="'+f+'" stroke="#555b80"/><path d="M22 60h56" stroke="#555b80"/><circle cx="50" cy="72" r="2.5" fill="#3DDC97"/><g transform="rotate(-18 34 30)"><rect x="28" y="12" width="13" height="30" rx="6.5" fill="'+f+'" stroke="#555b80"/><circle cx="34.5" cy="17" r="6" fill="#1b1e33" stroke="#FFB627"/></g><g transform="rotate(18 66 30)"><rect x="59" y="12" width="13" height="30" rx="6.5" fill="'+f+'" stroke="#555b80"/><circle cx="65.5" cy="17" r="6" fill="#1b1e33" stroke="#FFB627"/></g>',
+    neck:'<path d="M18 30c0 34 64 34 64 0" fill="none" stroke="#2a2e48" stroke-width="10" stroke-linecap="round"/><path d="M18 30c0 34 64 34 64 0" fill="none" stroke="#555b80" stroke-width="1"/><rect x="10" y="26" width="16" height="30" rx="7" fill="'+f+'" stroke="#555b80"/><rect x="74" y="26" width="16" height="30" rx="7" fill="'+f+'" stroke="#555b80"/><path d="M18 56v18M82 56v18" stroke="#555b80" stroke-width="2"/><circle cx="18" cy="78" r="6" fill="#1b1e33" stroke="#FFB627"/><circle cx="82" cy="78" r="6" fill="#1b1e33" stroke="#FFB627"/>',
+    speaker:'<rect x="14" y="30" width="72" height="44" rx="20" fill="'+f+'" stroke="#555b80"/><circle cx="34" cy="52" r="13" fill="#11132a" stroke="#FFB627" stroke-width="1.5"/><circle cx="66" cy="52" r="13" fill="#11132a" stroke="#FFB627" stroke-width="1.5"/><circle cx="34" cy="52" r="5" fill="#2a2e48"/><circle cx="66" cy="52" r="5" fill="#2a2e48"/><rect x="40" y="24" width="20" height="6" rx="3" fill="#2a2e48"/>',
+    charger:'<rect x="30" y="24" width="40" height="44" rx="10" fill="'+f+'" stroke="#555b80"/><path d="M42 14v10M58 14v10" stroke="#9aa3c4" stroke-width="4" stroke-linecap="round"/><path d="M52 36l-8 12h7l-3 10 9-13h-7z" fill="#FFB627"/><path d="M50 68c0 10-14 8-14 18" fill="none" stroke="#2a2e48" stroke-width="5" stroke-linecap="round"/>',
+    powerbank:'<rect x="24" y="12" width="52" height="76" rx="12" fill="'+f+'" stroke="#555b80"/><g fill="#3DDC97"><rect x="44" y="70" width="3" height="6" rx="1"/><rect x="49" y="70" width="3" height="6" rx="1"/><rect x="54" y="70" width="3" height="6" rx="1" opacity=".35"/></g><text x="50" y="50" text-anchor="middle" font-family="Michroma,sans-serif" font-size="13" fill="#F4F2EC">RD</text><rect x="42" y="8" width="16" height="4" rx="2" fill="#555b80"/>'
+  };
+  return '<svg class="prod" viewBox="0 0 100 100" aria-hidden="true">'+g+shapes[type]+'</svg>';
+}
+
+/* ---------------- i18n ---------------- */
+const T = {
+ en:{},
+ hi:{nShop:'शॉप',nCats:'कैटेगरी',nOffer:'दिवाली ऑफ़र',nContact:'संपर्क',heroEyebrow:'RD स्मार्टवॉच · पूरे भारत में डिलीवरी',h1a:'एक कदम आगे,',h1b:'हर कलाई पर।',
+  heroP:'भिवंडी के हमारे स्टोर से ओरिजिनल RD वॉच सीधे आपके घर। UPI से पेमेंट करें, कैश ऑन डिलीवरी चुनें, या बस WhatsApp पर ऑर्डर करें।',shopNow:'वॉच देखें',waOrder:'WhatsApp पर ऑर्डर',m1:'कैश ऑन डिलीवरी',m2:'UPI पेमेंट',m3:'पूरे भारत में फ़्री डिलीवरी',
+  chipDisp:'डिस्प्ले',chipDesign:'डिज़ाइन',chipOff:'आज की छूट',viewWatch:'वॉच देखें',catEyebrow:'स्टाइल से चुनें',catTitle:'अपने लिए सही वॉच चुनें',
+  offEyebrow:'दिवाली धमाका · सीमित समय',offT1:'पाएं',offT2:'+ कोड से 10% और छूट',offP1:'हर प्रीपेड UPI ऑर्डर पर 5% अतिरिक्त छूट',offP2:'पूरे भारत में फ़्री डिलीवरी, COD उपलब्ध',offP3:'हर वॉच के साथ गिफ़्ट-रेडी बॉक्स',copy:'कॉपी',endsIn:'ऑफ़र दिवाली की रात, 8 नवंबर तक',days:'दिन',hrs:'घंटे',min:'मिनट',sec:'सेकंड',grabDeal:'डील पाएं',
+  shopEyebrow:'पूरा कैटलॉग',shopTitle:'सभी RD वॉच और गैजेट्स',whyEyebrow:'सूर्या टेलिकॉम से RD क्यों',whyTitle:'बड़ी स्क्रीन, छोटी कीमत।',f1:'सबसे बड़ी AMOLED',f1s:'Serion की सुपर AMOLED स्क्रीन धूप में भी साफ़ दिखती है।',f2:'नए लॉन्च मॉडल',f2s:'RD की नई रेंज में स्क्वेयर, राउंड और अल्ट्रा डिज़ाइन।',f3:'स्पोर्ट मोड',f3s:'वॉकिंग, रनिंग, साइकलिंग, योग, क्रिकेट और भी बहुत कुछ।',f4:'डिलीवरी चार्ज',f4s:'भारत में कहीं भी, हर वॉच पर फ़्री शिपिंग।',
+  rulerTitle:'स्क्रीन साइज़ की तुलना',rulerNote:'डिस्प्ले साइज़ इंच में, तिरछा मापा गया।',lookEyebrow:'नए लॉन्च',lookTitle:'RD 2026 कलेक्शन',swipe:'स्वाइप करें →',
+  howEyebrow:'ऑर्डर करना आसान',howTitle:'भिवंडी से आपके घर तक, 3 स्टेप में',s1:'अपनी वॉच चुनें',s1s:'कार्ट में डालें, या किसी भी वॉच पर "WhatsApp पर ऑर्डर" दबाएं।',s2:'अपने तरीके से पेमेंट',s2s:'UPI (GPay, PhonePe, Paytm), या डिलीवरी पर कैश।',s3:'2 से 6 दिन में डिलीवरी',s3s:'WhatsApp पर ट्रैकिंग अपडेट। भिवंडी और ठाणे में अगले दिन डिलीवरी।',cod:'कैश ऑन डिलीवरी',
+  revEyebrow:'ग्राहकों का प्यार',revTitle:'ग्राहक क्या कहते हैं',sample:'डेमो के लिए सैंपल रिव्यू',storeEyebrow:'हमसे बात करें',storeTitle:'कोई सवाल? स्टोर को कॉल या WhatsApp करें।',waChat:'WhatsApp करें',callNow:'कॉल करें',copyNum:'नंबर कॉपी करें',dir:'रास्ता देखें',
+  info2:'भारत के हर पिनकोड पर शिपिंग, भिवंडी में स्टोर पिकअप भी।',info3:'100% ओरिजिनल RD प्रोडक्ट, ब्रांड वारंटी और 7 दिन रिप्लेसमेंट।',faqTitle:'आम सवाल',footAbout:'भिवंडी में मोबाइल एक्सेसरीज़ और RD स्मार्टवॉच, अब पूरे भारत में डिलीवरी।',help:'मदद',pay:'पेमेंट',
+  fabTip:'मदद चाहिए? हमसे चैट करें',home:'होम',cart:'कार्ट',addCart:'कार्ट में डालें',buyNow:'अभी खरीदें',waThis:'इसे WhatsApp पर ऑर्डर करें',yourCart:'आपका कार्ट',checkout:'चेकआउट'}
+};
+const DICT_UI = {
+ en:{add:'Add', added:'Added', addedToast:'added to cart', copied:'Copied', off:'off', reviews:'ratings', display:'Display', panel:'Panel', design:'Design', strap:'Strap', sport:'Sport modes', multiple:'Multiple', delivery:'Check delivery', check:'Check', pinPh:'Enter 6-digit pincode', qty:'Quantity', orig:'100% original', repl:'7-day replacement', codS:'COD available',
+  empty:'Your cart is empty', emptyS:'Add a watch to get started.', browse:'Browse watches', subtotal:'Subtotal', discount:'Discount', coupon:'Coupon', shipping:'Shipping', free:'FREE', total:'Total', apply:'Apply', couponPh:'Coupon code', proceed:'Proceed to checkout', waCart:'Send cart on WhatsApp', remove:'Remove',
+  freeShip:'You have unlocked FREE delivery', moreShip:'Add {x} more for free delivery', step1:'Address', step2:'Payment', step3:'Done',
+  name:'Full name', phone:'Mobile number', pin:'Pincode', city:'City', state:'State', addr:'House no., street, area', fill:'Fill demo details', next:'Continue to payment', back:'Back',
+  upi:'UPI', upiS:'GPay, PhonePe, Paytm, BHIM', codT:'Cash on Delivery', codS2:'Pay cash when it arrives (+₹49 handling)', waT:'Order on WhatsApp', waS:'Send order to the store, pay later', save5:'5% OFF',
+  pay:'Pay', place:'Place order', sendWa:'Send order on WhatsApp', scan:'Scan with any UPI app', orPay:'or pay with', demoPay:'Demo: payment is simulated', processing:'Confirming your payment…',
+  thanks:'Order placed!', thanksS:'We\'ve sent your order to Surya Telecom. You\'ll get updates on WhatsApp.', orderId:'Order ID', paid:'Payment', eta:'Expected delivery', track:'Get updates on WhatsApp', cont:'Continue shopping',
+  t1:'Order confirmed', t2:'Packed at Bhiwandi store', t3:'Shipped', t4:'Delivered', req:'Please fill this in', badPhone:'Enter a 10-digit mobile number', badPin:'Enter a 6-digit pincode', badCoupon:'This code is not valid', okCoupon:'DIWALI10 applied: 10% off',
+  pinBhi:'Next-day delivery to Bhiwandi / Thane. COD available.', pinMh:'Delivery in 2 to 3 days. COD available.', pinIn:'Delivery in 4 to 6 days. COD available.', pinBad:'Enter a valid 6-digit pincode.', all:'All', results:'items'},
+ hi:{add:'जोड़ें', added:'जुड़ गया', addedToast:'कार्ट में जुड़ गया', copied:'कॉपी हो गया', off:'छूट', reviews:'रेटिंग', display:'डिस्प्ले', panel:'पैनल', design:'डिज़ाइन', strap:'स्ट्रैप', sport:'स्पोर्ट मोड', multiple:'कई', delivery:'डिलीवरी चेक करें', check:'चेक', pinPh:'6 अंकों का पिनकोड', qty:'मात्रा', orig:'100% ओरिजिनल', repl:'7 दिन रिप्लेसमेंट', codS:'COD उपलब्ध',
+  empty:'आपका कार्ट खाली है', emptyS:'शुरू करने के लिए एक वॉच जोड़ें।', browse:'वॉच देखें', subtotal:'सबटोटल', discount:'छूट', coupon:'कूपन', shipping:'शिपिंग', free:'फ़्री', total:'कुल', apply:'लगाएं', couponPh:'कूपन कोड', proceed:'चेकआउट करें', waCart:'कार्ट WhatsApp पर भेजें', remove:'हटाएं',
+  freeShip:'आपको फ़्री डिलीवरी मिल गई', moreShip:'फ़्री डिलीवरी के लिए {x} और जोड़ें', step1:'पता', step2:'पेमेंट', step3:'हो गया',
+  name:'पूरा नाम', phone:'मोबाइल नंबर', pin:'पिनकोड', city:'शहर', state:'राज्य', addr:'मकान नं., गली, इलाका', fill:'डेमो डिटेल भरें', next:'पेमेंट पर जाएं', back:'वापस',
+  upi:'UPI', upiS:'GPay, PhonePe, Paytm, BHIM', codT:'कैश ऑन डिलीवरी', codS2:'डिलीवरी पर कैश दें (+₹49 हैंडलिंग)', waT:'WhatsApp पर ऑर्डर', waS:'स्टोर को ऑर्डर भेजें, बाद में पेमेंट', save5:'5% छूट',
+  pay:'पेमेंट करें', place:'ऑर्डर करें', sendWa:'WhatsApp पर ऑर्डर भेजें', scan:'किसी भी UPI ऐप से स्कैन करें', orPay:'या इससे पेमेंट करें', demoPay:'डेमो: पेमेंट सिम्युलेटेड है', processing:'आपका पेमेंट कन्फ़र्म हो रहा है…',
+  thanks:'ऑर्डर हो गया!', thanksS:'आपका ऑर्डर सूर्या टेलिकॉम को भेज दिया गया है। अपडेट WhatsApp पर मिलेंगे।', orderId:'ऑर्डर ID', paid:'पेमेंट', eta:'अनुमानित डिलीवरी', track:'WhatsApp पर अपडेट पाएं', cont:'शॉपिंग जारी रखें',
+  t1:'ऑर्डर कन्फ़र्म', t2:'भिवंडी स्टोर पर पैक', t3:'शिप हुआ', t4:'डिलीवर', req:'कृपया यह भरें', badPhone:'10 अंकों का मोबाइल नंबर डालें', badPin:'6 अंकों का पिनकोड डालें', badCoupon:'यह कोड मान्य नहीं है', okCoupon:'DIWALI10 लग गया: 10% छूट',
+  pinBhi:'भिवंडी / ठाणे में अगले दिन डिलीवरी। COD उपलब्ध।', pinMh:'2 से 3 दिन में डिलीवरी। COD उपलब्ध।', pinIn:'4 से 6 दिन में डिलीवरी। COD उपलब्ध।', pinBad:'सही 6 अंकों का पिनकोड डालें।', all:'सभी', results:'आइटम'}
+};
+let lang = 'en';
+try{ lang = localStorage.getItem('st-lang') || 'en'; }catch(e){}
+const u = k => (DICT_UI[lang][k] ?? DICT_UI.en[k]);
+document.querySelectorAll('[data-t]').forEach(el=>{ T.en[el.dataset.t] = T.en[el.dataset.t] || el.textContent; });
+function applyLang(){
+  document.documentElement.lang = lang==='hi'?'hi':'en';
+  document.querySelectorAll('[data-t]').forEach(el=>{ const v=(T[lang]&&T[lang][el.dataset.t])||T.en[el.dataset.t]; if(v) el.textContent=v; });
+  $('#lang-en').setAttribute('aria-pressed', lang==='en'); $('#lang-hi').setAttribute('aria-pressed', lang==='hi');
+  $('#q').placeholder = lang==='hi' ? 'Lexon, Forge, ईयरबड्स खोजें…' : 'Search Lexon, Forge, earbuds…';
+  renderMarquee(); renderTrust(); renderCats(); renderChips(); renderGrid(); renderFaq(); renderCartBadge();
+  if(openSheet==='cart') renderCart();
+}
+function setLang(l){ lang=l; try{localStorage.setItem('st-lang',l)}catch(e){} applyLang(); }
+
+/* ---------------- helpers ---------------- */
+const $ = s => document.querySelector(s);
+const inr = n => '₹' + Math.round(n).toLocaleString('en-IN');
+const pct = p => Math.round((1 - p.price/p.mrp)*100);
+const wa = text => 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text);
+const mood = p => '--m1:'+p.m[0]+';--m2:'+p.m[1];
+const pic = (p, cls) => p.img ? '<img src="'+p.img+'" alt="RD '+p.name+' '+p.code+'" loading="lazy" '+(cls?'class="'+cls+'"':'')+'>' : prodSVG(p.type);
+const title = p => (p.type==='watch' ? 'RD '+p.name+' '+p.code : 'RD '+p.name+' '+p.code);
+const descOf = p => lang==='hi' ? p.hi : p.en;
+function toast(html){ const t=$('#toast'); t.innerHTML=html; t.classList.add('on'); clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove('on'),2200); }
+function copy(text, btn){
+  const done=()=>{ toast(u('copied')+': '+text); };
+  try{ navigator.clipboard.writeText(text).then(done).catch(()=>{ selectText(btn); }); }catch(e){ selectText(btn); }
+}
+function selectText(el){ try{ const r=document.createRange(); r.selectNodeContents(el.previousElementSibling||el); const s=getSelection(); s.removeAllRanges(); s.addRange(r);}catch(e){} }
+
+const GENERIC_WA = 'Namaste Surya Telecom! I want to know more about your RD smartwatches.';
+['#hero-wa','#store-wa','#fab','#bnav-wa'].forEach(s=>$(s).href = wa(GENERIC_WA));
+
+/* ---------------- marquee / trust / cats ---------------- */
+function renderMarquee(){
+  const items = lang==='hi'
+   ? ['दिवाली धमाका: 70% तक छूट','पूरे भारत में फ़्री डिलीवरी','कैश ऑन डिलीवरी उपलब्ध','प्रीपेड UPI पर 5% अतिरिक्त छूट','WhatsApp पर ऑर्डर: +91 97667 30839']
+   : ['Diwali Dhamaka: up to 70% off','Free delivery all over India','Cash on Delivery available','Extra 5% off on prepaid UPI','Order on WhatsApp: +91 97667 30839'];
+  const html = items.map(i=>'<span>'+i+'</span>').join('');
+  $('#marq').innerHTML = html + html;
+}
+const ICONS = {
+  truck:'<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>',
+  cash:'<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 9v.01M18 15v.01"/>',
+  upi:'<path d="M7 4l6 8-6 8M13 4l6 8-6 8"/>',
+  shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
+  swap:'<path d="M4 8h13l-3-3M20 16H7l3 3"/>',
+  store:'<path d="M4 9l1.5-5h13L20 9M4 9v11h16V9M4 9h16M9 20v-6h6v6"/>'
+};
+const ic = (k,s=22)=>'<svg width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+ICONS[k]+'</svg>';
+function renderTrust(){
+  const d = lang==='hi' ? [
+    ['truck','फ़्री ऑल इंडिया डिलीवरी','हर पिनकोड पर'],['cash','कैश ऑन डिलीवरी','घर पर पेमेंट'],['upi','सुरक्षित UPI पेमेंट','GPay, PhonePe, Paytm'],
+    ['shield','100% ओरिजिनल RD','ब्रांड वारंटी के साथ'],['swap','7 दिन रिप्लेसमेंट','आसान, बिना झंझट'],['store','भिवंडी स्टोर','आकर देखें और खरीदें']]
+  : [['truck','Free all-India delivery','To every pincode'],['cash','Cash on Delivery','Pay at your door'],['upi','Secure UPI payments','GPay, PhonePe, Paytm'],
+    ['shield','100% original RD','With brand warranty'],['swap','7-day replacement','Easy, no questions'],['store','Bhiwandi store','Visit, touch and try']];
+  $('#trust').innerHTML = d.map(x=>'<div class="trust-item"><span class="ic">'+ic(x[0])+'</span><span><b>'+x[1]+'</b><small>'+x[2]+'</small></span></div>').join('');
+}
+function catCount(id){ return id==='all'?PRODUCTS.length:PRODUCTS.filter(p=>p.cats.includes(id)).length; }
+function renderCats(){
+  $('#cats').innerHTML = CATS.filter(c=>c.id!=='all').map((c,i)=>{
+    const art = c.pic ? '<img src="img/'+c.pic+'.webp" alt="" loading="lazy">' : '<span style="position:absolute;right:4px;bottom:4px;width:52%;z-index:-1">'+prodSVG(c.svg)+'</span>';
+    return '<button type="button" class="cat reveal'+(i===0||i===5?' cat-wide':'')+'" data-cat="'+c.id+'" style="--m1:'+c.m[0]+';--m2:'+c.m[1]+'">'+art+
+      '<span><b>'+(lang==='hi'?c.hi:c.en)+'</b><small>'+(lang==='hi'?c.subhi:c.sub)+'</small></span>'+
+      '<span class="count">'+catCount(c.id)+' '+(catCount(c.id)===1&&lang==='en'?'item':u('results'))+' →</span></button>';
+  }).join('');
+}
+
+/* ---------------- hero ---------------- */
+let heroI = 0, heroTimer;
+const heroOrder = ['forge','serion','novex','lexon','syncro','nexzon'].map(byId);
+function renderPicker(){
+  $('#picker').innerHTML = heroOrder.map((p,i)=>'<button type="button" role="tab" aria-current="'+(i===heroI)+'" data-i="'+i+'"><img src="'+p.img+'" alt=""><span class="model">'+p.name+'</span></button>').join('');
+}
+function showHero(i, dir){
+  const p = heroOrder[i]; heroI = i;
+  const st = $('#stage'); st.style.setProperty('--m1',p.m[0]); st.style.setProperty('--m2',p.m[1]);
+  const box = $('#hero-watch'); const old = box.querySelector('img');
+  const img = new Image(); img.src = p.img; img.alt = title(p)+' smartwatch'; img.className='in';
+  if(old){ old.classList.remove('in'); old.classList.add('out'); setTimeout(()=>old.remove(),550); }
+  box.appendChild(img);
+  $('#ghost').textContent = p.name.toUpperCase();
+  $('#chip-size').textContent = p.disp.toFixed(2)+'″';
+  $('#chip-shape').textContent = p.panel==='Super AMOLED' ? 'AMOLED' : p.shape;
+  $('#chip-off').textContent = pct(p)+'%';
+  $('#hero-name').textContent = p.name+' '+p.code;
+  $('#hero-price').textContent = inr(p.price);
+  $('#hero-mrp').textContent = inr(p.mrp);
+  $('#picker').querySelectorAll('button').forEach((b,j)=>b.setAttribute('aria-current', j===i));
+}
+function heroAuto(){ clearInterval(heroTimer); heroTimer = setInterval(()=>showHero((heroI+1)%heroOrder.length),4200); }
+$('#picker').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; showHero(+b.dataset.i); heroAuto(); });
+$('#hero-view').addEventListener('click',()=>openProduct(heroOrder[heroI].id));
+$('#hero-watch').addEventListener('click',()=>openProduct(heroOrder[heroI].id));
+(function(){ // tilt + swipe
+  const st=$('#stage'), hw=$('#hero-watch'); let sx=null;
+  st.addEventListener('pointermove',e=>{ if(e.pointerType!=='mouse') return; const r=st.getBoundingClientRect(); const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5; hw.style.setProperty('--ry',(x*18)+'deg'); hw.style.setProperty('--rx',(-y*14)+'deg'); });
+  st.addEventListener('pointerleave',()=>{ hw.style.setProperty('--ry','0deg'); hw.style.setProperty('--rx','0deg'); });
+  st.addEventListener('touchstart',e=>{ sx=e.touches[0].clientX; },{passive:true});
+  st.addEventListener('touchend',e=>{ if(sx===null) return; const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40){ showHero((heroI+(dx<0?1:heroOrder.length-1))%heroOrder.length); heroAuto(); } sx=null; });
+})();
+
+/* ---------------- shop ---------------- */
+let filter='all', query='', sortBy='pop';
+let favs = new Set(); try{ favs = new Set(JSON.parse(localStorage.getItem('st-fav')||'[]')); }catch(e){}
+function renderChips(){
+  $('#chips').innerHTML = CATS.map(c=>'<button type="button" class="chip" data-cat="'+c.id+'" aria-pressed="'+(filter===c.id)+'">'+(lang==='hi'?c.hi:c.en)+' <span style="opacity:.55">'+catCount(c.id)+'</span></button>').join('');
+  const o = $('#sort').options; const L = lang==='hi'?['लोकप्रिय','कीमत: कम से ज़्यादा','कीमत: ज़्यादा से कम','सबसे ज़्यादा छूट']:['Popular','Price: low to high','Price: high to low','Biggest discount'];
+  for(let i=0;i<o.length;i++) o[i].textContent=L[i];
+}
+function cardHTML(p,i){
+  const tagCls = p.tag==='New'?'tag new':p.tag==='AMOLED'?'tag amoled':'tag';
+  const sub = p.type==='watch' ? p.code+' · '+p.disp.toFixed(2)+'″ '+(p.panel==='Super AMOLED'?'AMOLED':p.shape) : p.code;
+  return '<article class="card" style="'+mood(p)+';--i:'+i+'" data-id="'+p.id+'">'+
+    (p.tag?'<span class="'+tagCls+'">'+p.tag+'</span>':'')+
+    '<button class="fav" type="button" aria-label="Save '+p.name+'" aria-pressed="'+favs.has(p.id)+'" data-fav="'+p.id+'"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></button>'+
+    '<div class="card-stage" data-open="'+p.id+'">'+pic(p)+'</div>'+
+    '<div class="card-body"><span class="model">'+p.name+'</span><span class="sub">'+sub+'</span>'+
+    '<span class="rate"><b>'+p.rate+' ★</b> '+p.n+' '+u('reviews')+'</span>'+
+    '<div class="price-row"><span class="price rupee">'+inr(p.price)+'</span><span class="mrp rupee">'+inr(p.mrp)+'</span><span class="off">'+pct(p)+'% '+u('off')+'</span></div>'+
+    '<button class="add" type="button" data-add="'+p.id+'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>'+u('add')+'</button></div></article>';
+}
+function renderGrid(){
+  let list = PRODUCTS.filter(p=>filter==='all'||p.cats.includes(filter));
+  if(query){ const q=query.toLowerCase(); list=list.filter(p=>(p.name+' '+p.code+' '+p.cats.join(' ')+' '+(p.shape||'')+' '+p.type).toLowerCase().includes(q)); }
+  if(sortBy==='low') list.sort((a,b)=>a.price-b.price);
+  else if(sortBy==='high') list.sort((a,b)=>b.price-a.price);
+  else if(sortBy==='off') list.sort((a,b)=>pct(b)-pct(a));
+  else list.sort((a,b)=>a.idx-b.idx);
+  $('#grid').innerHTML = list.length ? list.map(cardHTML).join('') : '<div class="empty">'+(lang==='hi'?'कोई प्रोडक्ट नहीं मिला। कुछ और खोजें या WhatsApp पर पूछें।':'Nothing matches that search. Try another name, or ask us on WhatsApp.')+'</div>';
+}
+function setFilter(c, scroll){ filter=c; renderChips(); renderGrid(); if(scroll) $('#shop').scrollIntoView({behavior:'smooth'}); }
+$('#chips').addEventListener('click',e=>{ const b=e.target.closest('[data-cat]'); if(b) setFilter(b.dataset.cat); });
+$('#cats').addEventListener('click',e=>{ const b=e.target.closest('[data-cat]'); if(b) setFilter(b.dataset.cat,true); });
+document.querySelectorAll('.fcat').forEach(a=>a.addEventListener('click',()=>setFilter(a.dataset.cat)));
+$('#q').addEventListener('input',e=>{ query=e.target.value.trim(); renderGrid(); });
+$('#sort').addEventListener('change',e=>{ sortBy=e.target.value; renderGrid(); });
+$('#grid').addEventListener('click',e=>{
+  const add=e.target.closest('[data-add]'); if(add){ addToCart(add.dataset.add,1,add); return; }
+  const f=e.target.closest('[data-fav]'); if(f){ const id=f.dataset.fav; favs.has(id)?favs.delete(id):favs.add(id); f.setAttribute('aria-pressed',favs.has(id)); try{localStorage.setItem('st-fav',JSON.stringify([...favs]))}catch(_){} return; }
+  const o=e.target.closest('[data-open]'); if(o) openProduct(o.dataset.open);
+});
+
+/* ruler + lookbook + faq */
+function renderRuler(){
+  const max = 2.2;
+  $('#ruler').innerHTML = WATCHES.slice().sort((a,b)=>b.disp-a.disp).map(p=>'<div class="bar-row" style="'+mood(p)+'"><span class="model">'+p.name+'</span><span class="bar"><i style="--w:'+(p.disp/max*100)+'%"></i></span><span>'+p.disp.toFixed(2)+'″</span></div>').join('');
+}
+function renderLook(){
+  $('#look').innerHTML = heroOrder.map(p=>'<figure data-open="'+p.id+'"><img src="'+p.poster+'" alt="RD '+p.name+' '+p.code+' launch poster" loading="lazy"><figcaption><span class="model">'+p.name+'</span><b class="rupee">'+inr(p.price)+'</b></figcaption></figure>').join('');
+}
+$('#look').addEventListener('click',e=>{ const f=e.target.closest('[data-open]'); if(f) openProduct(f.dataset.open); });
+function renderFaq(){
+  const q = lang==='hi' ? [
+    ['क्या कैश ऑन डिलीवरी उपलब्ध है?','हाँ। भारत के लगभग हर पिनकोड पर COD उपलब्ध है। ₹49 हैंडलिंग चार्ज लगता है। UPI से पेमेंट करने पर 5% अतिरिक्त छूट मिलती है।'],
+    ['डिलीवरी में कितने दिन लगते हैं?','भिवंडी और ठाणे में अगले दिन। महाराष्ट्र में 2 से 3 दिन। बाकी भारत में 4 से 6 दिन।'],
+    ['क्या ये ओरिजिनल RD वॉच हैं?','हाँ, सभी प्रोडक्ट 100% ओरिजिनल RD हैं और ब्रांड वारंटी के साथ आते हैं।'],
+    ['अगर वॉच ख़राब निकले तो?','डिलीवरी के 7 दिन के अंदर WhatsApp पर अनबॉक्सिंग वीडियो भेजें, हम रिप्लेसमेंट देंगे।'],
+    ['क्या मैं WhatsApp पर ऑर्डर कर सकता हूँ?','बिल्कुल। किसी भी प्रोडक्ट पर "WhatsApp पर ऑर्डर" दबाएं या +91 97667 30839 पर मैसेज करें।']]
+  : [['Is Cash on Delivery available?','Yes. COD is available to almost every pincode in India, with a ₹49 handling fee. Pay by UPI instead and you get an extra 5% off.'],
+    ['How long does delivery take?','Next day in Bhiwandi and Thane, 2 to 3 days across Maharashtra, and 4 to 6 days for the rest of India.'],
+    ['Are these original RD watches?','Yes. Every product is 100% original RD and comes with brand warranty.'],
+    ['What if my watch arrives damaged?','Send us an unboxing video on WhatsApp within 7 days of delivery and we will replace it.'],
+    ['Can I order on WhatsApp?','Of course. Tap "Order on WhatsApp" on any product, or message +91 97667 30839.']];
+  $('#faq').innerHTML = q.map((x,i)=>'<details'+(i===0?' open':'')+'><summary>'+x[0]+'</summary><p>'+x[1]+'</p></details>').join('');
+}
+
+/* ---------------- countdown + diyas ---------------- */
+function tick(){
+  let s = Math.max(0, Math.floor((OFFER_END - Date.now())/1000));
+  const d=Math.floor(s/86400); s%=86400; const h=Math.floor(s/3600); s%=3600; const m=Math.floor(s/60); s%=60;
+  $('#cd-d').textContent=String(d).padStart(2,'0'); $('#cd-h').textContent=String(h).padStart(2,'0'); $('#cd-m').textContent=String(m).padStart(2,'0'); $('#cd-s').textContent=String(s).padStart(2,'0');
+}
+tick(); setInterval(tick,1000);
+$('#diyas').innerHTML = Array.from({length:22},(_,i)=>'<i style="left:'+((i*37)%100)+'%;top:'+((i*53)%100)+'%;animation-delay:'+(-(i%7)*.35)+'s;opacity:'+(.35+(i%4)*.15)+'"></i>').join('');
+$('#copy-code').addEventListener('click',function(){ copy('DIWALI10', this); });
+$('#copy-phone').addEventListener('click',function(){ copy(PHONE, $('#phone-text')); });
+
+/* ---------------- sheets ---------------- */
+let openSheet = null, lastFocus = null;
+function showSheet(id){
+  if(openSheet && openSheet!==id) $('#'+openSheet+'-sheet').classList.remove('on');
+  lastFocus = document.activeElement;
+  openSheet = id; $('#'+id+'-sheet').classList.add('on'); $('#scrim').classList.add('on'); document.body.style.overflow='hidden';
+  setTimeout(()=>{ const c=$('#'+id+'-sheet .close'); c && c.focus({preventScroll:true}); },60);
+}
+function closeSheets(){
+  if(!openSheet) return;
+  $('#'+openSheet+'-sheet').classList.remove('on'); $('#scrim').classList.remove('on'); document.body.style.overflow=''; openSheet=null;
+  lastFocus && lastFocus.focus && lastFocus.focus({preventScroll:true});
+}
+$('#scrim').addEventListener('click',closeSheets);
+document.querySelectorAll('.sheet .close').forEach(b=>b.addEventListener('click',closeSheets));
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSheets(); });
+
+/* product */
+let pdId=null, pdQty=1;
+function openProduct(id){
+  const p = byId(id); pdId=id; pdQty=1;
+  $('#pd-title').textContent = title(p);
+  const slides = p.type==='watch'
+    ? '<div class="pd-slide stage-s">'+pic(p)+'</div><div class="pd-slide poster"><img src="'+p.poster+'" alt="RD '+p.name+' poster"></div>'
+    : '<div class="pd-slide stage-s">'+prodSVG(p.type)+'</div>';
+  const nSl = p.type==='watch'?2:1;
+  const specs = p.type==='watch'
+    ? [[u('display'),p.disp.toFixed(2)+'″'],[u('panel'),p.panel],[u('design'),p.shape],[u('sport'),u('multiple')],[u('strap'),p.strap],['Bluetooth','5.x']]
+    : [['Type',p.code],['Brand','RD'],['Warranty','Brand'],['Delivery','All India']];
+  $('#pd-body').innerHTML =
+   '<div class="pd" style="'+mood(p)+'">'+
+    '<div class="pd-gallery"><div class="pd-slides" id="pd-slides">'+slides+'</div>'+(nSl>1?'<div class="dots" id="pd-dots"><i class="on"></i><i></i></div>':'')+'</div>'+
+    '<div class="pd-info">'+
+      (p.tag?'<span class="eyebrow">'+p.tag+'</span>':'')+
+      '<span class="model">'+p.name+'</span><span class="codes">RD '+p.code+(p.type==='watch'?' · Smartwatch':'')+'</span>'+
+      '<span class="rate"><b>'+p.rate+' ★</b> '+p.n+' '+u('reviews')+'</span>'+
+      '<div class="pd-price"><span class="price rupee">'+inr(p.price)+'</span><span class="mrp rupee">'+inr(p.mrp)+'</span><span class="off">'+pct(p)+'% '+u('off')+'</span></div>'+
+      '<span class="save">'+(lang==='hi'?'आप बचाते हैं ':'You save ')+inr(p.mrp-p.price)+(lang==='hi'?' · UPI पर 5% और छूट':' · extra 5% off with UPI')+'</span>'+
+      '<p style="margin:0;color:var(--muted)">'+descOf(p)+'</p>'+
+      '<div class="specs">'+specs.map(s=>'<div><small>'+s[0]+'</small><b>'+s[1]+'</b></div>').join('')+'</div>'+
+      '<div style="display:flex;align-items:center;gap:12px"><span style="color:var(--muted);font-size:14px">'+u('qty')+'</span><div class="qty"><button type="button" id="pd-minus" aria-label="Decrease">−</button><span id="pd-q">1</span><button type="button" id="pd-plus" aria-label="Increase">+</button></div></div>'+
+      '<div class="field"><label for="pd-pin">'+u('delivery')+'</label><div class="pin"><input id="pd-pin" inputmode="numeric" maxlength="6" placeholder="'+u('pinPh')+'"><button type="button" id="pd-pin-btn">'+u('check')+'</button></div><span class="pin-msg" id="pd-pin-msg"></span></div>'+
+      '<div class="mini-trust"><div>'+ic('shield',20)+u('orig')+'</div><div>'+ic('swap',20)+u('repl')+'</div><div>'+ic('cash',20)+u('codS')+'</div></div>'+
+    '</div></div>';
+  const sl = $('#pd-slides');
+  sl.addEventListener('scroll',()=>{ const i=Math.round(sl.scrollLeft/sl.clientWidth); document.querySelectorAll('#pd-dots i').forEach((d,j)=>d.classList.toggle('on',i===j)); },{passive:true});
+  $('#pd-minus').onclick=()=>{ pdQty=Math.max(1,pdQty-1); $('#pd-q').textContent=pdQty; updPdWa(); };
+  $('#pd-plus').onclick=()=>{ pdQty=Math.min(9,pdQty+1); $('#pd-q').textContent=pdQty; updPdWa(); };
+  $('#pd-pin-btn').onclick=checkPin; $('#pd-pin').addEventListener('keydown',e=>{ if(e.key==='Enter') checkPin(); });
+  updPdWa();
+  $('#pd-body').scrollTop=0;
+  showSheet('pd');
+}
+function updPdWa(){
+  const p=byId(pdId);
+  $('#pd-wa').href = wa('Namaste Surya Telecom! I want to order:\n\n'+title(p)+'\nQty: '+pdQty+'\nPrice: '+inr(p.price*pdQty)+'\n\nPlease share delivery details.');
+}
+function checkPin(){
+  const v=$('#pd-pin').value.trim(), m=$('#pd-pin-msg');
+  if(!/^[1-9]\d{5}$/.test(v)){ m.className='pin-msg bad'; m.textContent=u('pinBad'); return; }
+  m.className='pin-msg ok'; m.textContent = /^42[01]/.test(v)||/^400[67]/.test(v) ? u('pinBhi') : /^4[0-4]/.test(v) ? u('pinMh') : u('pinIn');
+}
+$('#pd-add').addEventListener('click',()=>{ addToCart(pdId,pdQty); closeSheets(); });
+$('#pd-buy').addEventListener('click',()=>{ addToCart(pdId,pdQty,null,true); openCheckout(); });
+
+/* ---------------- cart ---------------- */
+let cart = []; try{ cart = JSON.parse(localStorage.getItem('st-cart')||'[]').filter(l=>byId(l.id)); }catch(e){}
+let coupon = '';
+const FREE_SHIP = 499, SHIP = 79;
+function saveCart(){ try{ localStorage.setItem('st-cart',JSON.stringify(cart)); }catch(e){} renderCartBadge(); }
+function addToCart(id, q=1, btn, silent){
+  const l = cart.find(x=>x.id===id); if(l) l.qty=Math.min(9,l.qty+q); else cart.push({id,qty:q});
+  saveCart();
+  ['#cart-badge','#cart-badge2'].forEach(s=>{ const b=$(s); b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); });
+  if(btn){ btn.classList.add('done'); btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5 9-10"/></svg>'+u('added'); setTimeout(()=>{ btn.classList.remove('done'); btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>'+u('add'); },1400); }
+  if(!silent){ const p=byId(id); toast((p.img?'<img src="'+p.img+'" alt="">':'')+'<span>'+p.name+' '+u('addedToast')+'</span>'); }
+}
+function cartCount(){ return cart.reduce((a,l)=>a+l.qty,0); }
+function renderCartBadge(){
+  const n=cartCount(); ['#cart-badge','#cart-badge2'].forEach(s=>{ const b=$(s); b.textContent=n; b.classList.toggle('on',n>0); });
+}
+function totals(method){
+  const sub = cart.reduce((a,l)=>a+byId(l.id).price*l.qty,0);
+  const cdisc = coupon==='DIWALI10' ? Math.round(sub*.10) : 0;
+  const after = sub - cdisc;
+  const upiDisc = method==='upi' ? Math.round(after*.05) : 0;
+  const ship = sub===0||sub>=FREE_SHIP ? 0 : SHIP;
+  const cod = method==='cod' ? 49 : 0;
+  return {sub, cdisc, upiDisc, ship, cod, total: after - upiDisc + ship + cod};
+}
+function cartLinesText(){ return cart.map(l=>{ const p=byId(l.id); return '• '+title(p)+' x'+l.qty+' = '+inr(p.price*l.qty); }).join('\n'); }
+function renderCart(){
+  const body=$('#cart-body'), foot=$('#cart-foot');
+  if(!cart.length){
+    body.innerHTML='<div class="cart-empty"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><b style="color:var(--text);font-size:18px">'+u('empty')+'</b><span>'+u('emptyS')+'</span></div>';
+    foot.innerHTML='<a class="btn btn-sun btn-block" href="#shop" id="cart-browse">'+u('browse')+'</a>';
+    $('#cart-browse').onclick=closeSheets; return;
+  }
+  const t=totals();
+  const left = Math.max(0, FREE_SHIP - t.sub);
+  body.innerHTML =
+    '<div class="ship-bar"><span>'+(left? u('moreShip').replace('{x}',inr(left)) : '🎉 '+u('freeShip'))+'</span><span class="bar"><i style="width:'+Math.min(100,t.sub/FREE_SHIP*100)+'%"></i></span></div>'+
+    cart.map(l=>{ const p=byId(l.id); return '<div class="line" style="'+mood(p)+'"><div class="thumb">'+pic(p)+'</div><div style="min-width:0"><span class="model">'+p.name+'</span><small>RD '+p.code+'</small><div class="qty"><button type="button" data-dec="'+p.id+'" aria-label="Decrease">−</button><span>'+l.qty+'</span><button type="button" data-inc="'+p.id+'" aria-label="Increase">+</button></div></div><div class="lp"><span class="rupee">'+inr(p.price*l.qty)+'</span><button type="button" class="rm" data-rm="'+p.id+'">'+u('remove')+'</button></div></div>'; }).join('')+
+    '<div class="coupon"><input id="cp" placeholder="'+u('couponPh')+' (DIWALI10)" value="'+coupon+'" aria-label="Coupon code"><button type="button" id="cp-btn">'+u('apply')+'</button></div><div id="cp-msg" style="font-size:13px;margin-top:6px;color:var(--ok)">'+(coupon?u('okCoupon'):'')+'</div>'+
+    '<div class="sum"><div class="muted"><span>'+u('subtotal')+'</span><span class="rupee">'+inr(t.sub)+'</span></div>'+
+    (t.cdisc?'<div class="disc"><span>'+u('coupon')+' DIWALI10</span><span class="rupee">−'+inr(t.cdisc)+'</span></div>':'')+
+    '<div class="muted"><span>'+u('shipping')+'</span><span>'+(t.ship?inr(t.ship):'<b style="color:var(--ok)">'+u('free')+'</b>')+'</span></div>'+
+    '<div class="tot"><span>'+u('total')+'</span><span class="rupee">'+inr(t.total)+'</span></div></div>';
+  foot.innerHTML='<button class="btn btn-sun btn-block" type="button" id="go-co">'+u('proceed')+' · '+inr(t.total)+'</button><a class="btn btn-wa btn-block" style="height:46px" target="_blank" rel="noopener" href="'+wa('Namaste Surya Telecom! I want to order:\n\n'+cartLinesText()+'\n\nTotal: '+inr(t.total)+(coupon?' (code '+coupon+')':'')+'\n\nPlease confirm availability and delivery.')+'">'+u('waCart')+'</a>';
+  $('#go-co').onclick=openCheckout;
+  $('#cp-btn').onclick=()=>{ const v=$('#cp').value.trim().toUpperCase(); if(v==='DIWALI10'){ coupon=v; renderCart(); toast(u('okCoupon')); } else { coupon=''; $('#cp-msg').style.color='var(--bad)'; $('#cp-msg').textContent=u('badCoupon'); } };
+}
+$('#cart-body').addEventListener('click',e=>{
+  const t=e.target.closest('button'); if(!t) return;
+  const id=t.dataset.inc||t.dataset.dec||t.dataset.rm; if(!id) return;
+  const l=cart.find(x=>x.id===id);
+  if(t.dataset.inc) l.qty=Math.min(9,l.qty+1);
+  if(t.dataset.dec) l.qty--;
+  if(t.dataset.rm || l.qty<1) cart=cart.filter(x=>x.id!==id);
+  saveCart(); renderCart();
+});
+function openCart(){ renderCart(); showSheet('cart'); }
+$('#open-cart').addEventListener('click',openCart);
+$('#bnav-cart').addEventListener('click',openCart);
+
+/* ---------------- checkout ---------------- */
+let co = {step:1, method:'upi', addr:{name:'',phone:'',pin:'',city:'',state:'Maharashtra',line:''}};
+const STATES=['Maharashtra','Gujarat','Delhi','Karnataka','Uttar Pradesh','Madhya Pradesh','Rajasthan','Tamil Nadu','Telangana','West Bengal','Bihar','Punjab','Haryana','Kerala','Goa','Other'];
+function openCheckout(){ if(!cart.length) return; co.step=1; renderCo(); showSheet('co'); }
+function stepper(){ const s=[u('step1'),u('step2'),u('step3')]; return '<div class="stepper">'+s.map((x,i)=>'<div class="'+(co.step>i?'on':'')+'"><i></i>'+x+'</div>').join('')+'</div>'; }
+function renderCo(){
+  const body=$('#co-body'), foot=$('#co-foot'); const a=co.addr;
+  if(co.step===1){
+    body.innerHTML = stepper()+'<form class="form" id="addr-form" novalidate>'+
+      '<button type="button" class="demo-fill" id="demo-fill">'+u('fill')+'</button>'+
+      fld('f-name',u('name'),'text',a.name,'autocomplete="name"')+
+      fld('f-phone',u('phone'),'tel',a.phone,'inputmode="numeric" maxlength="10" autocomplete="tel-national"',u('badPhone'))+
+      '<div class="two">'+fld('f-pin',u('pin'),'text',a.pin,'inputmode="numeric" maxlength="6" autocomplete="postal-code"',u('badPin'))+fld('f-city',u('city'),'text',a.city,'autocomplete="address-level2"')+'</div>'+
+      '<div class="field"><label for="f-state">'+u('state')+'</label><select id="f-state">'+STATES.map(s=>'<option'+(s===a.state?' selected':'')+'>'+s+'</option>').join('')+'</select></div>'+
+      '<div class="field"><label for="f-line">'+u('addr')+'</label><textarea id="f-line" autocomplete="street-address">'+esc(a.line)+'</textarea><span class="em">'+u('req')+'</span></div>'+
+      '</form>';
+    foot.innerHTML='<div class="sum" style="margin:0"><div class="tot" style="border:0;padding:0;margin:0"><span>'+u('total')+'</span><span class="rupee">'+inr(totals().total)+'</span></div></div><button class="btn btn-sun btn-block" type="submit" form="addr-form">'+u('next')+'</button>';
+    $('#demo-fill').onclick=()=>{ Object.assign(co.addr,{name:'Ravi Sharma',phone:'9876543210',pin:'421302',city:'Bhiwandi',state:'Maharashtra',line:'Shop 4, Main Road, Near Station'}); renderCo(); };
+    $('#addr-form').addEventListener('submit',e=>{ e.preventDefault(); if(validateAddr()){ co.step=2; renderCo(); } });
+    $('#f-pin').addEventListener('input',e=>{ const v=e.target.value; if(/^421302|^42130/.test(v) && !$('#f-city').value) $('#f-city').value='Bhiwandi'; });
+  } else if(co.step===2){
+    const t=totals(co.method);
+    const opt=(k,icon,tt,ss,pill)=>'<button type="button" class="pay-opt" role="radio" aria-checked="'+(co.method===k)+'" data-m="'+k+'"><span class="ic">'+icon+'</span><span><b>'+tt+'</b><small>'+ss+'</small></span>'+(pill?'<span class="pill">'+pill+'</span>':'<span class="radio"></span>')+'</button>';
+    body.innerHTML = stepper()+
+      '<div style="font-size:14px;color:var(--muted);margin-bottom:12px">'+esc(a.name)+' · '+esc(a.phone)+'<br>'+esc(a.line)+', '+esc(a.city)+' '+esc(a.pin)+', '+esc(a.state)+' <button type="button" class="demo-fill" id="edit-addr" style="margin-left:6px">'+(lang==='hi'?'बदलें':'Edit')+'</button></div>'+
+      '<div class="pay-opts" role="radiogroup" aria-label="Payment method">'+
+        opt('upi','<b style="color:var(--sun);font-size:13px">UPI</b>',u('upi'),u('upiS'),u('save5'))+
+        opt('cod',ic('cash'),u('codT'),u('codS2'))+
+        opt('wa','<svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>',u('waT'),u('waS'))+
+      '</div>'+
+      (co.method==='upi' ? '<div class="upi-box"><span style="font-weight:600">'+u('scan')+'</span><div class="qr"><canvas id="qr" width="29" height="29"></canvas><span class="demo">DEMO</span></div><div class="upi-id">UPI ID: <code>suryatelecom@upi</code></div><span style="font-size:13px;color:var(--muted)">'+u('orPay')+'</span><div class="apps"><button type="button" data-app>Google Pay</button><button type="button" data-app>PhonePe</button><button type="button" data-app>Paytm</button><button type="button" data-app>BHIM</button></div><small style="color:var(--dim)">'+u('demoPay')+'</small></div>' : '')+
+      '<div class="sum"><div class="muted"><span>'+u('subtotal')+'</span><span class="rupee">'+inr(t.sub)+'</span></div>'+
+      (t.cdisc?'<div class="disc"><span>'+u('coupon')+' DIWALI10</span><span class="rupee">−'+inr(t.cdisc)+'</span></div>':'')+
+      (t.upiDisc?'<div class="disc"><span>UPI 5%</span><span class="rupee">−'+inr(t.upiDisc)+'</span></div>':'')+
+      '<div class="muted"><span>'+u('shipping')+'</span><span>'+(t.ship?inr(t.ship):'<b style="color:var(--ok)">'+u('free')+'</b>')+'</span></div>'+
+      (t.cod?'<div class="muted"><span>COD</span><span class="rupee">'+inr(t.cod)+'</span></div>':'')+
+      '<div class="tot"><span>'+u('total')+'</span><span class="rupee">'+inr(t.total)+'</span></div></div>';
+    const label = co.method==='upi' ? u('pay')+' '+inr(t.total) : co.method==='cod' ? u('place')+' · '+inr(t.total) : u('sendWa');
+    foot.innerHTML = co.method==='wa'
+      ? '<a class="btn btn-wa btn-block" id="co-go" target="_blank" rel="noopener" href="'+wa(orderText('WhatsApp order (pay later)',t))+'">'+label+'</a><button class="btn btn-ghost btn-block" type="button" id="co-back" style="height:44px">'+u('back')+'</button>'
+      : '<button class="btn btn-sun btn-block" type="button" id="co-go">'+label+'</button><button class="btn btn-ghost btn-block" type="button" id="co-back" style="height:44px">'+u('back')+'</button>';
+    body.querySelectorAll('.pay-opt').forEach(b=>b.onclick=()=>{ co.method=b.dataset.m; renderCo(); });
+    body.querySelectorAll('[data-app]').forEach(b=>b.onclick=()=>place(t));
+    $('#edit-addr').onclick=()=>{ co.step=1; renderCo(); };
+    $('#co-back').onclick=()=>{ co.step=1; renderCo(); };
+    $('#co-go').addEventListener('click',()=>{ if(co.method==='wa'){ setTimeout(()=>place(t,true),300); } else place(t); });
+    if(co.method==='upi') drawQR();
+  }
+  body.scrollTop=0;
+}
+function fld(id,label,type,val,attrs,err){ return '<div class="field"><label for="'+id+'">'+label+'</label><input id="'+id+'" type="'+type+'" value="'+esc(val)+'" '+(attrs||'')+'><span class="em">'+(err||u('req'))+'</span></div>'; }
+function esc(s){ return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function validateAddr(){
+  const a=co.addr; a.name=$('#f-name').value.trim(); a.phone=$('#f-phone').value.replace(/\D/g,''); a.pin=$('#f-pin').value.trim(); a.city=$('#f-city').value.trim(); a.state=$('#f-state').value; a.line=$('#f-line').value.trim();
+  const checks=[['f-name',!!a.name],['f-phone',/^[6-9]\d{9}$/.test(a.phone)],['f-pin',/^[1-9]\d{5}$/.test(a.pin)],['f-city',!!a.city],['f-line',!!a.line]];
+  let ok=true; checks.forEach(([id,v])=>{ $('#'+id).closest('.field').classList.toggle('err',!v); if(!v&&ok){ $('#'+id).focus(); ok=false; } });
+  return ok;
+}
+function orderText(method,t){
+  const a=co.addr;
+  return 'New order from website\n\n'+cartLinesText()+'\n\nTotal: '+inr(t.total)+'\nPayment: '+method+(coupon?'\nCoupon: '+coupon:'')+'\n\nName: '+a.name+'\nPhone: '+a.phone+'\nAddress: '+a.line+', '+a.city+' - '+a.pin+', '+a.state;
+}
+function drawQR(){ // decorative placeholder pattern, not a payable code
+  const c=$('#qr'); if(!c) return; const x=c.getContext('2d'); const n=29; x.fillStyle='#fff'; x.fillRect(0,0,n,n); x.fillStyle='#0A0C18';
+  let s=7; const r=()=>{ s=(s*9301+49297)%233280; return s/233280; };
+  for(let i=0;i<n;i++) for(let j=0;j<n;j++){ if(r()>.52) x.fillRect(i,j,1,1); }
+  const finder=(px,py)=>{ x.fillStyle='#fff'; x.fillRect(px-1,py-1,9,9); x.fillStyle='#0A0C18'; x.fillRect(px,py,7,7); x.fillStyle='#fff'; x.fillRect(px+1,py+1,5,5); x.fillStyle='#0A0C18'; x.fillRect(px+2,py+2,3,3); };
+  finder(0,0); finder(n-7,0); finder(0,n-7);
+}
+function place(t, viaWa){
+  const body=$('#co-body'), foot=$('#co-foot');
+  const finish=()=>{
+    co.step=3;
+    const id='SRY'+String(Date.now()).slice(-6);
+    const eta=new Date(Date.now()+ (/^42[01]/.test(co.addr.pin)?1:/^4[0-4]/.test(co.addr.pin)?3:5)*864e5);
+    const etaS=eta.toLocaleDateString(lang==='hi'?'hi-IN':'en-IN',{weekday:'short',day:'numeric',month:'short'});
+    const methodS = co.method==='upi'?'UPI · '+(lang==='hi'?'भुगतान हो गया':'Paid'):co.method==='cod'?u('codT'):'WhatsApp';
+    body.innerHTML = stepper()+'<div class="success"><div class="tick"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></div><h3 style="font-size:26px">'+u('thanks')+'</h3><p style="margin:0;color:var(--muted)">'+u('thanksS')+'</p>'+
+      '<div class="order-card"><div><span>'+u('orderId')+'</span><b>'+id+'</b></div><div><span>'+u('paid')+'</span><b>'+methodS+'</b></div><div><span>'+u('total')+'</span><b class="rupee">'+inr(t.total)+'</b></div><div><span>'+u('eta')+'</span><b>'+etaS+'</b></div></div>'+
+      '<div class="timeline"><div class="done"><span><b>'+u('t1')+'</b><small>'+(lang==='hi'?'अभी':'Just now')+'</small></span></div><div><span><b>'+u('t2')+'</b></span></div><div><span><b>'+u('t3')+'</b></span></div><div><span><b>'+u('t4')+'</b><small>'+etaS+'</small></span></div></div></div>';
+    foot.innerHTML = (viaWa?'':'<a class="btn btn-wa btn-block" target="_blank" rel="noopener" href="'+wa(orderText(methodS,t).replace('New order from website','Order '+id+' from website'))+'">'+u('track')+'</a>')+'<button class="btn btn-ghost btn-block" type="button" id="co-done" style="height:46px">'+u('cont')+'</button>';
+    $('#co-done').onclick=closeSheets;
+    cart=[]; coupon=''; saveCart(); confetti();
+  };
+  if(co.method==='upi'){
+    body.innerHTML = stepper()+'<div class="processing"><div class="spinner"></div><b>'+u('processing')+'</b><small style="color:var(--dim)">'+u('demoPay')+'</small></div>'; foot.innerHTML='';
+    setTimeout(finish,1800);
+  } else finish();
+}
+
+/* ---------------- confetti ---------------- */
+function confetti(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const c=$('#confetti'), x=c.getContext('2d'); c.width=innerWidth*devicePixelRatio; c.height=innerHeight*devicePixelRatio; x.scale(devicePixelRatio,devicePixelRatio);
+  const cols=['#FFB627','#FF6B2C','#FFD27A','#3DDC97','#F4F2EC','#7C6FE0'];
+  const ps=Array.from({length:140},()=>({x:innerWidth/2+(Math.random()-.5)*80,y:innerHeight*.45,vx:(Math.random()-.5)*13,vy:-Math.random()*14-4,r:Math.random()*360,vr:(Math.random()-.5)*14,w:6+Math.random()*6,h:3+Math.random()*5,c:cols[(Math.random()*cols.length)|0]}));
+  let f=0; (function loop(){ x.clearRect(0,0,innerWidth,innerHeight); ps.forEach(p=>{ p.vy+=.35; p.vx*=.99; p.x+=p.vx; p.y+=p.vy; p.r+=p.vr; x.save(); x.translate(p.x,p.y); x.rotate(p.r*Math.PI/180); x.fillStyle=p.c; x.fillRect(-p.w/2,-p.h/2,p.w,p.h); x.restore(); }); if(++f<160) requestAnimationFrame(loop); else x.clearRect(0,0,innerWidth,innerHeight); })();
+}
+
+/* ---------------- boot ---------------- */
+$('#lang-en').onclick=()=>setLang('en'); $('#lang-hi').onclick=()=>setLang('hi');
+renderPicker(); renderRuler(); renderLook();
+applyLang();
+showHero(0); heroAuto();
+document.addEventListener('visibilitychange',()=>{ if(document.hidden) clearInterval(heroTimer); else heroAuto(); });
+})();
+</script>
+
+</body>
+</html>
