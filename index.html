@@ -792,7 +792,7 @@ const PHOTOS = {
   mayapur:["Chandrodaya_temple_at_ISKCON,_Mayapur_in_Nadia_District,_West_Bengal,_India_11.jpg","ISKCON Mayapur"],
 };
 const commons = f => "https://commons.wikimedia.org/wiki/File:" + encodeURIComponent(f);
-function photo(k, w){ const p=PHOTOS[k]; if(!p) return ""; return `<img class="ph" alt="${p[1]}" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(p[0])}?width=${w||1100}">`; }
+function photo(k, w){ const p=PHOTOS[k]; if(!p) return ""; return `<img class="ph" alt="${p[1]}" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(p[0])}?width=${w||960}">`; }
 document.addEventListener("load", e=>{ const t=e.target; if(t && t.classList && t.classList.contains("ph")) t.classList.add("ok"); }, true);
 document.addEventListener("error", e=>{ const t=e.target; if(t && t.classList && t.classList.contains("ph")) t.remove(); }, true);
 function scene(key, extraClass){ return `<svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${key} illustration"${extraClass?` class="${extraClass}"`:""}>${(SCENES[key]||SCENES.himalaya)()}</svg>`; }
@@ -939,7 +939,7 @@ function ticket(t){
 }
 function renderCatalog(){
   $("#catalog").innerHTML = TOURS.map(ticket).join("");
-  $("#reqRow").innerHTML = REQUESTS.map(r=>`<div class="req"><div class="r-art">${scene(r.scene)}${photo(r.photo,700)}</div><div class="r-body"><span class="tag" style="align-self:flex-start;background:var(--surface-2)">On request</span><h4>${r.name}</h4><p>${r.blurb}</p><a href="${wa(`Namaste Dilip ji, we are planning a group trip to ${r.name}. Please share a quote.`)}" target="_blank" rel="noopener"><svg style="width:18px;height:18px;color:var(--wa)"><use href="#i-wa"/></svg>Ask for a quote</a></div></div>`).join("");
+  $("#reqRow").innerHTML = REQUESTS.map(r=>`<div class="req"><div class="r-art">${scene(r.scene)}${photo(r.photo,500)}</div><div class="r-body"><span class="tag" style="align-self:flex-start;background:var(--surface-2)">On request</span><h4>${r.name}</h4><p>${r.blurb}</p><a href="${wa(`Namaste Dilip ji, we are planning a group trip to ${r.name}. Please share a quote.`)}" target="_blank" rel="noopener"><svg style="width:18px;height:18px;color:var(--wa)"><use href="#i-wa"/></svg>Ask for a quote</a></div></div>`).join("");
   const counts = {all:TOURS.length, custom:REQUESTS.length}; TOURS.forEach(t=>t.tags.forEach(g=>counts[g]=(counts[g]||0)+1));
   $("#chips").innerHTML = CATS.map(([k,l],i)=>`<button class="chip" data-cat="${k}" aria-pressed="${i===0}">${l}<small>${counts[k]||0}</small></button>`).join("");
   $("#chips").addEventListener("click", e=>{
@@ -951,7 +951,7 @@ function renderCatalog(){
 }
 function renderCards(){
   const C=[["kanchenjunga","himalaya","Kanchenjunga","North Bengal","wide"],["tarapith","temple","Tarapith","Birbhum","tall"],["santiniketan","santiniketan","Santiniketan","Bolpur",""],["bakreswar","springs","Hot springs","Bakreswar",""],["lava","forest","Lava monastery","Kalimpong hills",""],["malda","malda","Adina Mosque","Malda",""],["kalimpong","tea","Kalimpong","North Bengal","wide"],["lolegaon","himalaya","Lolegaon","Canopy walk",""],["siliguri","plains","Teesta river","Siliguri",""]];
-  $("#cards").innerHTML = C.map(([p,sc,t,sub,cl])=>`<figure class="pc ${cl}">${scene(sc)}${photo(p, cl==="wide"?1600:800)}<figcaption><span>${sub}</span><b>${t}</b></figcaption></figure>`).join("");
+  $("#cards").innerHTML = C.map(([p,sc,t,sub,cl])=>`<figure class="pc ${cl}">${scene(sc)}${photo(p, cl==="wide"?1280:960)}<figcaption><span>${sub}</span><b>${t}</b></figcaption></figure>`).join("");
 }
 function renderMarquee(){ const names=["Tarapith","Bakreswar","Santiniketan","Malda","Siliguri","Kalimpong","Lava","Lolegaon","Every Friday & Tuesday","4 meals a day","AC luxury bus"]; const s=names.map(n=>`<span>${n}</span>`).join(""); $("#marq").innerHTML = s+s; }
 function renderRoutes(){
@@ -984,7 +984,7 @@ function renderTour(t){
   const el = $("#view-tour");
   el.innerHTML = `<div class="wrap">
     <a class="back" href="#tours"><svg><use href="#i-left"/></svg>All tours</a>
-    <div class="d-hero">${scene(t.scene)}${photo(t.photo,1800)}<span class="loc"><svg><use href="#i-pin"/></svg>${PHOTOS[t.photo][1]}</span><div class="t-tags">${t.badges.map(([b,c])=>`<span class="tag ${c}">${b}</span>`).join("")}</div></div>
+    <div class="d-hero">${scene(t.scene)}${photo(t.photo,1920)}<span class="loc"><svg><use href="#i-pin"/></svg>${PHOTOS[t.photo][1]}</span><div class="t-tags">${t.badges.map(([b,c])=>`<span class="tag ${c}">${b}</span>`).join("")}</div></div>
     <div class="d-grid">
       <div class="d-main">
         <div class="d-title"><span class="eyebrow">${t.region}</span><h1>${t.name}</h1><p>${t.desc}</p></div>
@@ -994,7 +994,7 @@ function renderTour(t){
           <div><dt>Food</dt><dd>${t.meals}</dd></div>
           <div><dt>Travel</dt><dd>${t.travel}</dd></div>
         </dl>
-        <div class="d-sec"><h2>Where you'll go</h2><div class="stops-scroll">${t.stops.map(s=>`<div class="stop-tile"><div class="a">${scene(STOPS[s].scene)}${photo(STOPS[s].photo,700)}</div><div class="b"><b>${STOPS[s].name}</b><span>${STOPS[s].blurb}</span></div></div>`).join("")}</div></div>
+        <div class="d-sec"><h2>Where you'll go</h2><div class="stops-scroll">${t.stops.map(s=>`<div class="stop-tile"><div class="a">${scene(STOPS[s].scene)}${photo(STOPS[s].photo,500)}</div><div class="b"><b>${STOPS[s].name}</b><span>${STOPS[s].blurb}</span></div></div>`).join("")}</div></div>
         <div class="d-sec"><h2>What's included</h2><ul class="incl">${t.incl.map(i=>`<li><svg><use href="#i-check"/></svg><span>${i}</span></li>`).join("")}</ul></div>
         <div class="d-sec"><h2>Day by day</h2><ol class="days">${t.days.map(([a,b,c])=>`<li><small>${a}</small><b>${b}</b><p>${c}</p></li>`).join("")}</ol>
           <p class="note">Sample plan. The final day-wise plan, hotel names and pickup point are shared on WhatsApp when you book. T&amp;C apply.</p></div>
@@ -1048,7 +1048,7 @@ function renderDrawer(){
   const body=$("#drBody");
   if(!cart.length){ body.innerHTML = `<div class="empty"><svg viewBox="0 0 120 80" aria-hidden="true"><rect x="10" y="20" width="100" height="44" rx="10" fill="var(--surface-2)"/><path d="M10 38h100" stroke="var(--line)" stroke-width="2" stroke-dasharray="4 4"/><circle cx="34" cy="70" r="7" fill="var(--ink)"/><circle cx="86" cy="70" r="7" fill="var(--ink)"/><rect x="20" y="27" width="26" height="9" rx="2" fill="var(--marigold)"/><rect x="52" y="27" width="26" height="9" rx="2" fill="var(--marigold)"/><rect x="84" y="27" width="18" height="9" rx="2" fill="var(--marigold)"/></svg><b style="font-family:var(--display);font-size:1.3rem">Your trip is empty</b><p>Pick a tour and a date. It will wait for you here.</p><a class="btn btn-primary" href="#tours" id="emptyGo">Browse tours</a></div>`; $("#emptyGo").addEventListener("click",closeDrawer); return; }
   let grand=0; cart.forEach(c=>{ const v=lineTotal(c); if(v!=null) grand+=v; });
-  body.innerHTML = cart.map((c,i)=>{ const t=tourById(c.id), sub=lineTotal(c); return `<div class="ci"><div class="th">${scene(t.scene)}${photo(t.photo,300)}</div><div style="min-width:0"><b>${t.kicker}</b><span>${fmtDate(c.date)} · ${fmtTime(t)}</span><span>${c.adults} adult${c.adults>1?"s":""}${c.kids?` + ${c.kids} child`:""} · <strong style="color:var(--ink)">${sub!=null?inr(sub)+" + GST":"Price on request"}</strong></span></div><button class="rm" data-i="${i}" aria-label="Remove"><svg><use href="#i-x"/></svg></button></div>`; }).join("")
+  body.innerHTML = cart.map((c,i)=>{ const t=tourById(c.id), sub=lineTotal(c); return `<div class="ci"><div class="th">${scene(t.scene)}${photo(t.photo,330)}</div><div style="min-width:0"><b>${t.kicker}</b><span>${fmtDate(c.date)} · ${fmtTime(t)}</span><span>${c.adults} adult${c.adults>1?"s":""}${c.kids?` + ${c.kids} child`:""} · <strong style="color:var(--ink)">${sub!=null?inr(sub)+" + GST":"Price on request"}</strong></span></div><button class="rm" data-i="${i}" aria-label="Remove"><svg><use href="#i-x"/></svg></button></div>`; }).join("")
   + (grand?`<div class="sum tnum"><div><span>Subtotal</span><span>${inr(grand)}</span></div><div><span>GST (5%)</span><span>${inr(grand*GST)}</span></div><div class="tot"><span>Estimated total</span><span>${inr(grand*(1+GST))}</span></div></div>`:"")
   + `<form class="form" id="checkout" novalidate>
       <b style="font-family:var(--display);font-size:1.2rem;margin-top:6px">Your details</b>
