@@ -1,0 +1,2703 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html,body{margin:0}[hidden]{display:none!important}</style>
+<title>ALPHA Road Safety</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="ALPHA by Amba Chem: ISO 9001:2015 certified manufacturer and importer of thermoplastic road marking paint, road studs, speed breakers, delineators, barriers, solar blinkers and reflective signage. Delhi, India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: highway-signage system. Charcoal "asphalt" bands carry the drama (night road hero, spec bands);
+   the catalogue sits on cool white paper. Red = ALPHA brand, Yellow = thermoplastic marking line. */
+:root{
+  --red:#C8102E; --red-deep:#9B0C23; --red-ink:#C8102E;
+  --yellow:#F2B705; --asphalt:#1B1E22; --asphalt-2:#25292E; --on-asphalt:#F2F3F5; --on-asphalt-muted:#A3A9B2;
+  --paper:#F4F5F7; --surface:#FFFFFF; --ink:#16191D; --muted:#5B626B; --line:#DDE0E5; --line-strong:#C6CAD1;
+  --plate-a:#FFFFFF; --plate-b:#E7E9ED; --green:#1F8A4C; --wa:#1FA855;
+  --shadow: 0 1px 2px rgba(20,24,30,.06), 0 8px 24px -8px rgba(20,24,30,.14);
+  --shadow-lift: 0 2px 4px rgba(20,24,30,.06), 0 24px 48px -16px rgba(20,24,30,.28);
+  --f-display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --gut:max(16px, env(safe-area-inset-left, 0px)); --gut-r:max(16px, env(safe-area-inset-right, 0px));
+  --max:1280px; --r:6px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --red-ink:#FF4D5E; --paper:#0F1114; --surface:#171A1E; --ink:#ECEEF1; --muted:#9CA3AD; --line:#2A2F36; --line-strong:#3A4049;
+  --plate-a:#F4F5F7; --plate-b:#D7DAE0; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -8px rgba(0,0,0,.6); --shadow-lift:0 24px 48px -16px rgba(0,0,0,.8); color-scheme:dark }}
+:root[data-theme="dark"]{
+  --red-ink:#FF4D5E; --paper:#0F1114; --surface:#171A1E; --ink:#ECEEF1; --muted:#9CA3AD; --line:#2A2F36; --line-strong:#3A4049;
+  --plate-a:#F4F5F7; --plate-b:#D7DAE0; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -8px rgba(0,0,0,.6); --shadow-lift:0 24px 48px -16px rgba(0,0,0,.8); color-scheme:dark }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--asphalt)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+img{display:block;max-width:100%}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;line-height:1.02;margin:0;text-wrap:balance;letter-spacing:.005em}
+p{margin:0}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px;border-radius:3px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-left:var(--gut);padding-right:var(--gut-r)}
+.mono{font-family:var(--f-mono);font-size:.8em;letter-spacing:.02em}
+.eyebrow{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--red-ink);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:3px;background:currentColor}
+.sec-title{font-size:clamp(34px,5vw,56px);text-transform:uppercase;letter-spacing:.01em}
+.lead{color:var(--muted);font-size:17px;max-width:62ch}
+
+/* ===== Utility bar ===== */
+.topbar{background:var(--asphalt);color:var(--on-asphalt-muted);font-size:13px}
+.topbar .wrap{display:flex;gap:18px;align-items:center;justify-content:space-between;min-height:36px}
+.topbar .badges{display:flex;gap:16px;align-items:center;white-space:nowrap;overflow:hidden}
+.topbar .badges span{display:flex;align-items:center;gap:6px}
+.topbar .badges svg{color:var(--yellow)}
+.topbar .contact{display:flex;gap:16px;white-space:nowrap}
+.topbar .contact a:hover{color:#fff}
+@media (max-width:860px){.topbar .contact{display:none}}
+@media (max-width:560px){.topbar .badges span:nth-child(n+3){display:none}}
+
+/* ===== Header ===== */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+.hdr.scrolled{box-shadow:0 10px 30px -18px rgba(0,0,0,.35)}
+.hdr .wrap{display:flex;align-items:center;gap:20px;min-height:72px}
+.logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.logo-mark{width:46px;height:46px;background:var(--red);display:grid;place-items:center;clip-path:polygon(0 0,100% 0,100% 78%,78% 100%,0 100%)}
+.logo-text b{display:block;font-family:var(--f-display);font-weight:700;font-size:28px;letter-spacing:.14em;line-height:.9}
+.logo-text small{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.nav{display:flex;gap:4px;margin-left:12px}
+.nav > a,.nav > button{font-family:var(--f-display);font-weight:600;font-size:17px;letter-spacing:.06em;text-transform:uppercase;padding:10px 14px;border-radius:4px;position:relative;display:flex;align-items:center;gap:6px}
+.nav > a::after,.nav > button::after{content:"";position:absolute;left:14px;right:14px;bottom:4px;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav > a:hover::after,.nav > button:hover::after,.nav > .on::after{transform:scaleX(1)}
+.hdr-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
+.icon-btn{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;position:relative;transition:background .2s}
+.icon-btn:hover{background:var(--paper)}
+.count{position:absolute;top:2px;right:0;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--red);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;transform:scale(0);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.count.show{transform:scale(1)}
+.count.bump{animation:bump .5s}
+@keyframes bump{40%{transform:scale(1.45)}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--f-display);font-weight:700;font-size:17px;letter-spacing:.08em;text-transform:uppercase;padding:14px 22px;border-radius:4px;transition:transform .25s var(--ease),background .25s,box-shadow .25s,color .25s;white-space:nowrap}
+.btn:active{transform:translateY(1px) scale(.99)}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 10px 24px -10px rgba(200,16,46,.7)}
+.btn-red:hover{background:var(--red-deep);transform:translateY(-2px)}
+.btn-ghost{border:1.5px solid currentColor}
+.btn-ghost:hover{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{filter:brightness(1.08);transform:translateY(-2px)}
+.btn-yellow{background:var(--yellow);color:#111}
+.btn-yellow:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(242,183,5,.7)}
+.hdr .btn{padding:11px 18px;font-size:15px}
+.menu-btn{display:none}
+@media (max-width:1080px){.mega{display:none}.nav{display:none}.menu-btn{display:grid}.hdr .quote-btn{display:none}}
+@media (max-width:420px){.logo-text small{display:none}.logo-mark{width:40px;height:40px}.logo-text b{font-size:25px}}
+
+/* Mega menu */
+.mega{position:absolute;left:0;right:0;top:100%;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(0,0,0,.35);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,transform .3s var(--ease),visibility 0s .3s}
+.mega.open{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .3s var(--ease)}
+.mega .wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding-block:22px}
+.mega a{display:flex;align-items:center;gap:12px;padding:10px;border-radius:6px;transition:background .2s}
+.mega a:hover{background:var(--paper)}
+.mega a img{width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 4px 6px rgba(0,0,0,.15));transition:transform .3s var(--ease)}
+.mega a:hover img{transform:scale(1.12) rotate(-3deg)}
+.mega a span{font-weight:600;font-size:14px;line-height:1.2}
+.mega a small{display:block;color:var(--muted);font-weight:500;font-size:12px}
+
+/* Drawer (mobile nav) */
+.scrim{position:fixed;inset:0;background:rgba(10,12,15,.55);z-index:80;opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s;backdrop-filter:blur(2px)}
+.scrim.open{opacity:1;visibility:visible;transition:opacity .3s}
+.drawer{position:fixed;top:0;bottom:0;z-index:90;width:min(420px,92vw);background:var(--surface);display:flex;flex-direction:column;transition:transform .45s var(--ease);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.drawer.left{left:0;transform:translateX(-102%);padding-left:env(safe-area-inset-left,0px)}
+.drawer.right{right:0;transform:translateX(102%);padding-right:env(safe-area-inset-right,0px)}
+.drawer.open{transform:none}
+.drawer-hd{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}
+.drawer-hd h3{font-size:24px;text-transform:uppercase;letter-spacing:.04em}
+.drawer-bd{flex:1;overflow:auto;padding:12px 20px}
+.drawer-ft{border-top:1px solid var(--line);padding:16px 20px;display:grid;gap:10px}
+.m-nav a{display:flex;align-items:center;gap:14px;padding:10px 4px;border-bottom:1px solid var(--line);font-weight:600}
+.m-nav a img{width:42px;height:42px;object-fit:contain}
+.m-nav .m-main{font-family:var(--f-display);font-size:22px;text-transform:uppercase;letter-spacing:.04em;padding:14px 4px}
+.drawer.left .drawer-bd > *{opacity:0;transform:translateX(-14px)}
+.drawer.left.open .drawer-bd > *{opacity:1;transform:none;transition:opacity .4s,transform .5s var(--ease);transition-delay:calc(var(--i,0) * 25ms + 120ms)}
+
+/* ===== Hero ===== */
+.hero{position:relative;background:var(--asphalt);color:var(--on-asphalt);overflow:hidden;isolation:isolate}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(14,16,19,.92) 0%,rgba(14,16,19,.7) 38%,rgba(14,16,19,0) 70%)}
+.hero .wrap{padding-block:clamp(40px,5vw,64px) clamp(32px,4vw,48px);display:grid;gap:24px}
+.hero-kicker{display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.04em;padding:7px 12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.04);backdrop-filter:blur(4px)}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--yellow);box-shadow:0 0 10px var(--yellow)}
+.hero h1{font-size:clamp(46px,7vw,92px);text-transform:uppercase;max-width:12ch;letter-spacing:-.005em;line-height:.92}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .ln > span{display:inline-block;animation:rise 1s var(--ease) both;animation-delay:calc(var(--d) * 110ms + 150ms)}
+.hero h1 em{font-style:normal;color:var(--yellow);position:relative;background:linear-gradient(100deg,var(--yellow) 42%,#fff7d1 50%,var(--yellow) 58%) 0 0/260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sheen 5s 1.8s infinite}
+@keyframes sheen{0%{background-position:100% 0}35%,100%{background-position:-60% 0}}
+.hero{min-height:clamp(600px,86vh,880px);display:grid;align-items:end}
+.hero .wrap{width:100%}
+@media (max-width:700px){
+  .hero{min-height:0}
+  .hero canvas{height:420px;bottom:auto}
+  .hero::after{background:linear-gradient(180deg,rgba(14,16,19,.15) 0,rgba(14,16,19,0) 120px,rgba(14,16,19,.2) 250px,var(--asphalt) 410px)!important}
+  .hero .wrap{padding-top:290px}
+  .hero-kicker .chip:nth-child(2){display:none}
+}
+.hud{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:22px;z-index:2;display:flex;align-items:center;gap:14px;padding:10px 14px;border:1px solid rgba(255,255,255,.14);border-radius:6px;background:rgba(10,12,16,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:12px;color:var(--on-asphalt-muted);animation:fade 1s 1.4s both}
+.hud .live{display:flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:#fff}
+.hud .live::before{content:"";width:7px;height:7px;border-radius:50%;background:#ff3347;box-shadow:0 0 10px #ff3347;animation:pulse 1.6s infinite}
+.hud b{font-family:var(--f-display);font-size:26px;color:#fff;font-variant-numeric:tabular-nums;line-height:1}
+.hud small{display:block;font-size:11px;letter-spacing:.06em}
+@media (max-width:1100px){.hud{display:none}}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+.hero p.lead{color:var(--on-asphalt-muted);font-size:clamp(16px,1.6vw,19px);max-width:52ch;animation:fade 1s .6s both}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;animation:fade 1s .75s both}
+.hero .btn-ghost{color:#fff}
+.hero .btn-ghost:hover{background:#fff;color:#111;border-color:#fff}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.12);margin-top:clamp(8px,2vw,20px);max-width:820px;animation:fade 1s .9s both}
+.stat{padding:22px 18px 4px 0}
+.stat + .stat{padding-left:20px;border-left:1px solid rgba(255,255,255,.12)}
+.stat b{display:block;font-family:var(--f-display);font-size:clamp(34px,4.6vw,54px);font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.stat b sup{font-size:.5em;color:var(--yellow);top:-.7em;margin-left:2px}
+.stat span{font-size:13px;color:var(--on-asphalt-muted);letter-spacing:.04em}
+@media (max-width:640px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat:nth-child(3){padding-left:0;border-left:0}.stat:nth-child(n+3){border-top:1px solid rgba(255,255,255,.12)}
+  .hero::after{background:linear-gradient(180deg,rgba(14,16,19,.35) 0%,rgba(14,16,19,.72) 45%,rgba(14,16,19,.9) 100%)}}
+
+/* Standards ticker */
+.ticker{background:var(--yellow);color:#111;overflow:hidden;position:relative;border-block:3px solid #111}
+.ticker::before,.ticker::after{content:"";position:absolute;top:0;bottom:0;width:60px;z-index:1}
+.ticker::before{left:0;background:linear-gradient(90deg,var(--yellow),transparent)}
+.ticker::after{right:0;background:linear-gradient(-90deg,var(--yellow),transparent)}
+.ticker-track{display:flex;width:max-content;animation:tick 40s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker span{font-family:var(--f-display);font-weight:700;font-size:18px;letter-spacing:.12em;text-transform:uppercase;padding:12px 26px;display:flex;align-items:center;gap:26px;white-space:nowrap}
+.ticker span::after{content:"";width:9px;height:9px;background:#111;transform:rotate(45deg)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* Sections */
+section.blk{padding-block:clamp(64px,9vw,120px)}
+.sec-hd{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.sec-hd > div{display:grid;gap:14px;min-width:0}
+
+/* Category grid */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.cat-card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .3s}
+.cat-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift);border-color:transparent}
+.cat-card .plate{aspect-ratio:4/3}
+.cat-card .body{padding:16px 18px 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;border-top:1px solid var(--line)}
+.cat-card h3{font-size:22px;text-transform:uppercase;letter-spacing:.02em}
+.cat-card .n{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-top:4px}
+.cat-card .arrow{width:38px;height:38px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:var(--paper);transition:background .3s,color .3s,transform .4s var(--ease)}
+.cat-card:hover .arrow{background:var(--red);color:#fff;transform:rotate(-45deg)}
+.cat-card .idx{position:absolute;top:12px;left:14px;font-family:var(--f-mono);font-size:11px;color:#6b7280;letter-spacing:.06em;z-index:1}
+
+/* Product plate (studio backdrop for cut-out product photos) */
+.plate{position:relative;background:radial-gradient(120% 90% at 50% 30%,var(--plate-a) 0%,var(--plate-b) 100%);display:grid;place-items:center;overflow:hidden}
+.plate::after{content:"";position:absolute;left:18%;right:18%;bottom:9%;height:10%;background:radial-gradient(closest-side,rgba(0,0,0,.22),transparent);filter:blur(4px);transition:transform .5s var(--ease),opacity .5s}
+.plate img{position:relative;z-index:1;width:84%;height:84%;object-fit:contain;transition:transform .6s var(--ease);filter:drop-shadow(0 10px 14px rgba(0,0,0,.16))}
+.plate.scene img{width:100%;height:100%;object-fit:cover;filter:none}
+.plate.scene::after{display:none}
+.cat-card:hover .plate img,.p-card:hover .plate img{transform:translateY(-6px) scale(1.05)}
+.cat-card:hover .plate::after,.p-card:hover .plate::after{transform:scaleX(.82);opacity:.7}
+
+/* Product cards */
+.p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.p-card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .3s}
+.p-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lift);border-color:transparent}
+.p-card .plate{aspect-ratio:1/1}
+.p-card .cover{position:absolute;inset:0;z-index:2}
+.p-card .body{padding:14px 16px 16px;display:grid;gap:6px;flex:1;align-content:start}
+.p-card .model{font-family:var(--f-mono);font-size:11.5px;color:var(--red-ink);letter-spacing:.04em}
+.p-card h3{font-family:var(--f-body);font-size:16px;font-weight:600;line-height:1.3;text-wrap:pretty}
+.p-card .spec{font-size:13px;color:var(--muted)}
+.p-card .foot{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 16px 16px}
+.p-card .por{font-size:12.5px;color:var(--muted);font-weight:500}
+.add{position:relative;z-index:3;display:inline-flex;align-items:center;gap:6px;font-family:var(--f-display);font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;border-radius:4px;background:var(--ink);color:var(--surface);transition:background .25s,transform .25s}
+.add:hover{background:var(--red);color:#fff}
+.add.added{background:var(--green);color:#fff}
+.tag{position:absolute;top:12px;left:12px;z-index:2;font-family:var(--f-display);font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:3px;background:var(--red);color:#fff}
+.tag.new{background:var(--yellow);color:#111}
+.swatches{display:flex;gap:5px}
+.swatches i{width:12px;height:12px;border-radius:50%;border:1px solid rgba(0,0,0,.2)}
+
+@media (max-width:560px){
+  .cat-grid,.p-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .cat-card h3{font-size:18px}.cat-card .body{padding:12px}.cat-card .arrow{width:30px;height:30px}.cat-card .idx{font-size:10px;top:8px;left:10px}
+  .p-card .body{padding:10px 12px}.p-card h3{font-size:14px}.p-card .foot{padding:0 12px 12px;flex-direction:column;align-items:stretch}.p-card .foot .add{justify-content:center}
+  .tag{font-size:11px;top:8px;left:8px}
+  .cat-grid .cat-card:last-child:nth-child(odd){grid-column:span 2}
+  .cat-grid .cat-card:last-child:nth-child(odd) .plate{aspect-ratio:8/3}
+}
+.p-grid.feat{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:900px){.p-grid.feat{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Feature: thermoplastic */
+.feature{background:var(--asphalt);color:var(--on-asphalt);position:relative;overflow:hidden}
+.feature .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center;padding-block:clamp(64px,9vw,120px)}
+.feature .lead{color:var(--on-asphalt-muted)}
+.feature .eyebrow{color:var(--yellow)}
+.feature-img{position:relative;aspect-ratio:1/1;max-width:100%}
+.feature-img .road{position:absolute;inset:8% -30% 8% -30%;background:repeating-linear-gradient(90deg,transparent 0 40px,rgba(255,255,255,.0) 40px 80px);}
+.feature-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 40px 40px rgba(0,0,0,.55))}
+.feature-img .glow{position:absolute;inset:15%;border-radius:50%;background:radial-gradient(closest-side,rgba(242,183,5,.35),transparent 70%);filter:blur(20px)}
+.lane{position:absolute;left:0;right:0;height:10px;background:repeating-linear-gradient(90deg,var(--yellow) 0 70px,transparent 70px 120px);opacity:.9;animation:lane 2.4s linear infinite}
+@keyframes lane{to{background-position:120px 0}}
+.spec-table{width:100%;border-collapse:collapse;font-size:15px;margin-top:8px}
+.spec-table th,.spec-table td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line)}
+.spec-table th{font-weight:500;color:var(--muted)}
+.spec-table td{font-weight:600;font-variant-numeric:tabular-nums}
+.feature .spec-table th,.feature .spec-table td{border-color:rgba(255,255,255,.1)}
+.feature .spec-table th{color:var(--on-asphalt-muted)}
+.feature .spec-table td{color:#fff}
+.feature .spec-table thead th{white-space:nowrap}
+.feature .spec-table thead th{font-family:var(--f-display);font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.dot-y,.dot-w{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px;vertical-align:middle}
+.dot-w{background:#fff}.dot-y{background:var(--yellow)}
+.std-row{display:flex;flex-wrap:wrap;gap:8px}
+.std{font-family:var(--f-mono);font-size:12px;padding:6px 10px;border:1px solid var(--line-strong);border-radius:3px;color:var(--ink);background:var(--surface)}
+.feature .std{border-color:rgba(255,255,255,.2);color:#fff;background:transparent}
+@media (max-width:900px){.feature .wrap{grid-template-columns:1fr}.feature-img{max-width:440px;margin-inline:auto;width:100%}}
+
+/* Applications */
+.apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.app{position:relative;border-radius:var(--r);overflow:hidden;min-height:250px;background:var(--asphalt);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;isolation:isolate}
+.app img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1s var(--ease)}
+.app::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.05) 20%,rgba(10,12,15,.88) 100%)}
+.app:hover img{transform:scale(1.07)}
+.app h3{font-size:28px;text-transform:uppercase}
+.app p{font-size:14px;color:#d4d7dc;margin-top:6px}
+.app .links{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.app .links a{font-size:12px;font-weight:600;padding:5px 9px;border-radius:3px;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);transition:background .2s}
+.app .links a:hover{background:var(--red)}
+.app.sign{background:linear-gradient(135deg,#0d5b34,#0a3f25)}
+.app.icon-app{background:linear-gradient(140deg,#2a2e34,#16191d)}
+.app .art{position:absolute;right:6px;top:10px;width:55%;height:62%;object-fit:contain;object-position:right top;z-index:-1;filter:drop-shadow(0 20px 30px rgba(0,0,0,.5));transition:transform .8s var(--ease)}
+.app:hover .art{transform:translateY(-6px) rotate(-3deg) scale(1.04)}
+@media (max-width:900px){.apps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.apps{grid-template-columns:1fr}}
+
+/* Why */
+.why{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.why > div{padding:28px 24px 28px 0;display:grid;gap:10px;align-content:start}
+.why > div + div{padding-left:24px;border-left:1px solid var(--line)}
+.why svg{color:var(--red-ink)}
+.why h3{font-size:24px;text-transform:uppercase}
+.why p{color:var(--muted);font-size:15px}
+@media (max-width:900px){.why{grid-template-columns:repeat(2,minmax(0,1fr))}.why > div:nth-child(3){padding-left:0;border-left:0}.why > div:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:520px){.why{grid-template-columns:1fr}.why > div{padding-left:0!important;border-left:0!important}.why > div + div{border-top:1px solid var(--line)}}
+
+/* Process */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;counter-reset:s;position:relative}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;position:relative}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:var(--f-mono);font-size:12px;color:var(--red-ink);display:block;margin-bottom:28px}
+.step h3{font-size:24px;text-transform:uppercase}
+.step p{color:var(--muted);font-size:14.5px;margin-top:8px}
+.step .bar{position:absolute;left:22px;right:22px;top:46px;height:3px;background:var(--line);overflow:hidden;border-radius:2px}
+.step .bar::after{content:"";position:absolute;inset:0;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease);transition-delay:calc(var(--i)*250ms)}
+.in .step .bar::after{transform:scaleX(1)}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* Certificates */
+.certs{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin}
+.cert{flex:0 0 200px;scroll-snap-align:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;text-align:left;transition:transform .4s var(--ease),box-shadow .4s}
+.cert:hover{transform:translateY(-4px) rotate(-.6deg);box-shadow:var(--shadow-lift)}
+.cert img{aspect-ratio:3/4;object-fit:cover;width:100%;border-radius:3px;border:1px solid var(--line)}
+.cert b{display:block;font-size:14px;margin-top:10px}
+.cert small{display:block;font-size:12px;color:var(--muted);line-height:1.35}
+
+/* Quote band */
+.band{position:relative;background:var(--red);color:#fff;overflow:hidden}
+.band::before{content:"";position:absolute;inset:0 0 auto;height:14px;background:repeating-linear-gradient(-45deg,#111 0 16px,var(--yellow) 16px 32px)}
+.band .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px;align-items:center;padding-block:clamp(56px,7vw,88px) clamp(48px,6vw,72px)}
+.band h2{font-size:clamp(38px,5.4vw,68px);text-transform:uppercase}
+.band p{color:#ffe1e5;margin-top:12px;max-width:52ch}
+.band .acts{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}
+.band .btn-ghost{color:#fff}
+.band .btn-ghost:hover{background:#fff;color:var(--red);border-color:#fff}
+@media (max-width:800px){.band .wrap{grid-template-columns:1fr}.band .acts{justify-content:flex-start}}
+
+/* Footer */
+footer{background:var(--asphalt);color:var(--on-asphalt-muted);font-size:14.5px}
+footer .wrap{padding-block:64px 28px}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:36px}
+footer h4{font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer a:hover{color:#fff}
+footer .logo-text small{color:var(--on-asphalt-muted)}
+footer .logo-text b{color:#fff}
+.f-contact{display:grid;gap:12px}
+.f-contact div{display:flex;gap:10px;align-items:flex-start}
+.f-contact svg{flex-shrink:0;margin-top:3px;color:var(--yellow)}
+.f-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:44px;padding-top:20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13px}
+@media (max-width:900px){.f-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.f-grid{grid-template-columns:1fr}}
+
+/* Category page */
+.crumbs{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--muted);align-items:center}
+.crumbs a:hover{color:var(--red-ink)}
+.crumbs span[aria-hidden]{opacity:.5}
+.cat-hero{background:var(--asphalt);color:var(--on-asphalt);position:relative;overflow:hidden}
+.cat-hero .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;align-items:center;padding-block:40px 48px}
+.cat-hero .crumbs{color:var(--on-asphalt-muted)}
+.cat-hero h1{font-size:clamp(40px,6vw,76px);text-transform:uppercase;margin-top:18px}
+.cat-hero p{color:var(--on-asphalt-muted);margin-top:14px;max-width:58ch}
+.cat-hero .std-row{margin-top:20px}
+.cat-hero .std{border-color:rgba(255,255,255,.22);color:#fff;background:transparent}
+.cat-hero .stack{position:relative;height:280px}
+.cat-hero .stack img{position:absolute;width:52%;height:auto;max-height:90%;object-fit:contain;filter:drop-shadow(0 24px 24px rgba(0,0,0,.5));animation:float 6s ease-in-out infinite}
+.cat-hero .stack img:nth-child(1){left:24%;top:4%;width:56%;z-index:2}
+.cat-hero .stack img:nth-child(2){left:0;top:30%;width:40%;animation-delay:-2s}
+.cat-hero .stack img:nth-child(3){right:0;top:34%;width:40%;animation-delay:-4s}
+@keyframes float{50%{transform:translateY(-10px)}}
+.cat-hero::before{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:repeating-linear-gradient(90deg,var(--yellow) 0 60px,transparent 60px 100px)}
+@media (max-width:800px){.cat-hero .wrap{grid-template-columns:1fr}.cat-hero .stack{height:200px}}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding-block:24px}
+.filters{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;max-width:100%;padding-block:2px}
+.filters::-webkit-scrollbar{display:none}
+.filters button{white-space:nowrap;padding:8px 14px;border-radius:999px;border:1px solid var(--line-strong);font-size:14px;font-weight:600;transition:all .2s;background:var(--surface)}
+.filters button:hover{border-color:var(--ink)}
+.filters button.on{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.toolbar .count-l{font-size:14px;color:var(--muted)}
+
+/* Product page */
+.pdp{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);padding-block:28px 72px;align-items:start}
+.gallery{position:sticky;top:calc(env(safe-area-inset-top,0px) + 96px);display:grid;gap:12px}
+.gallery .plate{aspect-ratio:1/1;border-radius:var(--r);border:1px solid var(--line);cursor:zoom-in}
+.gallery .plate img{transition:transform .35s ease-out}
+.gallery .plate.zoom img{transform:scale(1.9)}
+.gallery .plate.scene{cursor:default}
+.gallery .note{font-size:12.5px;color:var(--muted);display:flex;gap:8px;align-items:center}
+.pdp-info{display:grid;gap:20px;min-width:0}
+.pdp-info .model{font-family:var(--f-mono);font-size:13px;color:var(--red-ink)}
+.pdp-info h1{font-size:clamp(36px,4.6vw,56px);text-transform:uppercase}
+.pdp-info .desc{font-size:17px;color:var(--muted)}
+.price-box{border:1px solid var(--line);border-radius:var(--r);padding:18px;background:var(--surface);display:grid;gap:14px}
+.price-box .row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.price-box .por{font-family:var(--f-display);font-size:26px;font-weight:700;text-transform:uppercase}
+.price-box .por small{display:block;font-family:var(--f-body);font-size:13px;font-weight:500;color:var(--muted);text-transform:none}
+.instock{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--green)}
+.instock::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 0 4px color-mix(in srgb,currentColor 20%,transparent);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px transparent}}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line-strong);border-radius:4px;overflow:hidden}
+.qty button{width:42px;height:46px;font-size:20px;transition:background .2s}
+.qty button:hover{background:var(--paper)}
+.qty input{width:70px;height:46px;border:0;border-inline:1px solid var(--line);text-align:center;font:600 16px var(--f-body);background:transparent;color:var(--ink);-moz-appearance:textfield}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none}
+.pdp-acts{display:grid;grid-template-columns:auto 1fr;gap:10px}
+.pdp-acts .btn{width:100%}
+.pdp-acts2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.variants{display:flex;flex-wrap:wrap;gap:8px}
+.variants button{padding:9px 14px;border:1.5px solid var(--line-strong);border-radius:4px;font-weight:600;font-size:14px;transition:all .2s}
+.variants button.on{border-color:var(--red);color:var(--red-ink);background:color-mix(in srgb,var(--red) 7%,transparent)}
+.lbl{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+.tbl-wrap .spec-table tr:last-child th,.tbl-wrap .spec-table tr:last-child td{border-bottom:0}
+.tbl-wrap .spec-table th{width:48%}
+.slabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.slabs div{padding:12px;display:grid;gap:2px;background:var(--surface)}
+.slabs div + div{border-left:1px solid var(--line)}
+.slabs b{font-family:var(--f-display);font-size:20px}
+.slabs span{font-size:12.5px;color:var(--muted)}
+.assure{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.assure div{display:flex;gap:10px;align-items:center;font-size:13px;font-weight:600;line-height:1.3}
+.assure svg{color:var(--red-ink);flex-shrink:0}
+@media (max-width:900px){.pdp{grid-template-columns:1fr}.gallery{position:relative;top:0}}
+@media (max-width:480px){.assure{grid-template-columns:1fr}.pdp-acts2{grid-template-columns:1fr}}
+
+/* Enquiry cart */
+.cart-line{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);animation:fade .4s both}
+.cart-line .plate{width:64px;height:64px;border-radius:4px}
+.cart-line .plate img{width:90%;height:90%}
+.cart-line b{font-size:14px;line-height:1.3;display:block}
+.cart-line small{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.cart-line .qty button{width:30px;height:32px;font-size:16px}
+.cart-line .qty input{width:46px;height:32px;font-size:14px}
+.cart-line .rm{font-size:12px;color:var(--muted);text-decoration:underline;margin-top:4px}
+.empty{text-align:center;padding:40px 10px;color:var(--muted);display:grid;gap:14px;justify-items:center}
+.empty svg{color:var(--line-strong)}
+.form{display:grid;gap:12px}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:grid;gap:5px}
+.field label{font-size:13px;font-weight:600}
+.field input,.field select,.field textarea{width:100%;font:inherit;font-size:15px;padding:11px 12px;border:1px solid var(--line-strong);border-radius:4px;background:var(--surface);color:var(--ink);transition:border-color .2s,box-shadow .2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--red);box-shadow:0 0 0 3px color-mix(in srgb,var(--red) 18%,transparent)}
+.field .err{font-size:12px;color:var(--red-ink);min-height:0}
+.done{display:grid;gap:14px;text-align:center;justify-items:center;padding:20px 6px}
+.done .tick{width:72px;height:72px;border-radius:50%;background:var(--green);display:grid;place-items:center;color:#fff;animation:pop .6s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(0)}}
+.done pre{white-space:pre-wrap;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:12px;font-size:12.5px;max-height:180px;overflow:auto;width:100%;font-family:var(--f-mono)}
+
+/* Floating actions */
+.fab{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:40;display:grid;gap:12px}
+.fab a{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;color:#fff;box-shadow:0 12px 28px -8px rgba(0,0,0,.45);transition:transform .3s var(--ease);position:relative}
+.fab a:hover{transform:scale(1.08)}
+.fab .wa{background:var(--wa)}
+.fab .wa::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--wa);animation:ring 2.2s infinite}
+@keyframes ring{from{transform:scale(1);opacity:.8}to{transform:scale(1.6);opacity:0}}
+.fab .call{background:var(--red)}
+.fab .tip{position:absolute;right:70px;top:50%;transform:translateY(-50%);background:var(--ink);color:var(--surface);font-size:13px;font-weight:600;padding:6px 10px;border-radius:4px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+.fab a:hover .tip{opacity:1}
+.mbar{display:none}
+@media (max-width:760px){
+  .fab{display:none}
+  .mbar{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--surface);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));box-shadow:0 -10px 30px -16px rgba(0,0,0,.3)}
+  .mbar a,.mbar button{display:grid;justify-items:center;gap:2px;font-size:11px;font-weight:600;padding:6px 0;position:relative;color:var(--muted)}
+  .mbar .wa-m{color:var(--wa)}
+  .mbar .call-m{color:var(--red-ink)}
+  .mbar .count{top:0;right:calc(50% - 22px)}
+  body{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
+}
+
+/* Search overlay */
+.search{position:fixed;inset:0;z-index:95;background:rgba(10,12,15,.6);backdrop-filter:blur(6px);display:grid;align-items:start;justify-items:center;padding:calc(env(safe-area-inset-top,0px) + 70px) var(--gut-r) 20px var(--gut);opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
+.search.open{opacity:1;visibility:visible;transition:opacity .25s}
+.search-box{width:min(720px,100%);background:var(--surface);border-radius:8px;overflow:hidden;box-shadow:0 40px 80px -20px rgba(0,0,0,.5);transform:translateY(-12px) scale(.98);transition:transform .35s var(--ease)}
+.search.open .search-box{transform:none}
+.search-box input{width:100%;border:0;border-bottom:1px solid var(--line);padding:20px 22px;font:500 19px var(--f-body);background:transparent;color:var(--ink)}
+.search-box input:focus{outline:0}
+.search-res{max-height:60vh;overflow:auto}
+.search-res a{display:grid;grid-template-columns:52px 1fr;gap:12px;align-items:center;padding:10px 18px;border-bottom:1px solid var(--line)}
+.search-res a:hover,.search-res a.hl{background:var(--paper)}
+.search-res .plate{width:52px;height:52px;border-radius:4px}
+.search-res small{font-family:var(--f-mono);font-size:11px;color:var(--red-ink)}
+.search-res .none{padding:24px;color:var(--muted);text-align:center}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(8,9,11,.9);display:grid;place-items:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
+.lb.open{opacity:1;visibility:visible;transition:opacity .25s}
+.lb img{max-height:86vh;max-width:min(900px,100%);border-radius:4px;box-shadow:0 30px 80px rgba(0,0,0,.6);transform:scale(.96);transition:transform .35s var(--ease)}
+.lb.open img{transform:none}
+.lb button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:calc(14px + env(safe-area-inset-right,0px));color:#fff;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1)}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);opacity:0;visibility:hidden;z-index:110;background:var(--ink);color:var(--surface);padding:12px 16px;border-radius:6px;display:flex;gap:12px;align-items:center;font-size:14px;font-weight:600;box-shadow:0 20px 40px -10px rgba(0,0,0,.4);transition:transform .45s var(--ease);max-width:calc(100% - 32px)}
+.toast.show{transform:translate(-50%,0);opacity:1;visibility:visible}
+.toast{transition:transform .45s var(--ease),opacity .3s,visibility 0s .45s}.toast.show{transition:transform .45s var(--ease),opacity .3s}
+.toast button{color:var(--yellow);font-weight:700;text-decoration:underline;white-space:nowrap}
+@media (max-width:760px){.toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
+
+/* Page transitions + reveal */
+#view{min-height:60vh}
+#view.enter{animation:pageIn .55s var(--ease) both}
+@keyframes pageIn{from{opacity:0;transform:translateY(16px)}}
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--i,0) * 60ms)}
+.js .rv.in{opacity:1;transform:none}
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+.about-grid img{border-radius:var(--r);box-shadow:var(--shadow-lift)}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.facts div{background:var(--surface);padding:16px}
+.facts b{display:block;font-family:var(--f-display);font-size:22px}
+.facts span{font-size:13px;color:var(--muted)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px}
+.c-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:grid;gap:14px}
+.c-row{display:flex;gap:12px;align-items:flex-start}
+.c-row svg{flex-shrink:0;color:var(--red-ink);margin-top:2px}
+.c-row b{display:block;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.copy{font-size:12px;font-weight:700;color:var(--red-ink);margin-left:6px;text-decoration:underline}
+@media (max-width:860px){.about-grid,.contact-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.js .rv{opacity:1;transform:none}}
+</style>
+
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <div class="badges">
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>ISO 9001:2015 Certified</span>
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>MSME Registered</span>
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Supplying NHAI &amp; Railways contractors</span>
+    <span class="mono">GSTIN 07AAJPG4101F1ZA</span>
+  </div>
+  <div class="contact"><a href="mailto:ambachem@yahoo.com">ambachem@yahoo.com</a><a href="tel:+919911888336">+91 99118 88336</a></div>
+</div></div>
+
+<header class="hdr" id="hdr"><div class="wrap">
+  <a class="logo" href="#home" aria-label="ALPHA by Amba Chem, home">
+    <span class="logo-mark"><svg width="30" height="30" viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"><path d="M6 34 20 6l14 28"/><path d="M13 34 20 19l5 10H16"/><path d="M25 29l4 7" stroke-width="1.6"/></svg></span>
+    <span class="logo-text"><b>ALPHA</b><small>by Amba Chem &middot; Est. Delhi</small></span>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <button id="megaBtn" aria-expanded="false" aria-controls="mega">Products <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></button>
+    <a href="#applications">Applications</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="hdr-actions">
+    <button class="icon-btn" id="searchBtn" aria-label="Search products"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+    <button class="icon-btn" id="cartBtn" aria-label="Open enquiry list"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5h10l-1.5 9h-11L4 3H2"/><circle cx="8" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg><span class="count" data-count>0</span></button>
+    <a class="btn btn-red quote-btn" href="#enquiry">Get bulk quote</a>
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+  </div>
+</div>
+<div class="mega" id="mega"><div class="wrap" id="megaList"></div></div>
+</header>
+
+<main id="view"></main>
+
+<footer><div class="wrap">
+  <div class="f-grid">
+    <div style="display:grid;gap:16px;align-content:start">
+      <a class="logo" href="#home"><span class="logo-mark"><svg width="30" height="30" viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"><path d="M6 34 20 6l14 28"/><path d="M13 34 20 19l5 10H16"/><path d="M25 29l4 7" stroke-width="1.6"/></svg></span><span class="logo-text"><b>ALPHA</b><small>by Amba Chem</small></span></a>
+      <p>ISO 9001:2015 certified manufacturer, importer and trader of thermoplastic road marking paint, traffic signage and road safety products. Serving road projects across India since 2009.</p>
+      <p style="font-family:var(--f-display);letter-spacing:.3em;text-transform:uppercase;color:#fff;font-size:14px">Safety is first, safety always</p>
+    </div>
+    <div><h4>Products</h4><ul id="fCats"></ul></div>
+    <div><h4>Company</h4><ul>
+      <li><a href="#about">About Amba Chem</a></li><li><a href="#certifications">Certifications</a></li><li><a href="#applications">Applications</a></li><li><a href="#products">All products</a></li><li><a href="#enquiry">Request a quote</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div><h4>Head office</h4><div class="f-contact">
+      <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span>T-565, Pragati Complex, Idgah Circle, Chamelian Road, Near Jhandewalan Mandir, Delhi 110006</span></div>
+      <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span><a href="tel:+919911888336">+91 99118 88336</a>, <a href="tel:+919810033618">98100 33618</a></span></div>
+      <div><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg><span>Sales (Jatin): <a href="https://wa.me/917011299256" target="_blank" rel="noopener">+91 70112 99256</a></span></div>
+      <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span><a href="mailto:ambachem@yahoo.com">ambachem@yahoo.com</a></span></div>
+    </div></div>
+  </div>
+  <div class="f-bottom"><span>&copy; <span id="yr"></span> Amba Chem. ALPHA&trade; is a brand of Amba Safety, a division of Amba Chem. GSTIN 07AAJPG4101F1ZA</span><span>Factory: A-80/3, Block-A, Wazirpur Industrial Area, Delhi 110052</span></div>
+</div></footer>
+
+<div class="fab">
+  <a class="wa" href="https://wa.me/917011299256?text=Hello%20ALPHA%20team%2C%20I%20need%20a%20quote%20for%20road%20safety%20products." target="_blank" rel="noopener" aria-label="WhatsApp us"><span class="tip">WhatsApp sales</span><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1l-.9 1.2c-.2.2-.3.2-.6.1-1.6-.8-2.7-1.5-3.7-3.3-.3-.5.3-.4.8-1.4.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4c-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.3 5.2 4.6 1.9.8 2.7.9 3.6.7.6-.1 1.8-.7 2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.3zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM12 0a12 12 0 0 0-10.3 18L0 24l6.2-1.6A12 12 0 1 0 12 0z"/></svg></a>
+  <a class="call" href="tel:+919911888336" aria-label="Call us"><span class="tip">Call +91 99118 88336</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
+</div>
+<nav class="mbar" aria-label="Quick actions">
+  <a href="#products"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Products</a>
+  <a class="call-m" href="tel:+919911888336"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Call</a>
+  <a class="wa-m" href="https://wa.me/917011299256" target="_blank" rel="noopener"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1l-.9 1.2c-.2.2-.3.2-.6.1-1.6-.8-2.7-1.5-3.7-3.3-.3-.5.3-.4.8-1.4.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4c-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.3 5.2 4.6 1.9.8 2.7.9 3.6.7.6-.1 1.8-.7 2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.3zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM12 0a12 12 0 0 0-10.3 18L0 24l6.2-1.6A12 12 0 1 0 12 0z"/></svg>WhatsApp</a>
+  <button id="cartBtnM"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5h10l-1.5 9h-11L4 3H2"/><circle cx="8" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg>Enquiry<span class="count" data-count>0</span></button>
+</nav>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer left" id="navDrawer" aria-label="Menu">
+  <div class="drawer-hd"><h3>Menu</h3><button class="icon-btn" data-close aria-label="Close menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="drawer-bd m-nav" id="mNav"></div>
+  <div class="drawer-ft"><a class="btn btn-red" href="#enquiry">Get bulk quote</a></div>
+</aside>
+<aside class="drawer right" id="cartDrawer" aria-label="Enquiry list">
+  <div class="drawer-hd"><h3>Enquiry list</h3><button class="icon-btn" data-close aria-label="Close enquiry list"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="drawer-bd" id="cartBody"></div>
+  <div class="drawer-ft" id="cartFoot"></div>
+</aside>
+<div class="search" id="search" role="dialog" aria-label="Search products"><div class="search-box">
+  <input id="q" type="search" placeholder="Search products: road stud, AC-SB-1016, cone…" autocomplete="off">
+  <div class="search-res" id="qres"></div>
+</div></div>
+<div class="lb" id="lb"><button aria-label="Close" id="lbClose"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="margin:auto"><path d="M6 6l12 12M18 6 6 18"/></svg></button><img alt="" id="lbImg"></div>
+<div class="toast" id="toast" role="status"><span id="toastMsg"></span><button id="toastBtn">View list</button></div>
+
+<script>
+/* ALPHA by Amba Chem — product catalogue, transcribed from the 16-page "Road Safety Products" catalogue (2022). */
+window.SITE = {
+  wa: "917011299256",
+  waDisplay: "+91 70112 99256",
+  phone: "+919911888336",
+  phoneDisplay: "+91 99118 88336",
+  phone2Display: "+91 98100 33618",
+  email: "ambachem@yahoo.com",
+  gst: "07AAJPG4101F1ZA",
+  office: "T-565, Pragati Complex, Idgah Circle, Chamelian Road, Near Jhandewalan Mandir, Delhi 110006",
+  factory: "A-80/3, Block-A, Wazirpur Industrial Area, Delhi 110052"
+};
+
+window.CATS = [
+  { id: "thermoplastic", name: "Thermoplastic Road Marking Paint", short: "Road Marking Paint", img: "tp-white",
+    blurb: "100% solid, environment and user safe compound of pigments, glass beads, binder and filler. Becomes liquid when heated and is laid with standard industry applicators.",
+    std: ["MoRTH 803", "BS 3262:1989", "BS EN 1871:2000", "AASHTO M249", "IRC:35"] },
+  { id: "plastic-studs", name: "Plastic Road Studs", short: "Plastic Road Studs", img: "ac1003n",
+    blurb: "Raised pavement markers, also called cat's eyes or road reflectors, that bounce headlight back to the driver. High impact thermoplastic body with ultrasonically welded polycarbonate lens and UV coating.",
+    std: ["ASTM D4280", "ARAI tested", "IRC:35"] },
+  { id: "aluminium-studs", name: "Aluminium Road Studs", short: "Aluminium Studs", img: "al1004",
+    blurb: "Die-cast aluminium road studs for highways, expressways and heavy traffic corridors where plastic studs would wear out. Shank and plain variants with prismatic lenses.",
+    std: ["ASTM D4280", "IRC:35", "MoRTH 800"] },
+  { id: "solar", name: "Solar Powered Products", short: "Solar Products", img: "sr01",
+    blurb: "Solar powered, self-illuminating LED devices that switch on at dusk. Maintenance free road studs, flashers and traffic blinkers for unlit stretches, curves and junctions.",
+    std: ["IP68 (studs)", "IRC:SP:55", "IRC:35"] },
+  { id: "speed-breakers", name: "Speed Breakers", short: "Speed Breakers", img: "sb1016",
+    blurb: "Modular plastic and rubber speed breakers for traffic calming at gates, societies, campuses, toll plazas and parking. Bolt-down modules with reflective inserts for night visibility.",
+    std: ["IRC:99-2018"] },
+  { id: "delineators", name: "Road Delineators", short: "Delineators", img: "d8",
+    blurb: "Delineators suitable for all kinds of roads, in different sizes and fittings, that outline curves, medians and edges so drivers can read the road ahead at night.",
+    std: ["IRC:79-2019", "MoRTH 800"] },
+  { id: "spring-posts", name: "Spring Posts", short: "Spring Posts", img: "s02",
+    blurb: "Flexible EVA and PU spring posts that bend on impact and return upright. Used for lane separation, U-turns, toll lanes and flyover ramps.",
+    std: ["IRC:79-2019"] },
+  { id: "barriers", name: "Road & Scissor Barriers", short: "Barriers", img: "b104",
+    blurb: "Water fillable plastic road barriers and expandable scissor barriers for work zones, police checkpoints, events and crowd control.",
+    std: ["IRC:SP:55-2014"] },
+  { id: "cones", name: "Traffic Cones & Accessories", short: "Traffic Cones", img: "c03",
+    blurb: "Reflective traffic cones in 750 mm and 1000 mm heights, with plastic chains and expandable barricading for diversions and work zones.",
+    std: ["IRC:SP:55-2014"] },
+  { id: "parking", name: "Parking Safety & Convex Mirrors", short: "Parking & Mirrors", img: "mirror40",
+    blurb: "Car stoppers, wheel locks, corner guards and convex mirrors for basements, malls, hospitals, warehouses and blind turns.",
+    std: ["IRC:SP:41"] },
+  { id: "highway", name: "Crash Barriers & Highway Systems", short: "Highway Systems", img: "crash",
+    blurb: "Metal beam crash barriers, anti-glare boards, guardrail reflectors and median markers for national and state highways.",
+    std: ["MoRTH 810", "AASHTO M180", "IRC:119", "MASH TL3 / TL4", "EN 1317-1 & 2"] },
+  { id: "signage", name: "Reflective Sign Boards", short: "Sign Boards", img: "stop",
+    blurb: "Warning, mandatory, informatory, overhead gantry and railway signs in retro-reflective sheeting. Designed, fabricated and installed to IRC specifications.",
+    std: ["IRC:67-2022", "MoRTH 801", "ASTM D4956"] },
+  { id: "ppe", name: "Safety Jackets & Personal Safety", short: "Personal Safety", img: "j1",
+    blurb: "High visibility jackets, traffic batons, search lights and lifebuoys for road crews, traffic police and site teams.",
+    std: ["IS 15809:2017", "EN ISO 20471"] },
+  { id: "accessories", name: "Installation Accessories", short: "Installation", img: "adh2",
+    blurb: "Nails, shanks and adhesives for fixing road studs on bitumen and concrete surfaces.",
+    std: ["MoRTH 800"] },
+  { id: "misc", name: "Tapes, Fencing & Miscellaneous", short: "Tapes & More", img: "tape3m",
+    blurb: "Conspicuity tapes, caution tapes, safety fencing, queue managers and reflectors that complete a site's safety kit.",
+    std: ["ASTM D4956"] }
+];
+
+window.PRODUCTS = [
+  /* Thermoplastic */
+  { id: "alpha-white", cat: "thermoplastic", name: "ALPHA Thermoplastic Paint, White", model: "ALPHA White", img: "tp-white", tag: "Bestseller",
+    desc: "Retro-reflective hot-applied thermoplastic for centre lines, edge lines, zebra crossings and stop lines. Pre-mixed glass beads give night visibility from the first day.",
+    specs: [["Pack", "25 kg bag"], ["Daylight luminance (45°C)", "> 75%"], ["Drying time", "7 min"], ["Cracking resistance at low temperature", "Pass"], ["Softening point", "105°C"], ["Flow resistance", "10%"], ["Yellowness index", "0.07"], ["Skid resistance", "65"], ["Max. application temperature", "200°C"], ["Max. safe heating temperature", "220°C"]] },
+  { id: "alpha-yellow", cat: "thermoplastic", name: "ALPHA Thermoplastic Paint, Yellow", model: "ALPHA Yellow", img: "tp-yellow", tag: "Bestseller",
+    desc: "Yellow retro-reflective thermoplastic for no-overtaking lines, kerbs, medians and parking bays. Same fast 7 minute drying time as the white grade.",
+    specs: [["Pack", "25 kg bag"], ["Daylight luminance (45°C)", "> 70%"], ["Drying time", "7 min"], ["Cracking resistance at low temperature", "Pass"], ["Softening point", "105°C"], ["Flow resistance", "10%"], ["Skid resistance", "65"], ["Max. application temperature", "200°C"], ["Max. safe heating temperature", "220°C"]] },
+  { id: "alpha-eco", cat: "thermoplastic", name: "ALPHA ECO Thermoplastic Paint", model: "ALPHA ECO", img: "tp-eco",
+    desc: "Economy grade thermoplastic for internal roads, campuses, parking lots and low-traffic stretches, where budget matters as much as visibility.",
+    specs: [["Pack", "25 kg bag"], ["Colours", "White, Yellow"], ["Max. application temperature", "200°C"], ["Max. safe heating temperature", "220°C"]] },
+
+  /* Plastic studs */
+  { id: "ac1001", cat: "plastic-studs", name: "Plastic Road Stud with 3M Lens", model: "AC1001", img: "ac1001", lensBrand: "3M",
+    desc: "Premium plastic road stud fitted with a 3M micro-prismatic lens for the brightest headlight return.", colours: ["yellow", "red", "white"],
+    specs: [["Size", "100 × 88 × 15 mm"], ["Body", "High impact thermoplastic"], ["Lens", "3M, ultrasonically welded"], ["Fixing", "Plain or shank"]] },
+  { id: "ac1002", cat: "plastic-studs", name: "Plastic Road Stud with Avery Dennison Lens", model: "AC1002", img: "ac1002", lensBrand: "Avery Dennison",
+    desc: "Wide-body plastic road stud with an Avery Dennison reflective lens. A popular choice for state highway and municipal tenders.", colours: ["yellow", "red", "white"],
+    specs: [["Size", "115 × 81 × 17 mm"], ["Body", "High impact thermoplastic"], ["Lens", "Avery Dennison, ultrasonically welded"], ["Fixing", "Plain or shank"]] },
+  { id: "ac1003n", cat: "plastic-studs", name: "Plastic Road Stud, Standard", model: "AC1003N", img: "ac1003n", tag: "Bestseller",
+    desc: "Everyday ALPHA road stud with a high impact polycarbonate lens and finger grips for quick installation.", colours: ["yellow", "red", "white"],
+    specs: [["Size", "100 × 88 × 15 mm"], ["Body", "High impact thermoplastic"], ["Lens", "High impact polycarbonate"], ["Fixing", "Plain or shank"]] },
+  { id: "ac1003", cat: "plastic-studs", name: "Plastic Road Stud, Square", model: "AC1003", img: "ac1003",
+    desc: "Square-profile 100 mm road stud with a tall 20 mm body for wider lenses and better visibility in rain.", colours: ["yellow", "red", "white"],
+    specs: [["Size", "100 × 100 × 20 mm"], ["Body", "High impact thermoplastic"], ["Lens", "High impact polycarbonate"], ["Fixing", "Plain or shank"]] },
+  { id: "stud-shank", cat: "plastic-studs", name: "Plastic Road Stud, Shank Type", model: "Shank type", img: "studs-stem",
+    desc: "Road stud with twin anchoring stems that lock into drilled holes. Recommended where heavy vehicles brake and turn.", colours: ["yellow", "white", "red"],
+    specs: [["Body", "High impact thermoplastic"], ["Lens", "Ultrasonically welded, UV coated"], ["Base", "Twin stem shank"], ["Standards", "ASTM, ARAI"]] },
+  { id: "stud-plain", cat: "plastic-studs", name: "Plastic Road Stud, Plain Base", model: "Plain base", img: "studs-plain",
+    desc: "Flat-base road stud for bonding with bitumen pads or epoxy on finished asphalt and concrete surfaces.", colours: ["yellow", "white", "red"],
+    specs: [["Body", "High impact thermoplastic"], ["Lens", "Ultrasonically welded, UV coated"], ["Base", "Plain, adhesive fixed"], ["Standards", "ASTM, ARAI"]] },
+
+  /* Aluminium studs */
+  { id: "ac-al-1004", cat: "aluminium-studs", name: "Aluminium Road Stud, Prismatic Amber", model: "AC-AL-1004", img: "al1004", tag: "Flagship",
+    desc: "Heavy duty die-cast aluminium stud with large prismatic lenses on both faces. Built for expressways and national highways.",
+    specs: [["Body", "Die-cast aluminium"], ["Lens", "Prismatic, both faces"], ["Base", "Ribbed underside with shank"], ["Colours", "Amber, red, white"]] },
+  { id: "ac-al-1001", cat: "aluminium-studs", name: "Aluminium Road Stud, Triple Bead", model: "AC-AL-1001", img: "al1001",
+    desc: "Aluminium road stud with three glass-bead reflectors per face. Rugged and long-lasting on high-speed roads.",
+    specs: [["Body", "Die-cast aluminium"], ["Reflector", "3 round reflectors per face"], ["Base", "Ribbed underside with shank"]] },
+  { id: "ac-al-1002a", cat: "aluminium-studs", name: "Aluminium Road Stud, Multi Bead", model: "AC-AL-1002A", img: "al1002a",
+    desc: "Low profile aluminium stud with a dense row of glass-bead reflectors for wide-angle visibility.",
+    specs: [["Body", "Die-cast aluminium"], ["Reflector", "Multi glass bead array"], ["Base", "Ribbed underside with shank"]] },
+  { id: "ac-al-1003a", cat: "aluminium-studs", name: "Aluminium Road Stud, Red Prismatic", model: "AC-AL-1003A", img: "al1003a",
+    desc: "Aluminium stud with a red prismatic lens for edge lines, wrong-way warnings and hard shoulders.",
+    specs: [["Body", "Die-cast aluminium"], ["Lens", "Red prismatic"], ["Base", "Ribbed underside with shank"]] },
+  { id: "ac-al-1004a", cat: "aluminium-studs", name: "Aluminium Road Stud, Compact Amber", model: "AC-AL-1004A", img: "al1004a",
+    desc: "Compact version of the AC-AL-1004 with an amber prismatic lens. Ideal for medians and toll plazas.",
+    specs: [["Body", "Die-cast aluminium"], ["Lens", "Amber prismatic"], ["Base", "Ribbed underside with shank"]] },
+  { id: "ac-al-1005", cat: "aluminium-studs", name: "Aluminium Road Stud, Square Amber", model: "AC-AL-1005", img: "al1005",
+    desc: "Square aluminium stud with a centre fixing hole and amber prismatic lens for bolt-down installation.",
+    specs: [["Body", "Die-cast aluminium"], ["Lens", "Amber prismatic"], ["Fixing", "Centre bolt hole"]] },
+  { id: "ac-al-1005a", cat: "aluminium-studs", name: "Aluminium Road Stud, Bolt-down Bead", model: "AC-AL-1005A", img: "al1005a",
+    desc: "Bolt-down aluminium stud with glass-bead reflectors. Easy to replace on bridges and concrete decks.",
+    specs: [["Body", "Die-cast aluminium"], ["Reflector", "Glass bead"], ["Fixing", "Centre bolt hole"]] },
+
+  /* Solar */
+  { id: "ac-sr-01", cat: "solar", name: "Solar Road Stud, 6 LED with Stem", model: "AC-SR-01", img: "sr01", tag: "Bestseller",
+    desc: "Self-illuminating aluminium solar stud with six flashing LEDs. Charges by day and blinks from dusk to dawn.",
+    specs: [["Size", "125 × 125 × 25 mm"], ["LEDs", "6"], ["Base", "With stem"], ["Power", "Solar, maintenance free"]] },
+  { id: "ac-sr-02", cat: "solar", name: "Solar Road Stud, 6 LED", model: "AC-SR-02", img: "sr02",
+    desc: "Low-profile 15 mm solar stud with six LEDs for flush mounting on medians and bridge decks.",
+    specs: [["Size", "120 × 120 × 15 mm"], ["LEDs", "6"], ["Power", "Solar, maintenance free"]] },
+  { id: "ac-sr-03", cat: "solar", name: "Solar LED Tube Stud with Stem", model: "AC-SR-03", img: "sr03",
+    desc: "Round 360° solar marker with an LED ring, for roundabouts, pedestrian crossings and pathways.",
+    specs: [["Size", "Dia 132 mm"], ["Base", "With stem"], ["Power", "Solar, maintenance free"]] },
+  { id: "ac-t-01", cat: "solar", name: "Traffic Solar Blinker", model: "AC-T-01", img: "t01", tag: "Popular",
+    desc: "Single-aspect solar LED blinker for junctions, school zones and diversions. Amber, red or green, including arrow aspects.", colours: ["yellow", "red", "green"],
+    specs: [["Size", "200 mm / 300 mm"], ["Battery", "7.2 AH / 12 AH as required"], ["Solar panel", "20 W / 12 W / 16 W"]] },
+  { id: "ac-t-02", cat: "solar", name: "Solar Traffic Signal, 3 Aspect", model: "AC-T-02", img: "t02",
+    desc: "Three-aspect red, amber, green solar traffic signal for temporary junctions and locations without grid power.",
+    specs: [["Size", "200 mm / 300 mm"], ["Battery", "7.2 AH / 12 AH as required"], ["Solar panel", "20 W / 12 W / 16 W"]] },
+  { id: "ac-sd-01", cat: "solar", name: "Solar Flasher", model: "AC-SD-01", img: "sd01",
+    desc: "Compact solar flasher that mounts on cones, barricades and posts to mark hazards at night.",
+    specs: [["Size", "Dia 90 mm"], ["Mount", "Spigot"], ["Power", "Solar"]] },
+  { id: "ac-sd-02", cat: "solar", name: "Solar Flasher with Clamp", model: "AC-SD-02", img: "sd02",
+    desc: "Solar flasher supplied with flange or clamp mounts for guardrails, barriers and pipes.",
+    specs: [["Size", "Dia 90 mm"], ["Mount", "Flange / clamp"], ["Power", "Solar"]] },
+  { id: "ac-sd-03", cat: "solar", name: "Solar Delineator Post", model: "AC-SD-03", img: "sd03",
+    desc: "Solar flasher on a reflective post. Lights up medians, curves and diversions without wiring.",
+    specs: [["Flasher size", "Dia 90 mm"], ["Post", "White with red reflective band"], ["Power", "Solar"]] },
+  { id: "solar-sunflower", cat: "solar", name: "Solar Sunflower Blinker", model: "Sunflower", img: "sunflower",
+    desc: "Multi-LED amber blinker on a pole, used at diversions, sharp curves and accident-prone spots.",
+    specs: [["LEDs", "Multi-LED cluster, amber"], ["Mount", "Pole"], ["Power", "Solar"]] },
+
+  /* Speed breakers */
+  { id: "ac-sb-1010l", cat: "speed-breakers", name: "Plastic Speed Breaker 1010L", model: "AC-SB-1010L", img: "sb-hero",
+    desc: "Yellow and black interlocking plastic modules with red reflectors. Bolt down to make any width.", specs: [["Size", "L 250 × B 350 × H 50 mm"], ["Material", "Plastic"], ["Colours", "Yellow / black"]] },
+  { id: "ac-sb-1010h", cat: "speed-breakers", name: "Plastic Speed Breaker 1010H", model: "AC-SB-1010H", img: "sb-hero",
+    desc: "H variant of the 1010 module for higher-traffic entrances. Same 50 mm calming height.", specs: [["Size", "L 250 × B 350 × H 50 mm"], ["Material", "Plastic"], ["Colours", "Yellow / black"]] },
+  { id: "ac-sb-1011", cat: "speed-breakers", name: "Plastic Speed Breaker 1011", model: "AC-SB-1011", img: "sb1011",
+    desc: "Half-metre plastic module with embedded reflectors on both slopes.", specs: [["Size", "L 500 × B 375 × H 50 mm"], ["Material", "Plastic"]] },
+  { id: "ac-sb-1012", cat: "speed-breakers", name: "Plastic Speed Breaker 1012", model: "AC-SB-1012", img: "sb1012", tag: "Popular",
+    desc: "Tall 75 mm plastic speed breaker for gates, societies and factory entries.", specs: [["Size", "L 500 × B 400 × H 75 mm"], ["Material", "Plastic"]] },
+  { id: "ac-sb-1013", cat: "speed-breakers", name: "Plastic Speed Breaker 1013", model: "AC-SB-1013", img: "sb1013",
+    desc: "Extra-wide 750 mm profile for a gentler but firm slowdown on main roads.", specs: [["Size", "L 250 × B 750 × H 75 mm"], ["Material", "Plastic"]] },
+  { id: "ac-sb-1014", cat: "speed-breakers", name: "Plastic Speed Breaker 1014 / Cable Protector", model: "AC-SB-1014", img: "sb1014",
+    desc: "Low 25 mm rumble module for parking lots, ramps and basements.", specs: [["Size", "L 500 × B 125 × H 25 mm"], ["Material", "Plastic"]] },
+  { id: "ac-sb-1015", cat: "speed-breakers", name: "Rubber Speed Breaker 1015", model: "AC-SB-1015", img: "sb1015",
+    desc: "Moulded rubber module with an anti-skid diamond surface. Quiet and absorbs impact.", specs: [["Size", "L 500 × B 350 × H 50 mm"], ["Material", "Rubber"]] },
+  { id: "ac-sb-1016", cat: "speed-breakers", name: "Rubber Speed Breaker 1016", model: "AC-SB-1016", img: "sb1016", tag: "Bestseller",
+    desc: "Heavy rubber speed breaker with white reflective arrows for highway approaches and toll plazas.", specs: [["Size", "L 500 × B 400 × H 75 mm"], ["Material", "Rubber"]] },
+  { id: "ac-sb-1017", cat: "speed-breakers", name: "Rubber Speed Breaker 1017", model: "AC-SB-1017", img: "sb1017",
+    desc: "Short rubber module with a studded surface and reflective triangles. Build to any road width.", specs: [["Size", "L 250 × B 350 × H 50 mm"], ["Material", "Rubber"]] },
+  { id: "ac-sb-1018", cat: "speed-breakers", name: "Rubber Speed Breaker 1018", model: "AC-SB-1018", img: "sb1018",
+    desc: "Heavy duty 75 mm rubber breaker with reflector pockets, for buses and trucks.", specs: [["Size", "L 500 × B 400 × H 75 mm"], ["Material", "Rubber"]] },
+
+  /* Delineators */
+  { id: "d1", cat: "delineators", name: "Clamp-on Reflector Delineator", model: "D1", img: "d1", desc: "Round amber reflector on a clamp bracket that fits guardrails, pipes and poles.", specs: [["Reflector", "Round, amber"], ["Mount", "Clamp bracket"]] },
+  { id: "d2", cat: "delineators", name: "Caged Reflector Post", model: "D2", img: "d2", desc: "Black post with a protective cage over red, amber and white reflectors.", specs: [["Reflector", "Tri-colour, caged"], ["Post", "Black"]] },
+  { id: "d3", cat: "delineators", name: "Round Reflector Post with Guard", model: "D3", img: "d3", desc: "White GI post with a guarded round amber reflector and red band.", specs: [["Reflector", "Round amber with wire guard"], ["Post", "White with red band"]] },
+  { id: "d4", cat: "delineators", name: "Twin Reflector Post", model: "D4", img: "d4", desc: "Double round reflector head on a white post for medians and traffic islands.", specs: [["Reflector", "Twin round, amber"], ["Post", "White with red bands"]] },
+  { id: "d5", cat: "delineators", name: "Flexible Banded Delineator", model: "D5", img: "d5", desc: "Black flexible post with red, yellow and white high-intensity reflective bands.", specs: [["Reflective bands", "Red, yellow, white"], ["Post", "Black, flexible"]] },
+  { id: "d6", cat: "delineators", name: "Slim Caged Delineator", model: "D6", img: "d6", desc: "Slim black post with a caged reflector head for narrow medians.", specs: [["Reflector", "Caged head"], ["Post", "Black, base plate"]] },
+  { id: "d7", cat: "delineators", name: "Striped Multi-Reflector Delineator", model: "D7", img: "d7", tag: "Popular", desc: "Black and white striped post with a multi-colour reflector head. A standard on hill roads and curves.", specs: [["Reflector", "Multi-colour head"], ["Post", "Black and white, base plate"]] },
+  { id: "d8", cat: "delineators", name: "Tall Caged Delineator", model: "D8", img: "d8", desc: "Black post with a tall caged reflector head, visible from far on highways.", specs: [["Reflector", "Tall caged head"], ["Post", "Black, base plate"]] },
+  { id: "d9", cat: "delineators", name: "High Intensity Banded Bollard", model: "D9", img: "d9", desc: "Wide black bollard with bright white high-intensity bands.", specs: [["Reflective bands", "White, high intensity"], ["Post", "Black, wide section"]] },
+  { id: "d10", cat: "delineators", name: "Chevron Delineator with Square Reflector", model: "D10", img: "d10", desc: "Black post with a square amber reflector and amber chevron stripes.", specs: [["Reflector", "Square, amber"], ["Markings", "Amber chevrons"]] },
+  { id: "d11", cat: "delineators", name: "Flexible Lane Delineator", model: "D11", img: "d11", tag: "New", desc: "Yellow flexible lane delineator with reflective panels. Springs back after being hit.", specs: [["Body", "Flexible, yellow"], ["Reflectors", "Multiple panels"]] },
+  { id: "d12", cat: "delineators", name: "Striped Post with Round Reflector", model: "D12", img: "d12", tag: "New", desc: "Black and white post with a round white reflector for kerbs and bridge approaches.", specs: [["Reflector", "Round, white"], ["Post", "Black and white, base plate"]] },
+
+  /* Spring posts */
+  { id: "ac-s-01", cat: "spring-posts", name: "Spring Post, EVA", model: "AC-S-01", img: "s01", desc: "Flexible EVA spring post with white reflective bands.", specs: [["Height", "750 mm"], ["Material", "EVA"]] },
+  { id: "ac-s-02", cat: "spring-posts", name: "Spring Post, PU", model: "AC-S-02", img: "s02", tag: "Bestseller", desc: "Durable PU spring post that bends on impact and returns upright.", specs: [["Height", "750 mm"], ["Material", "PU"]] },
+  { id: "ac-s-03", cat: "spring-posts", name: "Spring Post, PU, Anchor Base", model: "AC-S-03", img: "s03", desc: "PU spring post with an anchor base for direct fixing into the road.", specs: [["Height", "750 mm"], ["Material", "PU"]] },
+  { id: "ac-s-04", cat: "spring-posts", name: "Centre Verge Spring Post", model: "AC-S-04", img: "s04", desc: "Spring post on a heavy yellow kerb base for lane dividers and centre verges.", specs: [["Height", "750 mm"], ["Type", "Centre verge"]] },
+
+  /* Barriers */
+  { id: "ac-b-101", cat: "barriers", name: "Plastic Road Barrier 101", model: "AC-B-101", img: "b101", desc: "Red water-fillable barrier with yellow and white reflective strips.", specs: [["Size", "L 1000 × W 500 × H 800 mm"], ["Material", "Plastic, water fillable"]] },
+  { id: "ac-b-101a", cat: "barriers", name: "Plastic Road Barrier 101A", model: "AC-B-101A", img: "b101a", desc: "Low-height white and red barrier for lane closures and pedestrian channelling.", specs: [["Size", "L 1100 × W 200 × H 500 mm"], ["Material", "Plastic"]] },
+  { id: "ac-b-102", cat: "barriers", name: "Plastic Road Barrier 102", model: "AC-B-102", img: "b102", desc: "Large jersey-style water-filled barrier for highway work zones.", specs: [["Size", "L 1600 × W 550 × H 900 mm"], ["Material", "Plastic, water fillable"]] },
+  { id: "ac-b-103", cat: "barriers", name: "Plastic Road Barrier 103", model: "AC-B-103", img: "b103", desc: "Two-metre interlocking barrier with a reflective top strip.", specs: [["Size", "L 2000 × W 600 × H 900 mm"], ["Material", "Plastic, water fillable"]] },
+  { id: "ac-b-104", cat: "barriers", name: "Plastic Road Barrier 104", model: "AC-B-104", img: "b104", tag: "Popular", desc: "One-metre-tall see-through barrier with white chevron arrows that show traffic which way to go.", specs: [["Size", "L 1500 × W 400 × H 1000 mm"], ["Material", "Plastic"]] },
+  { id: "ac-b-110", cat: "barriers", name: "Scissor Barrier, Yellow / Black", model: "AC-B-110", img: "b110", desc: "Expandable scissor barrier on castor wheels. Folds to 300 mm and opens to 2.7 m.", specs: [["Height", "1 m"], ["Closed length", "300 mm"], ["Opened length", "2.7 m"]] },
+  { id: "ac-b-111", cat: "barriers", name: "Scissor Barrier, Red / Yellow", model: "AC-B-111", img: "b111", desc: "Heavy duty expandable scissor barrier for police checkpoints and gates.", specs: [["Height", "1 m"], ["Closed length", "300 mm"], ["Opened length", "2.7 m"]] },
+
+  /* Cones */
+  { id: "ac-c-01", cat: "cones", name: "Traffic Cone 750 mm, 1.2 kg", model: "AC-C-01", img: "c01", desc: "Lightweight reflective cone for parking and short-term diversions.", specs: [["Height", "750 mm"], ["Weight", "1.2 kg"]] },
+  { id: "ac-c-02", cat: "cones", name: "Traffic Cone 750 mm, 3.5 kg", model: "AC-C-02", img: "c02", tag: "Bestseller", desc: "Heavy-base reflective cone that stays put in wind and passing traffic.", specs: [["Height", "750 mm"], ["Weight", "3.5 kg"]] },
+  { id: "ac-c-03", cat: "cones", name: "Traffic Cone 1000 mm, 5 kg", model: "AC-C-02 (1000)", img: "c03", desc: "Tall one-metre cone with a wide reflective collar for highways.", specs: [["Height", "1000 mm"], ["Weight", "5 kg"]] },
+  { id: "cone-chain", cat: "cones", name: "Plastic Chain & Expandable Barricading", model: "Accessory", img: "chain", desc: "Red and white plastic chain and yellow and black expandable bars to link cones into a barricade.", specs: [["Includes", "Plastic chain, expandable barricading rod"]] },
+
+  /* Parking */
+  { id: "convex-mirror", cat: "parking", name: "Convex Mirror", model: "Convex", img: "mirror40", tag: "Bestseller",
+    desc: "Wide-angle convex mirror with an orange hood for blind turns, basements, hill roads and gates.",
+    variants: ["18\" / 450 mm", "24\" / 600 mm", "32\" / 800 mm", "40\" / 1000 mm"], specs: [["Sizes", "18\", 24\", 32\", 40\""], ["Hood", "Orange, weather protected"]] },
+  { id: "ac-cs-101", cat: "parking", name: "Car Stopper / Wheel Chock, Rubber", model: "AC-CS-101", img: "cs101", desc: "Rubber wheel chock with yellow reflective strips.", specs: [["Material", "Rubber"], ["Size", "L 500 × B 160 × H 100 mm"]] },
+  { id: "ac-cs-102", cat: "parking", name: "Car Stopper, Plastic", model: "AC-CS-102", img: "cs102", desc: "Plastic car stopper with a yellow centre reflector.", specs: [["Material", "Plastic"], ["Size", "L 500 × B 100 × H 150 mm"]] },
+  { id: "ac-cs-103", cat: "parking", name: "Car Stopper, Heavy Rubber", model: "AC-CS-103", img: "cs103", desc: "Tall heavy rubber stopper with a yellow reflective band.", specs: [["Material", "Rubber"], ["Size", "L 350 × B 200 × H 225 mm"]] },
+  { id: "ac-cs-104", cat: "parking", name: "Wheel Lock", model: "AC-CS-104", img: "wheellock", desc: "Steel wheel clamp with key lock for parking enforcement.", specs: [["Finish", "Red and yellow powder coat"], ["Lock", "Key"]] },
+  { id: "ac-cg-101", cat: "parking", name: "Corner Guard, Chevron", model: "AC-CG-101", img: "cg101", desc: "Rubber corner guard with yellow chevrons for pillars in basements and warehouses.", specs: [["Size", "800 / 1000 / 1200 mm"]] },
+  { id: "ac-cg-102", cat: "parking", name: "Corner Guard, Striped", model: "AC-CG-102", img: "cg102", desc: "Round-edge corner guard with yellow and black stripes.", specs: [["Size", "900 / 1000 / 1200 mm"]] },
+  { id: "ac-cg-103", cat: "parking", name: "Corner Guard, Reflective", model: "AC-CG-103", img: "cg103", desc: "Corner guard with yellow and white reflective panels.", specs: [["Size", "900 mm"]] },
+  { id: "ac-cg-104", cat: "parking", name: "Corner Guard, Flat Chevron", model: "AC-CG-104", img: "cg104", desc: "Flat rubber wall guard with amber chevrons.", specs: [["Size", "1000 × 200 × 10 mm"]] },
+
+  /* Highway */
+  { id: "crash-barrier", cat: "highway", name: "Metal Beam Crash Barrier (W-Beam)", model: "W-Beam", img: "crash", tag: "Tender grade",
+    desc: "Metal beam crash barriers made in India to MoRTH, AASHTO M180 and IRC guidelines. W-beam design conforms to EN 1317 Part 1 and 2.",
+    specs: [["Type", "W-beam, galvanised steel"], ["Guidelines", "MoRTH, AASHTO M180, IRC:SP:119"], ["Test levels", "MASH TL3 & TL4"], ["International", "EN 1317 Part 1 & 2"]] },
+  { id: "ac-ag-100", cat: "highway", name: "Anti Glare Board", model: "AC-AG-100", img: "antiglare",
+    desc: "Stops oncoming headlight glare across the median, which blinds drivers and causes accidents. Also tidies the look of the highway.",
+    specs: [["Height", "600 mm / 900 mm"], ["Use", "Medians, sharp curves, night accident zones"]] },
+  { id: "gr-101", cat: "highway", name: "Guardrail Reflector, Bracket", model: "AC-B-101", img: "gr101", desc: "Steel-bracket guardrail reflector for W-beam and box-beam barriers.", specs: [["Sheeting", "HIP, DG & EGP"]] },
+  { id: "gr-102", cat: "highway", name: "Guardrail Reflector, Trapezoid", model: "AC-B-102", img: "gr102", desc: "Trapezoid prismatic reflector for bridge approaches and hill curves.", specs: [["Type", "Prismatic reflector"]] },
+  { id: "gr-103", cat: "highway", name: "Guardrail Delineator, Triangle", model: "AC-B-103", img: "gr103", desc: "Triangular reflective delineator that slots onto W-beam bolts.", specs: [["Sheeting", "HIP, DG & EGP"]] },
+  { id: "ac-mm-01", cat: "highway", name: "Median Marker, Twin Face", model: "AC-MM-01", img: "mm01", desc: "Black median marker with amber reflective faces on both sides.", specs: [["Faces", "2, amber reflective"]] },
+  { id: "ac-mm-02", cat: "highway", name: "Median Marker, Round", model: "AC-MM-02", img: "mm02", desc: "Round amber reflector median marker for kerbs and dividers.", specs: [["Reflector", "Round, amber"]] },
+  { id: "ac-mm-03", cat: "highway", name: "Median Marker, Paddle", model: "AC-MM-03", img: "mm03", tag: "New", desc: "Paddle-shaped median marker with a large reflective face.", specs: [["Reflector", "Large paddle face"]] },
+
+  /* Signage */
+  { id: "sign-warning", cat: "signage", name: "Warning Sign Boards", model: "IRC cautionary", img: "warning", tag: "36 designs",
+    desc: "Red-bordered triangular warning signs: narrow road, Y-intersection, steep ascent and descent, falling rocks, hair-pin bends, speed breaker, men at work, unmanned railway crossing and more.",
+    specs: [["Shape", "Equilateral triangle"], ["Sizes", "600 / 900 / 1200 mm"], ["Sheeting", "EG / HIP / DG"]] },
+  { id: "sign-stop", cat: "signage", name: "STOP Sign", model: "Octagon", img: "stop", desc: "Octagonal retro-reflective STOP sign for junctions and railway crossings.", specs: [["Shape", "Octagon"], ["Sheeting", "HIP / DG"]] },
+  { id: "sign-mandatory", cat: "signage", name: "Mandatory Sign Boards", model: "IRC regulatory", img: "mandatory",
+    desc: "Circular regulatory signs: speed limit, no entry, one way, horn prohibited, no overtaking, turns prohibited and more.", specs: [["Shape", "Circle"], ["Sizes", "600 / 900 / 1200 mm"], ["Sheeting", "EG / HIP / DG"]] },
+  { id: "sign-info", cat: "signage", name: "Informatory Signs", model: "IRC informatory", img: "info",
+    desc: "Blue informatory signs for bus stop, taxi stand, hospital, fuel station, police station, airport, eating place and more.", specs: [["Shape", "Rectangle"], ["Colour", "Blue / white"]] },
+  { id: "sign-nightglow", cat: "signage", name: "Night Glow Exit Signs", model: "Photoluminescent", img: "nightglow",
+    desc: "Photoluminescent EXIT and FIRE EXIT signs that glow in the dark during power cuts.", specs: [["Type", "Photoluminescent"], ["Variants", "Exit arrows, fire exit"]] },
+  { id: "sign-overhead", cat: "signage", name: "Overhead Gantry & Cantilever Signs", model: "Overhead", img: "overhead", tag: "Turnkey",
+    desc: "Bilingual overhead direction boards for NHAI, PWD and municipal corridors. Design, survey, fabrication and installation.", specs: [["Structure", "Gantry / cantilever"], ["Language", "Hindi and English"]] },
+  { id: "sign-route", cat: "signage", name: "Route & Direction Signs", model: "Direction", img: "routesign", desc: "Bilingual city direction signs for chowks, metro links and landmarks.", specs: [["Language", "Hindi / English / regional"]] },
+  { id: "sign-project", cat: "signage", name: "Project Information Boards", model: "Project board", img: "projectboard", desc: "PWD and PMGSY style project boards with work name, cost, contractor and timelines.", specs: [["Format", "As per department format"]] },
+  { id: "sign-railway", cat: "signage", name: "Railway Signs", model: "Railway", img: "railway", desc: "Level crossing, whistle, speed, T/P and T/G, caution and danger boards to Indian Railways format.", specs: [["Format", "Indian Railways"], ["Language", "Hindi and English"]] },
+
+  /* PPE */
+  { id: "j1", cat: "ppe", name: "Safety Jacket J1", model: "J1", img: "j1", desc: "Orange high-visibility jacket with silver reflective bands.", specs: [["Colour", "Orange"]] },
+  { id: "j2", cat: "ppe", name: "Safety Jacket J2", model: "J2", img: "j2", desc: "Orange mesh hi-vis jacket with double reflective bands. Light for summer.", specs: [["Colour", "Orange"]] },
+  { id: "j3", cat: "ppe", name: "Cross-belt Jacket J3", model: "J3", img: "j3", desc: "X-belt reflective harness for traffic police and flagmen.", specs: [["Colour", "Orange / silver"]] },
+  { id: "j4", cat: "ppe", name: "Safety Jacket J4", model: "J4", img: "j4", desc: "Premium jacket with ID pocket and wide reflective tape.", specs: [["Colour", "Orange"]] },
+  { id: "j5", cat: "ppe", name: "Safety Jacket J5, Lime", model: "J5", img: "j5", desc: "Fluorescent lime jacket for the best daytime visibility.", specs: [["Colour", "Lime"]] },
+  { id: "rbaton", cat: "ppe", name: "Rechargeable Traffic Baton", model: "Baton R", img: "rbaton", desc: "Rechargeable LED traffic baton with wrist strap.", specs: [["Power", "Rechargeable"]] },
+  { id: "bbaton", cat: "ppe", name: "Battery Traffic Baton", model: "Baton B", img: "bbaton", desc: "Battery-operated LED traffic baton.", specs: [["Power", "Battery"]] },
+  { id: "searchlight", cat: "ppe", name: "Rechargeable Search Light", model: "Search light", img: "searchlight", desc: "High-power rechargeable search light for night patrols and emergencies.", specs: [["Power", "Rechargeable"]] },
+  { id: "lifebuoy", cat: "ppe", name: "Lifebuoy", model: "Lifebuoy", img: "lifebuoy", desc: "Ring lifebuoy with grab line for ghats, canals, pools and bridges.", specs: [["Colour", "Orange with reflective bands"]] },
+
+  /* Accessories */
+  { id: "nails", cat: "accessories", name: "Road Stud Nails", model: "Nails", img: "nails", desc: "Hardened steel nails for mechanically fixing road studs.", specs: [["Material", "Steel"]] },
+  { id: "shank", cat: "accessories", name: "Road Stud Shank", model: "Shank", img: "shank", desc: "Plastic shanks that anchor studs into drilled holes.", specs: [["Material", "Plastic"]] },
+  { id: "adh-bitumen", cat: "accessories", name: "Bitumen Adhesive Pads", model: "Adhesive A", img: "adh1", desc: "Hot-melt bitumen adhesive pads for bonding road studs on asphalt.", specs: [["Type", "Bitumen pads"]] },
+  { id: "adh-epoxy", cat: "accessories", name: "Epoxy Adhesive with Hardener", model: "Adhesive B", img: "adh2", desc: "Two-component epoxy for bonding studs on concrete roads and bridge decks.", specs: [["Type", "Epoxy + hardener"]] },
+  { id: "adh-kit", cat: "accessories", name: "Two-part Adhesive Kit", model: "Adhesive C", img: "adh3", desc: "Resin, hardener and filler kit for high-volume stud installation.", specs: [["Type", "Resin kit"]] },
+
+  /* Misc */
+  { id: "tape-3m", cat: "misc", name: "3M Conspicuity Tape", model: "3M", img: "tape3m", desc: "3M reflective conspicuity tape for trucks, buses and trailers.", specs: [["Colours", "White, red, yellow"]] },
+  { id: "tape-avery", cat: "misc", name: "Avery Dennison Conspicuity Tape", model: "Avery Dennison", img: "tapeavery", desc: "Avery Dennison reflective tape for vehicles and barriers.", specs: [["Colours", "Red, white, yellow"]] },
+  { id: "lds", cat: "misc", name: "LDS Reflective Strips", model: "LDS", img: "lds", desc: "Linear delineation strips that mount on guardrails for continuous night guidance.", specs: [["Colours", "Red, yellow, white"]] },
+  { id: "caution-tape", cat: "misc", name: "Caution Tape", model: "Barricade tape", img: "caution", desc: "Bilingual 'Caution Danger' and 'Man at Work' barricade tape.", specs: [["Print", "Hindi / English"]] },
+  { id: "floor-stand", cat: "misc", name: "Caution Floor Stand", model: "A-stand", img: "floorstand", desc: "Yellow A-frame wet floor and caution stand.", specs: [["Colour", "Yellow"]] },
+  { id: "line-manager", cat: "misc", name: "Queue Line Manager", model: "Line manager", img: "linemgr", desc: "Stainless steel retractable-belt stanchions for queues at toll plazas, banks and airports.", specs: [["Finish", "Stainless steel"]] },
+  { id: "stanchion", cat: "misc", name: "Stanchion Post", model: "Stanchion", img: "stanchion", desc: "Brass-finish rope stanchion post for lobbies and VIP areas.", specs: [["Finish", "Brass"]] },
+  { id: "reflector", cat: "misc", name: "Round Reflector", model: "Reflector", img: "reflector", desc: "Screw-on round reflectors in amber and red for gates, poles and vehicles.", specs: [["Colours", "Amber, red"]] },
+  { id: "safety-fence", cat: "misc", name: "Safety Fence (Barrier Mesh)", model: "Mesh", img: "fence", desc: "Orange plastic barrier mesh to fence off excavations and work zones.", specs: [["Colour", "Orange"]] }
+];
+
+window.CERTS = [
+  { img: "cert-iso", name: "ISO 9001:2015", by: "Quality Management System" },
+  { img: "cert-udyam", name: "Udyam (MSME)", by: "Ministry of MSME, Govt. of India" },
+  { img: "cert-govt", name: "Government Registration", by: "Govt. of India" },
+  { img: "cert-sri1", name: "Test Certificate", by: "Shriram Institute for Industrial Research" },
+  { img: "cert-sri2", name: "Test Certificate", by: "Shriram Institute for Industrial Research" },
+  { img: "cert-sri3", name: "Test Certificate", by: "Shriram Institute for Industrial Research" },
+  { img: "cert-arai", name: "ARAI Test Report", by: "The Automotive Research Association of India" },
+  { img: "cert-cmvr1", name: "Type Approval", by: "Govt. of India" },
+  { img: "cert-cmvr2", name: "Type Approval", by: "Govt. of India" }
+];
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* three.js r128 post-processing (MIT), inlined: not published on cdnjs */
+( function () {
+
+	/**
+ * Full-screen textured quad shader
+ */
+	var CopyShader = {
+		uniforms: {
+			'tDiffuse': {
+				value: null
+			},
+			'opacity': {
+				value: 1.0
+			}
+		},
+		vertexShader:
+  /* glsl */
+  `
+
+		varying vec2 vUv;
+
+		void main() {
+
+			vUv = uv;
+			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+
+		}`,
+		fragmentShader:
+  /* glsl */
+  `
+
+		uniform float opacity;
+
+		uniform sampler2D tDiffuse;
+
+		varying vec2 vUv;
+
+		void main() {
+
+			vec4 texel = texture2D( tDiffuse, vUv );
+			gl_FragColor = opacity * texel;
+
+		}`
+	};
+
+	THREE.CopyShader = CopyShader;
+
+} )();
+( function () {
+
+	/**
+ * Luminosity
+ * http://en.wikipedia.org/wiki/Luminosity
+ */
+
+	const LuminosityHighPassShader = {
+		shaderID: 'luminosityHighPass',
+		uniforms: {
+			'tDiffuse': {
+				value: null
+			},
+			'luminosityThreshold': {
+				value: 1.0
+			},
+			'smoothWidth': {
+				value: 1.0
+			},
+			'defaultColor': {
+				value: new THREE.Color( 0x000000 )
+			},
+			'defaultOpacity': {
+				value: 0.0
+			}
+		},
+		vertexShader:
+  /* glsl */
+  `
+
+		varying vec2 vUv;
+
+		void main() {
+
+			vUv = uv;
+
+			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+
+		}`,
+		fragmentShader:
+  /* glsl */
+  `
+
+		uniform sampler2D tDiffuse;
+		uniform vec3 defaultColor;
+		uniform float defaultOpacity;
+		uniform float luminosityThreshold;
+		uniform float smoothWidth;
+
+		varying vec2 vUv;
+
+		void main() {
+
+			vec4 texel = texture2D( tDiffuse, vUv );
+
+			vec3 luma = vec3( 0.299, 0.587, 0.114 );
+
+			float v = dot( texel.xyz, luma );
+
+			vec4 outputColor = vec4( defaultColor.rgb, defaultOpacity );
+
+			float alpha = smoothstep( luminosityThreshold, luminosityThreshold + smoothWidth, v );
+
+			gl_FragColor = mix( outputColor, texel, alpha );
+
+		}`
+	};
+
+	THREE.LuminosityHighPassShader = LuminosityHighPassShader;
+
+} )();
+( function () {
+
+	class EffectComposer {
+
+		constructor( renderer, renderTarget ) {
+
+			this.renderer = renderer;
+
+			if ( renderTarget === undefined ) {
+
+				const parameters = {
+					minFilter: THREE.LinearFilter,
+					magFilter: THREE.LinearFilter,
+					format: THREE.RGBAFormat
+				};
+				const size = renderer.getSize( new THREE.Vector2() );
+				this._pixelRatio = renderer.getPixelRatio();
+				this._width = size.width;
+				this._height = size.height;
+				renderTarget = new THREE.WebGLRenderTarget( this._width * this._pixelRatio, this._height * this._pixelRatio, parameters );
+				renderTarget.texture.name = 'EffectComposer.rt1';
+
+			} else {
+
+				this._pixelRatio = 1;
+				this._width = renderTarget.width;
+				this._height = renderTarget.height;
+
+			}
+
+			this.renderTarget1 = renderTarget;
+			this.renderTarget2 = renderTarget.clone();
+			this.renderTarget2.texture.name = 'EffectComposer.rt2';
+			this.writeBuffer = this.renderTarget1;
+			this.readBuffer = this.renderTarget2;
+			this.renderToScreen = true;
+			this.passes = []; // dependencies
+
+			if ( THREE.CopyShader === undefined ) {
+
+				console.error( 'THREE.EffectComposer relies on THREE.CopyShader' );
+
+			}
+
+			if ( THREE.ShaderPass === undefined ) {
+
+				console.error( 'THREE.EffectComposer relies on THREE.ShaderPass' );
+
+			}
+
+			this.copyPass = new THREE.ShaderPass( THREE.CopyShader );
+			this.clock = new THREE.Clock();
+
+		}
+
+		swapBuffers() {
+
+			const tmp = this.readBuffer;
+			this.readBuffer = this.writeBuffer;
+			this.writeBuffer = tmp;
+
+		}
+
+		addPass( pass ) {
+
+			this.passes.push( pass );
+			pass.setSize( this._width * this._pixelRatio, this._height * this._pixelRatio );
+
+		}
+
+		insertPass( pass, index ) {
+
+			this.passes.splice( index, 0, pass );
+			pass.setSize( this._width * this._pixelRatio, this._height * this._pixelRatio );
+
+		}
+
+		removePass( pass ) {
+
+			const index = this.passes.indexOf( pass );
+
+			if ( index !== - 1 ) {
+
+				this.passes.splice( index, 1 );
+
+			}
+
+		}
+
+		isLastEnabledPass( passIndex ) {
+
+			for ( let i = passIndex + 1; i < this.passes.length; i ++ ) {
+
+				if ( this.passes[ i ].enabled ) {
+
+					return false;
+
+				}
+
+			}
+
+			return true;
+
+		}
+
+		render( deltaTime ) {
+
+			// deltaTime value is in seconds
+			if ( deltaTime === undefined ) {
+
+				deltaTime = this.clock.getDelta();
+
+			}
+
+			const currentRenderTarget = this.renderer.getRenderTarget();
+			let maskActive = false;
+
+			for ( let i = 0, il = this.passes.length; i < il; i ++ ) {
+
+				const pass = this.passes[ i ];
+				if ( pass.enabled === false ) continue;
+				pass.renderToScreen = this.renderToScreen && this.isLastEnabledPass( i );
+				pass.render( this.renderer, this.writeBuffer, this.readBuffer, deltaTime, maskActive );
+
+				if ( pass.needsSwap ) {
+
+					if ( maskActive ) {
+
+						const context = this.renderer.getContext();
+						const stencil = this.renderer.state.buffers.stencil; //context.stencilFunc( context.NOTEQUAL, 1, 0xffffffff );
+
+						stencil.setFunc( context.NOTEQUAL, 1, 0xffffffff );
+						this.copyPass.render( this.renderer, this.writeBuffer, this.readBuffer, deltaTime ); //context.stencilFunc( context.EQUAL, 1, 0xffffffff );
+
+						stencil.setFunc( context.EQUAL, 1, 0xffffffff );
+
+					}
+
+					this.swapBuffers();
+
+				}
+
+				if ( THREE.MaskPass !== undefined ) {
+
+					if ( pass instanceof THREE.MaskPass ) {
+
+						maskActive = true;
+
+					} else if ( pass instanceof THREE.ClearMaskPass ) {
+
+						maskActive = false;
+
+					}
+
+				}
+
+			}
+
+			this.renderer.setRenderTarget( currentRenderTarget );
+
+		}
+
+		reset( renderTarget ) {
+
+			if ( renderTarget === undefined ) {
+
+				const size = this.renderer.getSize( new THREE.Vector2() );
+				this._pixelRatio = this.renderer.getPixelRatio();
+				this._width = size.width;
+				this._height = size.height;
+				renderTarget = this.renderTarget1.clone();
+				renderTarget.setSize( this._width * this._pixelRatio, this._height * this._pixelRatio );
+
+			}
+
+			this.renderTarget1.dispose();
+			this.renderTarget2.dispose();
+			this.renderTarget1 = renderTarget;
+			this.renderTarget2 = renderTarget.clone();
+			this.writeBuffer = this.renderTarget1;
+			this.readBuffer = this.renderTarget2;
+
+		}
+
+		setSize( width, height ) {
+
+			this._width = width;
+			this._height = height;
+			const effectiveWidth = this._width * this._pixelRatio;
+			const effectiveHeight = this._height * this._pixelRatio;
+			this.renderTarget1.setSize( effectiveWidth, effectiveHeight );
+			this.renderTarget2.setSize( effectiveWidth, effectiveHeight );
+
+			for ( let i = 0; i < this.passes.length; i ++ ) {
+
+				this.passes[ i ].setSize( effectiveWidth, effectiveHeight );
+
+			}
+
+		}
+
+		setPixelRatio( pixelRatio ) {
+
+			this._pixelRatio = pixelRatio;
+			this.setSize( this._width, this._height );
+
+		}
+
+	}
+
+	class Pass {
+
+		constructor() {
+
+			// if set to true, the pass is processed by the composer
+			this.enabled = true; // if set to true, the pass indicates to swap read and write buffer after rendering
+
+			this.needsSwap = true; // if set to true, the pass clears its buffer before rendering
+
+			this.clear = false; // if set to true, the result of the pass is rendered to screen. This is set automatically by EffectComposer.
+
+			this.renderToScreen = false;
+
+		}
+
+		setSize( ) {}
+
+		render( ) {
+
+			console.error( 'THREE.Pass: .render() must be implemented in derived pass.' );
+
+		}
+
+	} // Helper for passes that need to fill the viewport with a single quad.
+
+
+	const _camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 ); // https://github.com/mrdoob/three.js/pull/21358
+
+
+	const _geometry = new THREE.BufferGeometry();
+
+	_geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( [ - 1, 3, 0, - 1, - 1, 0, 3, - 1, 0 ], 3 ) );
+
+	_geometry.setAttribute( 'uv', new THREE.Float32BufferAttribute( [ 0, 2, 0, 0, 2, 0 ], 2 ) );
+
+	class FullScreenQuad {
+
+		constructor( material ) {
+
+			this._mesh = new THREE.Mesh( _geometry, material );
+
+		}
+
+		dispose() {
+
+			this._mesh.geometry.dispose();
+
+		}
+
+		render( renderer ) {
+
+			renderer.render( this._mesh, _camera );
+
+		}
+
+		get material() {
+
+			return this._mesh.material;
+
+		}
+
+		set material( value ) {
+
+			this._mesh.material = value;
+
+		}
+
+	}
+
+	THREE.EffectComposer = EffectComposer;
+	THREE.FullScreenQuad = FullScreenQuad;
+	THREE.Pass = Pass;
+
+} )();
+( function () {
+
+	class RenderPass extends THREE.Pass {
+
+		constructor( scene, camera, overrideMaterial, clearColor, clearAlpha ) {
+
+			super();
+			this.scene = scene;
+			this.camera = camera;
+			this.overrideMaterial = overrideMaterial;
+			this.clearColor = clearColor;
+			this.clearAlpha = clearAlpha !== undefined ? clearAlpha : 0;
+			this.clear = true;
+			this.clearDepth = false;
+			this.needsSwap = false;
+			this._oldClearColor = new THREE.Color();
+
+		}
+
+		render( renderer, writeBuffer, readBuffer
+			/*, deltaTime, maskActive */
+		) {
+
+			const oldAutoClear = renderer.autoClear;
+			renderer.autoClear = false;
+			let oldClearAlpha, oldOverrideMaterial;
+
+			if ( this.overrideMaterial !== undefined ) {
+
+				oldOverrideMaterial = this.scene.overrideMaterial;
+				this.scene.overrideMaterial = this.overrideMaterial;
+
+			}
+
+			if ( this.clearColor ) {
+
+				renderer.getClearColor( this._oldClearColor );
+				oldClearAlpha = renderer.getClearAlpha();
+				renderer.setClearColor( this.clearColor, this.clearAlpha );
+
+			}
+
+			if ( this.clearDepth ) {
+
+				renderer.clearDepth();
+
+			}
+
+			renderer.setRenderTarget( this.renderToScreen ? null : readBuffer ); // TODO: Avoid using autoClear properties, see https://github.com/mrdoob/three.js/pull/15571#issuecomment-465669600
+
+			if ( this.clear ) renderer.clear( renderer.autoClearColor, renderer.autoClearDepth, renderer.autoClearStencil );
+			renderer.render( this.scene, this.camera );
+
+			if ( this.clearColor ) {
+
+				renderer.setClearColor( this._oldClearColor, oldClearAlpha );
+
+			}
+
+			if ( this.overrideMaterial !== undefined ) {
+
+				this.scene.overrideMaterial = oldOverrideMaterial;
+
+			}
+
+			renderer.autoClear = oldAutoClear;
+
+		}
+
+	}
+
+	THREE.RenderPass = RenderPass;
+
+} )();
+( function () {
+
+	class ShaderPass extends THREE.Pass {
+
+		constructor( shader, textureID ) {
+
+			super();
+			this.textureID = textureID !== undefined ? textureID : 'tDiffuse';
+
+			if ( shader instanceof THREE.ShaderMaterial ) {
+
+				this.uniforms = shader.uniforms;
+				this.material = shader;
+
+			} else if ( shader ) {
+
+				this.uniforms = THREE.UniformsUtils.clone( shader.uniforms );
+				this.material = new THREE.ShaderMaterial( {
+					defines: Object.assign( {}, shader.defines ),
+					uniforms: this.uniforms,
+					vertexShader: shader.vertexShader,
+					fragmentShader: shader.fragmentShader
+				} );
+
+			}
+
+			this.fsQuad = new THREE.FullScreenQuad( this.material );
+
+		}
+
+		render( renderer, writeBuffer, readBuffer
+			/*, deltaTime, maskActive */
+		) {
+
+			if ( this.uniforms[ this.textureID ] ) {
+
+				this.uniforms[ this.textureID ].value = readBuffer.texture;
+
+			}
+
+			this.fsQuad.material = this.material;
+
+			if ( this.renderToScreen ) {
+
+				renderer.setRenderTarget( null );
+				this.fsQuad.render( renderer );
+
+			} else {
+
+				renderer.setRenderTarget( writeBuffer ); // TODO: Avoid using autoClear properties, see https://github.com/mrdoob/three.js/pull/15571#issuecomment-465669600
+
+				if ( this.clear ) renderer.clear( renderer.autoClearColor, renderer.autoClearDepth, renderer.autoClearStencil );
+				this.fsQuad.render( renderer );
+
+			}
+
+		}
+
+	}
+
+	THREE.ShaderPass = ShaderPass;
+
+} )();
+( function () {
+
+	class MaskPass extends THREE.Pass {
+
+		constructor( scene, camera ) {
+
+			super();
+			this.scene = scene;
+			this.camera = camera;
+			this.clear = true;
+			this.needsSwap = false;
+			this.inverse = false;
+
+		}
+
+		render( renderer, writeBuffer, readBuffer
+			/*, deltaTime, maskActive */
+		) {
+
+			const context = renderer.getContext();
+			const state = renderer.state; // don't update color or depth
+
+			state.buffers.color.setMask( false );
+			state.buffers.depth.setMask( false ); // lock buffers
+
+			state.buffers.color.setLocked( true );
+			state.buffers.depth.setLocked( true ); // set up stencil
+
+			let writeValue, clearValue;
+
+			if ( this.inverse ) {
+
+				writeValue = 0;
+				clearValue = 1;
+
+			} else {
+
+				writeValue = 1;
+				clearValue = 0;
+
+			}
+
+			state.buffers.stencil.setTest( true );
+			state.buffers.stencil.setOp( context.REPLACE, context.REPLACE, context.REPLACE );
+			state.buffers.stencil.setFunc( context.ALWAYS, writeValue, 0xffffffff );
+			state.buffers.stencil.setClear( clearValue );
+			state.buffers.stencil.setLocked( true ); // draw into the stencil buffer
+
+			renderer.setRenderTarget( readBuffer );
+			if ( this.clear ) renderer.clear();
+			renderer.render( this.scene, this.camera );
+			renderer.setRenderTarget( writeBuffer );
+			if ( this.clear ) renderer.clear();
+			renderer.render( this.scene, this.camera ); // unlock color and depth buffer for subsequent rendering
+
+			state.buffers.color.setLocked( false );
+			state.buffers.depth.setLocked( false ); // only render where stencil is set to 1
+
+			state.buffers.stencil.setLocked( false );
+			state.buffers.stencil.setFunc( context.EQUAL, 1, 0xffffffff ); // draw if == 1
+
+			state.buffers.stencil.setOp( context.KEEP, context.KEEP, context.KEEP );
+			state.buffers.stencil.setLocked( true );
+
+		}
+
+	}
+
+	class ClearMaskPass extends THREE.Pass {
+
+		constructor() {
+
+			super();
+			this.needsSwap = false;
+
+		}
+
+		render( renderer
+			/*, writeBuffer, readBuffer, deltaTime, maskActive */
+		) {
+
+			renderer.state.buffers.stencil.setLocked( false );
+			renderer.state.buffers.stencil.setTest( false );
+
+		}
+
+	}
+
+	THREE.ClearMaskPass = ClearMaskPass;
+	THREE.MaskPass = MaskPass;
+
+} )();
+( function () {
+
+	/**
+ * UnrealBloomPass is inspired by the bloom pass of Unreal Engine. It creates a
+ * mip map chain of bloom textures and blurs them with different radii. Because
+ * of the weighted combination of mips, and because larger blurs are done on
+ * higher mips, this effect provides good quality and performance.
+ *
+ * Reference:
+ * - https://docs.unrealengine.com/latest/INT/Engine/Rendering/PostProcessEffects/Bloom/
+ */
+
+	class UnrealBloomPass extends THREE.Pass {
+
+		constructor( resolution, strength, radius, threshold ) {
+
+			super();
+			this.strength = strength !== undefined ? strength : 1;
+			this.radius = radius;
+			this.threshold = threshold;
+			this.resolution = resolution !== undefined ? new THREE.Vector2( resolution.x, resolution.y ) : new THREE.Vector2( 256, 256 ); // create color only once here, reuse it later inside the render function
+
+			this.clearColor = new THREE.Color( 0, 0, 0 ); // render targets
+
+			const pars = {
+				minFilter: THREE.LinearFilter,
+				magFilter: THREE.LinearFilter,
+				format: THREE.RGBAFormat
+			};
+			this.renderTargetsHorizontal = [];
+			this.renderTargetsVertical = [];
+			this.nMips = 5;
+			let resx = Math.round( this.resolution.x / 2 );
+			let resy = Math.round( this.resolution.y / 2 );
+			this.renderTargetBright = new THREE.WebGLRenderTarget( resx, resy, pars );
+			this.renderTargetBright.texture.name = 'UnrealBloomPass.bright';
+			this.renderTargetBright.texture.generateMipmaps = false;
+
+			for ( let i = 0; i < this.nMips; i ++ ) {
+
+				const renderTargetHorizonal = new THREE.WebGLRenderTarget( resx, resy, pars );
+				renderTargetHorizonal.texture.name = 'UnrealBloomPass.h' + i;
+				renderTargetHorizonal.texture.generateMipmaps = false;
+				this.renderTargetsHorizontal.push( renderTargetHorizonal );
+				const renderTargetVertical = new THREE.WebGLRenderTarget( resx, resy, pars );
+				renderTargetVertical.texture.name = 'UnrealBloomPass.v' + i;
+				renderTargetVertical.texture.generateMipmaps = false;
+				this.renderTargetsVertical.push( renderTargetVertical );
+				resx = Math.round( resx / 2 );
+				resy = Math.round( resy / 2 );
+
+			} // luminosity high pass material
+
+
+			if ( THREE.LuminosityHighPassShader === undefined ) console.error( 'THREE.UnrealBloomPass relies on THREE.LuminosityHighPassShader' );
+			const highPassShader = THREE.LuminosityHighPassShader;
+			this.highPassUniforms = THREE.UniformsUtils.clone( highPassShader.uniforms );
+			this.highPassUniforms[ 'luminosityThreshold' ].value = threshold;
+			this.highPassUniforms[ 'smoothWidth' ].value = 0.01;
+			this.materialHighPassFilter = new THREE.ShaderMaterial( {
+				uniforms: this.highPassUniforms,
+				vertexShader: highPassShader.vertexShader,
+				fragmentShader: highPassShader.fragmentShader,
+				defines: {}
+			} ); // Gaussian Blur Materials
+
+			this.separableBlurMaterials = [];
+			const kernelSizeArray = [ 3, 5, 7, 9, 11 ];
+			resx = Math.round( this.resolution.x / 2 );
+			resy = Math.round( this.resolution.y / 2 );
+
+			for ( let i = 0; i < this.nMips; i ++ ) {
+
+				this.separableBlurMaterials.push( this.getSeperableBlurMaterial( kernelSizeArray[ i ] ) );
+				this.separableBlurMaterials[ i ].uniforms[ 'texSize' ].value = new THREE.Vector2( resx, resy );
+				resx = Math.round( resx / 2 );
+				resy = Math.round( resy / 2 );
+
+			} // Composite material
+
+
+			this.compositeMaterial = this.getCompositeMaterial( this.nMips );
+			this.compositeMaterial.uniforms[ 'blurTexture1' ].value = this.renderTargetsVertical[ 0 ].texture;
+			this.compositeMaterial.uniforms[ 'blurTexture2' ].value = this.renderTargetsVertical[ 1 ].texture;
+			this.compositeMaterial.uniforms[ 'blurTexture3' ].value = this.renderTargetsVertical[ 2 ].texture;
+			this.compositeMaterial.uniforms[ 'blurTexture4' ].value = this.renderTargetsVertical[ 3 ].texture;
+			this.compositeMaterial.uniforms[ 'blurTexture5' ].value = this.renderTargetsVertical[ 4 ].texture;
+			this.compositeMaterial.uniforms[ 'bloomStrength' ].value = strength;
+			this.compositeMaterial.uniforms[ 'bloomRadius' ].value = 0.1;
+			this.compositeMaterial.needsUpdate = true;
+			const bloomFactors = [ 1.0, 0.8, 0.6, 0.4, 0.2 ];
+			this.compositeMaterial.uniforms[ 'bloomFactors' ].value = bloomFactors;
+			this.bloomTintColors = [ new THREE.Vector3( 1, 1, 1 ), new THREE.Vector3( 1, 1, 1 ), new THREE.Vector3( 1, 1, 1 ), new THREE.Vector3( 1, 1, 1 ), new THREE.Vector3( 1, 1, 1 ) ];
+			this.compositeMaterial.uniforms[ 'bloomTintColors' ].value = this.bloomTintColors; // copy material
+
+			if ( THREE.CopyShader === undefined ) {
+
+				console.error( 'THREE.UnrealBloomPass relies on THREE.CopyShader' );
+
+			}
+
+			const copyShader = THREE.CopyShader;
+			this.copyUniforms = THREE.UniformsUtils.clone( copyShader.uniforms );
+			this.copyUniforms[ 'opacity' ].value = 1.0;
+			this.materialCopy = new THREE.ShaderMaterial( {
+				uniforms: this.copyUniforms,
+				vertexShader: copyShader.vertexShader,
+				fragmentShader: copyShader.fragmentShader,
+				blending: THREE.AdditiveBlending,
+				depthTest: false,
+				depthWrite: false,
+				transparent: true
+			} );
+			this.enabled = true;
+			this.needsSwap = false;
+			this._oldClearColor = new THREE.Color();
+			this.oldClearAlpha = 1;
+			this.basic = new THREE.MeshBasicMaterial();
+			this.fsQuad = new THREE.FullScreenQuad( null );
+
+		}
+
+		dispose() {
+
+			for ( let i = 0; i < this.renderTargetsHorizontal.length; i ++ ) {
+
+				this.renderTargetsHorizontal[ i ].dispose();
+
+			}
+
+			for ( let i = 0; i < this.renderTargetsVertical.length; i ++ ) {
+
+				this.renderTargetsVertical[ i ].dispose();
+
+			}
+
+			this.renderTargetBright.dispose();
+
+		}
+
+		setSize( width, height ) {
+
+			let resx = Math.round( width / 2 );
+			let resy = Math.round( height / 2 );
+			this.renderTargetBright.setSize( resx, resy );
+
+			for ( let i = 0; i < this.nMips; i ++ ) {
+
+				this.renderTargetsHorizontal[ i ].setSize( resx, resy );
+				this.renderTargetsVertical[ i ].setSize( resx, resy );
+				this.separableBlurMaterials[ i ].uniforms[ 'texSize' ].value = new THREE.Vector2( resx, resy );
+				resx = Math.round( resx / 2 );
+				resy = Math.round( resy / 2 );
+
+			}
+
+		}
+
+		render( renderer, writeBuffer, readBuffer, deltaTime, maskActive ) {
+
+			renderer.getClearColor( this._oldClearColor );
+			this.oldClearAlpha = renderer.getClearAlpha();
+			const oldAutoClear = renderer.autoClear;
+			renderer.autoClear = false;
+			renderer.setClearColor( this.clearColor, 0 );
+			if ( maskActive ) renderer.state.buffers.stencil.setTest( false ); // Render input to screen
+
+			if ( this.renderToScreen ) {
+
+				this.fsQuad.material = this.basic;
+				this.basic.map = readBuffer.texture;
+				renderer.setRenderTarget( null );
+				renderer.clear();
+				this.fsQuad.render( renderer );
+
+			} // 1. Extract Bright Areas
+
+
+			this.highPassUniforms[ 'tDiffuse' ].value = readBuffer.texture;
+			this.highPassUniforms[ 'luminosityThreshold' ].value = this.threshold;
+			this.fsQuad.material = this.materialHighPassFilter;
+			renderer.setRenderTarget( this.renderTargetBright );
+			renderer.clear();
+			this.fsQuad.render( renderer ); // 2. Blur All the mips progressively
+
+			let inputRenderTarget = this.renderTargetBright;
+
+			for ( let i = 0; i < this.nMips; i ++ ) {
+
+				this.fsQuad.material = this.separableBlurMaterials[ i ];
+				this.separableBlurMaterials[ i ].uniforms[ 'colorTexture' ].value = inputRenderTarget.texture;
+				this.separableBlurMaterials[ i ].uniforms[ 'direction' ].value = UnrealBloomPass.BlurDirectionX;
+				renderer.setRenderTarget( this.renderTargetsHorizontal[ i ] );
+				renderer.clear();
+				this.fsQuad.render( renderer );
+				this.separableBlurMaterials[ i ].uniforms[ 'colorTexture' ].value = this.renderTargetsHorizontal[ i ].texture;
+				this.separableBlurMaterials[ i ].uniforms[ 'direction' ].value = UnrealBloomPass.BlurDirectionY;
+				renderer.setRenderTarget( this.renderTargetsVertical[ i ] );
+				renderer.clear();
+				this.fsQuad.render( renderer );
+				inputRenderTarget = this.renderTargetsVertical[ i ];
+
+			} // Composite All the mips
+
+
+			this.fsQuad.material = this.compositeMaterial;
+			this.compositeMaterial.uniforms[ 'bloomStrength' ].value = this.strength;
+			this.compositeMaterial.uniforms[ 'bloomRadius' ].value = this.radius;
+			this.compositeMaterial.uniforms[ 'bloomTintColors' ].value = this.bloomTintColors;
+			renderer.setRenderTarget( this.renderTargetsHorizontal[ 0 ] );
+			renderer.clear();
+			this.fsQuad.render( renderer ); // Blend it additively over the input texture
+
+			this.fsQuad.material = this.materialCopy;
+			this.copyUniforms[ 'tDiffuse' ].value = this.renderTargetsHorizontal[ 0 ].texture;
+			if ( maskActive ) renderer.state.buffers.stencil.setTest( true );
+
+			if ( this.renderToScreen ) {
+
+				renderer.setRenderTarget( null );
+				this.fsQuad.render( renderer );
+
+			} else {
+
+				renderer.setRenderTarget( readBuffer );
+				this.fsQuad.render( renderer );
+
+			} // Restore renderer settings
+
+
+			renderer.setClearColor( this._oldClearColor, this.oldClearAlpha );
+			renderer.autoClear = oldAutoClear;
+
+		}
+
+		getSeperableBlurMaterial( kernelRadius ) {
+
+			return new THREE.ShaderMaterial( {
+				defines: {
+					'KERNEL_RADIUS': kernelRadius,
+					'SIGMA': kernelRadius
+				},
+				uniforms: {
+					'colorTexture': {
+						value: null
+					},
+					'texSize': {
+						value: new THREE.Vector2( 0.5, 0.5 )
+					},
+					'direction': {
+						value: new THREE.Vector2( 0.5, 0.5 )
+					}
+				},
+				vertexShader: `varying vec2 vUv;
+				void main() {
+					vUv = uv;
+					gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+				}`,
+				fragmentShader: `#include <common>
+				varying vec2 vUv;
+				uniform sampler2D colorTexture;
+				uniform vec2 texSize;
+				uniform vec2 direction;
+
+				float gaussianPdf(in float x, in float sigma) {
+					return 0.39894 * exp( -0.5 * x * x/( sigma * sigma))/sigma;
+				}
+				void main() {
+					vec2 invSize = 1.0 / texSize;
+					float fSigma = float(SIGMA);
+					float weightSum = gaussianPdf(0.0, fSigma);
+					vec3 diffuseSum = texture2D( colorTexture, vUv).rgb * weightSum;
+					for( int i = 1; i < KERNEL_RADIUS; i ++ ) {
+						float x = float(i);
+						float w = gaussianPdf(x, fSigma);
+						vec2 uvOffset = direction * invSize * x;
+						vec3 sample1 = texture2D( colorTexture, vUv + uvOffset).rgb;
+						vec3 sample2 = texture2D( colorTexture, vUv - uvOffset).rgb;
+						diffuseSum += (sample1 + sample2) * w;
+						weightSum += 2.0 * w;
+					}
+					gl_FragColor = vec4(diffuseSum/weightSum, 1.0);
+				}`
+			} );
+
+		}
+
+		getCompositeMaterial( nMips ) {
+
+			return new THREE.ShaderMaterial( {
+				defines: {
+					'NUM_MIPS': nMips
+				},
+				uniforms: {
+					'blurTexture1': {
+						value: null
+					},
+					'blurTexture2': {
+						value: null
+					},
+					'blurTexture3': {
+						value: null
+					},
+					'blurTexture4': {
+						value: null
+					},
+					'blurTexture5': {
+						value: null
+					},
+					'dirtTexture': {
+						value: null
+					},
+					'bloomStrength': {
+						value: 1.0
+					},
+					'bloomFactors': {
+						value: null
+					},
+					'bloomTintColors': {
+						value: null
+					},
+					'bloomRadius': {
+						value: 0.0
+					}
+				},
+				vertexShader: `varying vec2 vUv;
+				void main() {
+					vUv = uv;
+					gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+				}`,
+				fragmentShader: `varying vec2 vUv;
+				uniform sampler2D blurTexture1;
+				uniform sampler2D blurTexture2;
+				uniform sampler2D blurTexture3;
+				uniform sampler2D blurTexture4;
+				uniform sampler2D blurTexture5;
+				uniform sampler2D dirtTexture;
+				uniform float bloomStrength;
+				uniform float bloomRadius;
+				uniform float bloomFactors[NUM_MIPS];
+				uniform vec3 bloomTintColors[NUM_MIPS];
+
+				float lerpBloomFactor(const in float factor) {
+					float mirrorFactor = 1.2 - factor;
+					return mix(factor, mirrorFactor, bloomRadius);
+				}
+
+				void main() {
+					gl_FragColor = bloomStrength * ( lerpBloomFactor(bloomFactors[0]) * vec4(bloomTintColors[0], 1.0) * texture2D(blurTexture1, vUv) +
+						lerpBloomFactor(bloomFactors[1]) * vec4(bloomTintColors[1], 1.0) * texture2D(blurTexture2, vUv) +
+						lerpBloomFactor(bloomFactors[2]) * vec4(bloomTintColors[2], 1.0) * texture2D(blurTexture3, vUv) +
+						lerpBloomFactor(bloomFactors[3]) * vec4(bloomTintColors[3], 1.0) * texture2D(blurTexture4, vUv) +
+						lerpBloomFactor(bloomFactors[4]) * vec4(bloomTintColors[4], 1.0) * texture2D(blurTexture5, vUv) );
+				}`
+			} );
+
+		}
+
+	}
+
+	UnrealBloomPass.BlurDirectionX = new THREE.Vector2( 1.0, 0.0 );
+	UnrealBloomPass.BlurDirectionY = new THREE.Vector2( 0.0, 1.0 );
+
+	THREE.UnrealBloomPass = UnrealBloomPass;
+
+} )();
+
+</script>
+<script>
+/* ALPHA hero: a real-time night highway built from the products in the catalogue.
+   Left-hand traffic (India). Red studs on the shoulder edge, amber on the median edge, white on the lane line.
+   W-beam crash barrier + guardrail reflectors + delineators on the left, anti-glare boards on the median,
+   an overhead gantry sign, solar blinkers, oncoming headlights and tail lights. UnrealBloom for the glow. */
+(function () {
+  const H = {};
+  let renderer, composer, scene, camera, raf = 0, running = false, clock, onResize, onMove, state;
+
+  function makeRoadTexture(markingsOnly) {
+    const c = document.createElement('canvas'); c.width = 1024; c.height = 1536;
+    const g = c.getContext('2d');
+    const W = 16, L = 24, px = x => (x + W / 2) / W * c.width, pz = z => z / L * c.height;
+    if (!markingsOnly) {
+      g.fillStyle = '#34363c'; g.fillRect(0, 0, c.width, c.height);
+      for (let i = 0; i < 26000; i++) { const v = 20 + Math.random() * 40; g.fillStyle = `rgba(${v},${v},${v + 4},${Math.random() * .7})`; g.fillRect(Math.random() * c.width, Math.random() * c.height, 1.6, 1.6); }
+      // tyre tracks (slightly polished)
+      [-2.6, -0.9, 0.9, 2.6].forEach(x => { const gr = g.createLinearGradient(px(x - .45), 0, px(x + .45), 0); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(.5, 'rgba(0,0,0,.18)'); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(px(x - .45), 0, px(x + .45) - px(x - .45), c.height); });
+      g.fillStyle = 'rgba(70,72,78,.55)'; g.fillRect(0, 0, px(-3.75), c.height); g.fillRect(px(3.75), 0, c.width - px(3.75), c.height);
+    } else { g.fillStyle = '#000'; g.fillRect(0, 0, c.width, c.height); }
+    // thermoplastic: yellow edge lines, white dashed lane line
+    g.fillStyle = markingsOnly ? '#ffc21a' : '#e9b31a';
+    g.fillRect(px(-3.75), 0, px(-3.6) - px(-3.75), c.height); g.fillRect(px(3.6), 0, px(3.75) - px(3.6), c.height);
+    g.fillStyle = markingsOnly ? '#ffffff' : '#e8e9ea';
+    [[0, 4.5], [12, 16.5]].forEach(([a, b]) => g.fillRect(px(-.075), pz(a), px(.075) - px(-.075), pz(b) - pz(a)));
+    const t = new THREE.CanvasTexture(c);
+    t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 8;
+    if (!markingsOnly) t.encoding = THREE.sRGBEncoding;
+    return t;
+  }
+
+  function makeSignTexture() {
+    const c = document.createElement('canvas'); c.width = 1024; c.height = 440; const g = c.getContext('2d');
+    g.fillStyle = '#0d6b3b'; g.fillRect(0, 0, c.width, c.height);
+    g.strokeStyle = '#fff'; g.lineWidth = 10; g.strokeRect(16, 16, c.width - 32, c.height - 32);
+    g.fillStyle = '#fff'; g.textBaseline = 'middle';
+    g.font = '700 128px "Barlow Condensed", Arial Narrow, Arial, sans-serif'; g.fillText('ALPHA', 70, 150);
+    g.font = '600 58px "Barlow", Arial, sans-serif'; g.fillText('Road Safety Products', 72, 268);
+    g.font = '500 44px "Barlow", Arial, sans-serif'; g.fillStyle = '#d7f0e1'; g.fillText('Amba Chem  ·  Delhi', 72, 350);
+    // arrow
+    g.fillStyle = '#fff'; g.beginPath(); g.moveTo(860, 90); g.lineTo(940, 190); g.lineTo(890, 190); g.lineTo(890, 360); g.lineTo(830, 360); g.lineTo(830, 190); g.lineTo(780, 190); g.closePath(); g.fill();
+    const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; t.anisotropy = 8; return t;
+  }
+
+  function glowSprite() {
+    const c = document.createElement('canvas'); c.width = c.height = 128; const g = c.getContext('2d');
+    const gr = g.createRadialGradient(64, 64, 0, 64, 64, 64);
+    gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(.15, 'rgba(255,255,255,.85)'); gr.addColorStop(.4, 'rgba(255,255,255,.18)'); gr.addColorStop(1, 'rgba(255,255,255,0)');
+    g.fillStyle = gr; g.fillRect(0, 0, 128, 128); return new THREE.CanvasTexture(c);
+  }
+
+  H.start = function (canvas, opts = {}) {
+    if (!window.THREE || !THREE.EffectComposer) return false;
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
+    } catch (e) { return false; }
+    const mobile = () => canvas.clientWidth < 700;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    renderer.setPixelRatio(Math.min(mobile() ? 1.5 : 1.75, devicePixelRatio || 1));
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+
+    scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x0b0e15, 0.0105);
+    camera = new THREE.PerspectiveCamera(58, 1, 0.1, 600);
+
+    // Sky dome: deep navy to a sodium-orange city glow at the horizon
+    const sky = new THREE.Mesh(new THREE.SphereGeometry(500, 32, 16), new THREE.ShaderMaterial({
+      side: THREE.BackSide, depthWrite: false, fog: false,
+      uniforms: { t: { value: 0 } },
+      vertexShader: 'varying vec3 vP; void main(){ vP = normalize(position); gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.); }',
+      fragmentShader: `varying vec3 vP; uniform float t;
+        float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+        void main(){ float y = vP.y; vec3 top = vec3(.018,.024,.05); vec3 mid = vec3(.05,.06,.1); vec3 hor = vec3(.42,.2,.09);
+          vec3 c = mix(mid, top, smoothstep(.0,.45,y)); c = mix(hor, c, smoothstep(-.02,.16,y));
+          float glow = exp(-abs(atan(vP.x, -vP.z))*1.6) * smoothstep(.22,0.,y) * .35; c += vec3(.5,.22,.08)*glow;
+          vec2 sp = floor(vP.xz/ max(.15,y) * 220.); float s = step(.9965, h(sp)) * smoothstep(.12,.5,y); c += s * (.5 + .5*sin(t*2.+h(sp+1.)*30.));
+          gl_FragColor = vec4(c,1.); }`
+    }));
+    scene.add(sky);
+
+    scene.add(new THREE.HemisphereLight(0x33405e, 0x070707, 0.55));
+    const moon = new THREE.DirectionalLight(0x8fa6d8, 0.18); moon.position.set(-30, 40, -60); scene.add(moon);
+
+    // Headlights attached to the camera
+    const rig = new THREE.Group(); scene.add(rig); rig.add(camera);
+    const heads = [-0.75, 0.75].map(x => {
+      const s = new THREE.SpotLight(0xfff1d6, 0, 170, 0.46, 0.7, 1.0); s.position.set(x, -0.5, 0.5);
+      const tgt = new THREE.Object3D(); tgt.position.set(x * 0.6, -1.3, -40); rig.add(tgt); s.target = tgt; rig.add(s); return s;
+    });
+
+    // Road (two carriageways)
+    const LEN = 420, ROAD_W = 16;
+    const roadTex = makeRoadTexture(false), markTex = makeRoadTexture(true);
+    [roadTex, markTex].forEach(t => t.repeat.set(1, LEN / 24));
+    const roadMat = new THREE.MeshStandardMaterial({ map: roadTex, roughness: 0.82, metalness: 0.05, emissive: 0xffffff, emissiveMap: markTex, emissiveIntensity: 0.025 });
+    const road = new THREE.Mesh(new THREE.PlaneGeometry(ROAD_W, LEN), roadMat); road.rotation.x = -Math.PI / 2; road.position.set(0, 0, -LEN / 2 + 20); scene.add(road);
+    const road2 = road.clone(); road2.position.x = 22; scene.add(road2);
+    const ground = new THREE.Mesh(new THREE.PlaneGeometry(400, LEN), new THREE.MeshStandardMaterial({ color: 0x0d0f0d, roughness: 1 }));
+    ground.rotation.x = -Math.PI / 2; ground.position.set(0, -0.02, -LEN / 2 + 20); scene.add(ground);
+    // Median kerb
+    const kerb = new THREE.Mesh(new THREE.BoxGeometry(6, 0.25, LEN), new THREE.MeshStandardMaterial({ color: 0x3b3d40, roughness: .9 }));
+    kerb.position.set(11, 0.12, -LEN / 2 + 20); scene.add(kerb);
+    const kerbStripe = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.26, LEN), new THREE.MeshStandardMaterial({ color: 0xcfa21b, roughness: .6 })); kerbStripe.position.set(8.02, 0.12, -LEN / 2 + 20); scene.add(kerbStripe);
+
+    // W-beam crash barrier (static, continuous) on the left
+    const beamShape = new THREE.Shape(); beamShape.moveTo(0, 0); beamShape.bezierCurveTo(.12, .05, .12, .13, 0, .17); beamShape.bezierCurveTo(.12, .21, .12, .29, 0, .34); beamShape.lineTo(-.02, .34); beamShape.lineTo(-.02, 0);
+    const beamGeo = new THREE.ExtrudeGeometry(beamShape, { depth: LEN, bevelEnabled: false, curveSegments: 8 });
+    const steel = new THREE.MeshStandardMaterial({ color: 0xb8bec6, metalness: 0.85, roughness: 0.32 });
+    const beam = new THREE.Mesh(beamGeo, steel); beam.position.set(-6.3, 0.55, -LEN + 20); scene.add(beam);
+
+    const dummy = new THREE.Object3D(), col = new THREE.Color();
+    const movers = []; // {mesh, items:[{x,y,z,ry,s}], period, update?}
+    function instanced(geo, mat, positions, cb) {
+      const m = new THREE.InstancedMesh(geo, mat, positions.length); m.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+      scene.add(m); const rec = { mesh: m, items: positions, cb }; movers.push(rec); return rec;
+    }
+    const along = (step, x, y = 0, extra = {}) => { const a = []; for (let z = 0; z < LEN; z += step) a.push(Object.assign({ x, y, z: -z + 18, base: -z + 18 }, extra)); return a; };
+
+    // Barrier posts + guardrail reflectors
+    instanced(new THREE.BoxGeometry(0.14, 0.95, 0.14), new THREE.MeshStandardMaterial({ color: 0x8b9199, metalness: .7, roughness: .45 }), along(4, -6.42, 0.47));
+    const reflMat = new THREE.MeshBasicMaterial({ toneMapped: false });
+    const refl = instanced(new THREE.BoxGeometry(0.02, 0.12, 0.16), reflMat, along(8, -6.2, 0.72, { c: [1, .55, .05] }));
+
+    // Delineator posts on the shoulder with white + red retroreflective bands
+    instanced(new THREE.CylinderGeometry(0.06, 0.07, 1.1, 10), new THREE.MeshStandardMaterial({ color: 0x111215, roughness: .6 }), along(20, -5.2, 0.55));
+    const bandMat = new THREE.MeshBasicMaterial({ toneMapped: false });
+    const bands = instanced(new THREE.CylinderGeometry(0.066, 0.066, 0.12, 10), bandMat,
+      along(20, -5.2, 0.98, { c: [1, 1, 1] }).concat(along(20, -5.2, 0.8, { c: [1, .08, .1] })));
+
+    // Road studs: red shoulder edge, white lane line, amber median edge
+    const studMat = new THREE.MeshBasicMaterial({ toneMapped: false });
+    const studPos = along(9, -3.68, 0.03, { c: [1, .06, .05] }).concat(along(9, 0, 0.03, { c: [1, 1, .95] }), along(9, 3.68, 0.03, { c: [1, .55, .04] }));
+    const studs = instanced(new THREE.BoxGeometry(0.17, 0.045, 0.12), studMat, studPos);
+    // Retroreflective glare around each stud (what a driver actually sees)
+    const glowTex = glowSprite();
+    const gGeo = new THREE.BufferGeometry();
+    const gPos = new Float32Array(studPos.length * 3), gCol = new Float32Array(studPos.length * 3);
+    gGeo.setAttribute('position', new THREE.BufferAttribute(gPos, 3)); gGeo.setAttribute('color', new THREE.BufferAttribute(gCol, 3));
+    const glowPts = new THREE.Points(gGeo, new THREE.PointsMaterial({ size: 1.5, map: glowTex, vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false, sizeAttenuation: true }));
+    glowPts.frustumCulled = false; scene.add(glowPts);
+    function updGlow() {
+      studPos.forEach((it, i) => {
+        let z = it.base + (state.dist % LEN); if (z > 20) z -= LEN;
+        const dz = -z, lit = state.t < 0.4 ? 0 : (dz < state.wave ? 1 : 0);
+        const cone = dz < 2 ? 0 : Math.min(1, 55 / (dz + 10)) * (dz < 170 ? 1 : Math.max(0, 1 - (dz - 170) / 60));
+        const k = lit * cone * (0.8 + 0.2 * Math.sin(state.t * 7 + i * 1.7));
+        gPos[i * 3] = it.x; gPos[i * 3 + 1] = 0.08; gPos[i * 3 + 2] = z;
+        gCol[i * 3] = it.c[0] * k; gCol[i * 3 + 1] = it.c[1] * k; gCol[i * 3 + 2] = it.c[2] * k;
+      });
+      gGeo.attributes.position.needsUpdate = true; gGeo.attributes.color.needsUpdate = true;
+    }
+
+    // Anti-glare boards on the median
+    instanced(new THREE.BoxGeometry(0.16, 0.95, 0.5), new THREE.MeshStandardMaterial({ color: 0x167a40, roughness: .55, emissive: 0x0b3a1f, emissiveIntensity: .04 }), along(1.6, 11, 0.72, { ry: 0.35 }));
+
+    // Sodium street lights on the median: poles, lamps and soft light pools on the asphalt
+    const poleMat = new THREE.MeshStandardMaterial({ color: 0x2a2e34, metalness: .4, roughness: .7 });
+    instanced(new THREE.CylinderGeometry(0.09, 0.13, 9, 8), poleMat, along(42, 8.6, 4.5));
+    instanced(new THREE.BoxGeometry(3.6, 0.1, 0.1), poleMat, along(42, 6.9, 8.95));
+    const lampMat = new THREE.MeshBasicMaterial({ toneMapped: false });
+    instanced(new THREE.BoxGeometry(0.9, 0.12, 0.32), lampMat, along(42, 5.3, 8.85, { c: [1, .42, .1], lamp: 1 }));
+    const poolTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 256; const g = c.getContext('2d'); const gr = g.createRadialGradient(128, 128, 0, 128, 128, 128); gr.addColorStop(0, 'rgba(255,160,70,.9)'); gr.addColorStop(.45, 'rgba(255,130,50,.32)'); gr.addColorStop(1, 'rgba(255,120,40,0)'); g.fillStyle = gr; g.fillRect(0, 0, 256, 256); return new THREE.CanvasTexture(c); })();
+    const pool = new THREE.InstancedMesh(new THREE.PlaneGeometry(16, 22).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ map: poolTex, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false }), Math.ceil(LEN / 42));
+    scene.add(pool); movers.push({ mesh: pool, items: along(42, 2.6, 0.03) });
+
+    // Overhead gantry with sign + solar blinkers
+    const gantry = new THREE.Group();
+    const gMat = new THREE.MeshStandardMaterial({ color: 0x7c838c, metalness: .8, roughness: .4 });
+    [-7, 8].forEach(x => { const p = new THREE.Mesh(new THREE.BoxGeometry(0.35, 7.2, 0.35), gMat); p.position.set(x, 3.6, 0); gantry.add(p); });
+    [6.6, 7.4].forEach(y => { const b = new THREE.Mesh(new THREE.BoxGeometry(15.4, 0.22, 0.22), gMat); b.position.set(0.5, y, 0); gantry.add(b); });
+    const signTex = makeSignTexture();
+    const sign = new THREE.Mesh(new THREE.PlaneGeometry(6.4, 2.75), new THREE.MeshStandardMaterial({ map: signTex, emissiveMap: signTex, emissive: 0xffffff, emissiveIntensity: .32, roughness: .5 }));
+    sign.position.set(-0.4, 5.55, 0.2); gantry.add(sign);
+    const blinkMat = new THREE.SpriteMaterial({ map: glowSprite(), color: 0xffa21a, blending: THREE.AdditiveBlending, depthWrite: false, transparent: true });
+    const blinkers = [-7, 8].map(x => { const s = new THREE.Sprite(blinkMat.clone()); s.position.set(x, 7.6, 0.3); s.scale.set(1.2, 1.2, 1); gantry.add(s); return s; });
+    gantry.position.z = -150; scene.add(gantry);
+
+    // Traffic: tail lights ahead in our direction, oncoming headlights on the other carriageway
+    const spr = glowSprite();
+    const mkPair = (color, scale) => { const g = new THREE.Group(); [-0.72, 0.72].forEach(x => { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: spr, color, blending: THREE.AdditiveBlending, depthWrite: false, transparent: true })); s.position.x = x; s.scale.set(scale, scale, 1); g.add(s); }); scene.add(g); return g; };
+    const tails = [0, 1, 2].map(i => ({ g: mkPair(0xff2030, 0.9), z: -70 - i * 85, x: i % 2 ? 1.8 : -1.8, v: 3 + i }));
+    const oncoming = [0, 1, 2, 3].map(i => ({ g: mkPair(0xfff4e0, 2.4), z: -60 - i * 95, x: 15 + (i % 2) * 3.4 }));
+    tails.forEach(t => t.g.position.set(t.x, 0.75, t.z)); oncoming.forEach(o => o.g.position.set(o.x, 0.7, o.z));
+
+    // Post-processing: bloom + cinematic grade (vignette, grain, slight chromatic fringe)
+    composer = new THREE.EffectComposer(renderer);
+    composer.addPass(new THREE.RenderPass(scene, camera));
+    const bloom = new THREE.UnrealBloomPass(new THREE.Vector2(256, 256), 0.95, 0.6, 0.24); composer.addPass(bloom);
+    const grade = new THREE.ShaderPass({
+      uniforms: { tDiffuse: { value: null }, t: { value: 0 }, res: { value: new THREE.Vector2(1, 1) } },
+      vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.); }',
+      fragmentShader: `uniform sampler2D tDiffuse; uniform float t; uniform vec2 res; varying vec2 vUv;
+        float h(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}
+        void main(){ vec2 d = vUv - .5; float r = dot(d,d);
+          vec3 c; c.r = texture2D(tDiffuse, vUv + d*r*.012).r; c.g = texture2D(tDiffuse, vUv).g; c.b = texture2D(tDiffuse, vUv - d*r*.012).b;
+          c *= 1. - r*1.15; c += (h(vUv*res + t) - .5) * .045; c = pow(c, vec3(.97)); gl_FragColor = vec4(c,1.); }`
+    });
+    composer.addPass(grade);
+
+    // Pointer parallax
+    const ptr = { x: 0, y: 0, tx: 0, ty: 0 };
+    onMove = e => { const r = canvas.getBoundingClientRect(); ptr.tx = ((e.clientX - r.left) / r.width - .5) * 2; ptr.ty = ((e.clientY - r.top) / r.height - .5) * 2; };
+    addEventListener('pointermove', onMove, { passive: true });
+
+    onResize = () => {
+      const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return;
+      renderer.setSize(w, h, false); composer.setSize(w, h);
+      bloom.resolution.set(w / 2, h / 2); grade.uniforms.res.value.set(w, h);
+      camera.aspect = w / h; camera.fov = w / h < 1 ? 72 : 56; camera.updateProjectionMatrix();
+    };
+    onResize(); addEventListener('resize', onResize);
+
+    clock = new THREE.Clock();
+    state = { dist: 0, speed: 0, t: 0 };
+    const MAXV = 22; // m/s, about 80 km/h
+    const hud = opts.hud;
+
+    function placeAll() {
+      for (const rec of movers) {
+        const m = rec.mesh, cvec = rec.items[0].c ? true : false;
+        rec.items.forEach((it, i) => {
+          let z = it.base + (state.dist % LEN); if (z > 20) z -= LEN;
+          dummy.position.set(it.x, it.y, z); dummy.rotation.set(0, it.ry || 0, 0); dummy.updateMatrix(); m.setMatrixAt(i, dummy.matrix);
+          if (cvec) {
+            // retroreflection: bright inside the headlight cone, a gentle twinkle, switched on by the intro wave
+            const dz = -z, lit = state.t < 0.4 ? 0 : (dz < state.wave ? 1 : 0);
+            if (it.lamp) { const k2 = (state.t > 0.2 ? 1.5 : 0); col.setRGB(it.c[0] * k2, it.c[1] * k2, it.c[2] * k2); m.setColorAt(i, col); return; }
+            const cone = dz < 1 ? 0.2 : Math.min(1, 26 / (dz + 6)) * (dz < 150 ? 1 : Math.max(0, 1 - (dz - 150) / 60));
+            const tw = 0.85 + 0.15 * Math.sin(state.t * 6 + i * 2.3);
+            const k = lit * (0.5 + 11 * cone) * tw;
+            col.setRGB(it.c[0] * k, it.c[1] * k, it.c[2] * k); m.setColorAt(i, col);
+          }
+        });
+        m.instanceMatrix.needsUpdate = true; if (m.instanceColor) m.instanceColor.needsUpdate = true;
+      }
+    }
+
+    function frame() {
+      const dt = Math.min(0.05, clock.getDelta());
+      state.t += dt;
+      const on = state.t > 0.35;
+      heads.forEach(h => h.intensity += ((on ? 5.5 : 0) - h.intensity) * Math.min(1, dt * 6));
+      state.wave = on ? Math.min(400, Math.pow(Math.max(0, state.t - 0.5), 1.6) * 140) : 0;
+      state.speed += ((reduce ? 0 : MAXV) - state.speed) * Math.min(1, dt * (state.t < 1 ? 0.4 : 0.9));
+      state.dist += state.speed * dt;
+      roadTex.offset.y = markTex.offset.y = (state.dist / 24) % 1;
+      // gantry recycle
+      let gz = -150 + (state.dist % 230); if (gz > 25) gz -= 230; gantry.position.z = gz;
+      blinkers.forEach((b, i) => { const on = (Math.sin(state.t * 5 + i * Math.PI) > 0.2) ? 1 : 0.05; b.material.opacity = on; b.scale.setScalar(on ? 1.5 : 1); });
+      tails.forEach(tl => { tl.z -= tl.v * dt * (state.speed / MAXV); if (tl.z < -320) tl.z = -60; tl.g.position.z = tl.z; });
+      oncoming.forEach(o => { o.z += (state.speed + 25) * dt; if (o.z > 25) o.z = -360; o.g.position.z = o.z; });
+      placeAll(); updGlow();
+      ptr.x += (ptr.tx - ptr.x) * Math.min(1, dt * 2.2); ptr.y += (ptr.ty - ptr.y) * Math.min(1, dt * 2.2);
+      const sway = Math.sin(state.t * .6) * .12;
+      rig.position.set(-1.75 + ptr.x * .55 + sway, 1.1 - ptr.y * .15, 0);
+      camera.rotation.set(-0.045 - ptr.y * .03, -ptr.x * .07 - 0.035, Math.sin(state.t * .5) * .004 - ptr.x * .01);
+      sky.material.uniforms.t.value = state.t; grade.uniforms.t.value = state.t;
+      composer.render();
+      if (hud) hud(Math.round(state.speed * 3.6), state.dist);
+      if (running && !reduce) raf = requestAnimationFrame(frame);
+    }
+    running = true; raf = requestAnimationFrame(frame);
+    if (reduce) { state.t = 3; state.wave = 400; heads.forEach(h => h.intensity = 5.5); setTimeout(() => { running = false; frame(); }, 50); }
+    H._frame = frame;
+    return true;
+  };
+  H.pause = function () { running = false; cancelAnimationFrame(raf); };
+  H.resume = function () { if (!renderer || running) return; running = true; clock && clock.getDelta(); raf = requestAnimationFrame(H._frame); };
+  H.stop = function () {
+    H.pause();
+    if (onResize) removeEventListener('resize', onResize); if (onMove) removeEventListener('pointermove', onMove);
+    if (renderer) { renderer.dispose(); renderer.forceContextLoss && renderer.forceContextLoss(); }
+    renderer = composer = scene = camera = null;
+  };
+  window.Hero3D = H;
+})();
+
+</script>
+<script>
+(() => {
+document.documentElement.classList.add('js');
+const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const S = window.SITE, CATS = window.CATS, P = window.PRODUCTS, CERTS = window.CERTS;
+const img = k => `img/${k}.webp`;
+const SCENES = new Set(['tp-white','tp-yellow','tp-eco','warning','info','overhead','railway','projectboard','routesign','mandatory','nightglow','antiglare','highway','cover']);
+const byId = Object.fromEntries(P.map(p => [p.id, p]));
+const catOf = id => CATS.find(c => c.id === id);
+const inCat = id => P.filter(p => p.cat === id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const SW = {yellow:'#F2B705', red:'#D61F2C', white:'#fff', green:'#1FA855'};
+const ARW = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const PLUS = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg>';
+const WA = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1l-.9 1.2c-.2.2-.3.2-.6.1-1.6-.8-2.7-1.5-3.7-3.3-.3-.5.3-.4.8-1.4.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4c-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.3 5.2 4.6 1.9.8 2.7.9 3.6.7.6-.1 1.8-.7 2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.3zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM12 0a12 12 0 0 0-10.3 18L0 24l6.2-1.6A12 12 0 1 0 12 0z"/></svg>';
+const PHONE = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>';
+const waLink = t => `https://wa.me/${S.wa}?text=${encodeURIComponent(t)}`;
+const plate = (k, cls = '') => `<div class="plate ${SCENES.has(k) ? 'scene' : ''} ${cls}"><img src="${img(k)}" alt="" loading="lazy" decoding="async"></div>`;
+
+/* ---------- Enquiry state ---------- */
+let cart = {};
+try { cart = JSON.parse(localStorage.getItem('alpha-enquiry') || '{}') || {}; } catch (e) { cart = {}; }
+const save = () => { try { localStorage.setItem('alpha-enquiry', JSON.stringify(cart)); } catch (e) {} };
+const keyOf = (id, v) => v ? `${id}|${v}` : id;
+const cartCount = () => Object.keys(cart).length;
+function addToCart(id, qty = 1, variant) {
+  const k = keyOf(id, variant); cart[k] = (cart[k] || 0) + qty; save(); syncCount(true); renderCart();
+  toast(`${byId[id].name}${variant ? ' (' + variant + ')' : ''} added to enquiry`);
+}
+function syncCount(bump) {
+  $$('[data-count]').forEach(el => { const n = cartCount(); el.textContent = n; el.classList.toggle('show', n > 0); if (bump) { el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); } });
+}
+let tt; function toast(msg) { $('#toastMsg').textContent = msg; $('#toast').classList.add('show'); clearTimeout(tt); tt = setTimeout(() => $('#toast').classList.remove('show'), 3200); }
+$('#toastBtn').onclick = () => { $('#toast').classList.remove('show'); openDrawer('#cartDrawer'); };
+
+/* ---------- Shared bits ---------- */
+function card(p, i = 0) {
+  const sp = (p.specs || []).find(s => /size|height/i.test(s[0]));
+  const sw = p.colours ? `<span class="swatches" aria-label="Colours">${p.colours.map(c => `<i style="background:${SW[c]}" title="${c}"></i>`).join('')}</span>` : '';
+  const tg = p.tag ? `<span class="tag ${p.tag === 'New' ? 'new' : ''}">${esc(p.tag)}</span>` : '';
+  return `<article class="p-card rv" style="--i:${i % 8}">${tg}<a class="cover" href="#p-${p.id}" aria-label="${esc(p.name)}"></a>${plate(p.img)}
+    <div class="body"><span class="model">${esc(p.model)}</span><h3>${esc(p.name)}</h3>${sp ? `<p class="spec">${esc(sp[1])}</p>` : `<p class="spec">${esc(catOf(p.cat).short)}</p>`}</div>
+    <div class="foot">${sw || '<span class="por">Price on request</span>'}<button class="add" data-add="${p.id}" aria-label="Add ${esc(p.name)} to enquiry">${PLUS}Enquire</button></div></article>`;
+}
+function catCard(c, i) {
+  const n = inCat(c.id).length;
+  return `<a class="cat-card rv" style="--i:${i % 8}" href="#c-${c.id}"><span class="idx">${String(i + 1).padStart(2, '0')} / ${CATS.length}</span>${plate(c.img)}
+   <div class="body"><div><h3>${esc(c.short)}</h3><div class="n">${n} product${n > 1 ? 's' : ''}</div></div><span class="arrow">${ARW}</span></div></a>`;
+}
+const quoteBand = () => `<section class="band"><div class="wrap">
+  <div class="rv"><h2>Tender, BOQ or a single site?</h2><p>Send your quantity list and delivery location. Our team replies with a GST invoice quote, dispatch date and installation support, usually the same working day.</p></div>
+  <div class="acts rv"><a class="btn btn-yellow" href="#enquiry">Request bulk quote ${ARW}</a><a class="btn btn-ghost" href="${waLink('Hello ALPHA team, I have a BOQ / tender requirement.')}" target="_blank" rel="noopener">${WA} WhatsApp BOQ</a></div>
+</div></section>`;
+
+/* ---------- Views ---------- */
+function home() {
+  const feat = ['ac-sr-01', 'ac1003n', 'ac-sb-1016', 'ac-b-104', 'convex-mirror', 'ac-s-02', 'ac-c-02', 'ac-al-1004'].map(id => byId[id]);
+  const stds = ['MoRTH 803', 'IRC:35 Road markings', 'IRC:67 Road signs', 'IRC:79 Delineators', 'IRC:99 Speed humps', 'BS EN 1871:2000', 'AASHTO M249', 'ASTM D4280', 'EN 1317', 'ARAI tested', 'ISO 9001:2015'];
+  const tick = stds.map(s => `<span>${s}</span>`).join('');
+  return `
+  <section class="hero" id="hero"><canvas id="road" aria-hidden="true"></canvas>
+  <div class="hud" aria-hidden="true"><span class="live">LIVE 3D</span><span><small>On this road: ALPHA road studs, delineators,</small><small>W-beam barrier, guardrail reflectors, anti-glare boards</small></span><span style="text-align:right"><b id="kmh">0</b><small>km/h</small></span></div>
+  <div class="wrap">
+    <div class="hero-kicker"><span class="chip"><i></i>Manufacturer &amp; importer &middot; Delhi</span><span class="chip">ISO 9001:2015 &middot; MSME</span></div>
+    <h1><span class="ln"><span style="--d:0">Safer roads</span></span><span class="ln"><span style="--d:1">start with</span></span><span class="ln"><span style="--d:2"><em>ALPHA</em></span></span></h1>
+    <p class="lead">Thermoplastic road marking paint, road studs, speed breakers, delineators, barriers, solar blinkers and IRC-spec signage. Trusted by contractors working for NHAI, Indian Railways, State PWDs and Smart City projects.</p>
+    <div class="ctas"><a class="btn btn-red" href="#products">Explore catalogue ${ARW}</a><a class="btn btn-ghost" href="#enquiry">Get bulk quote</a></div>
+    <div class="stats">
+      <div class="stat"><b data-to="15">0</b><span>Years in road safety</span></div>
+      <div class="stat"><b data-to="${P.length}">0</b><span>Products in catalogue</span></div>
+      <div class="stat"><b data-to="${CATS.length}">0</b><span>Product categories</span></div>
+      <div class="stat"><b data-to="4.6" data-dec="1">0</b><span>IndiaMART buyer rating</span></div>
+    </div>
+  </div></section>
+  <div class="ticker" aria-label="Standards we comply with"><div class="ticker-track">${tick}${tick}</div></div>
+
+  <section class="blk"><div class="wrap">
+    <div class="sec-hd"><div><span class="eyebrow">Product range</span><h2 class="sec-title">Everything a road needs</h2><p class="lead">${P.length} products in ${CATS.length} categories, from the white line on the road to the sign above it.</p></div><a class="btn btn-ghost" href="#products">View all products ${ARW}</a></div>
+    <div class="cat-grid">${CATS.map(catCard).join('')}</div>
+  </div></section>
+
+  <section class="feature"><div class="lane" style="top:0"></div><div class="wrap">
+    <div class="feature-img rv"><div class="glow"></div><img src="${img('tp-range')}" alt="ALPHA thermoplastic road marking paint bags in white, yellow and ECO grades" loading="lazy"></div>
+    <div style="display:grid;gap:18px;min-width:0" class="rv">
+      <span class="eyebrow">Flagship &middot; Made by Amba Safety</span>
+      <h2 class="sec-title">ALPHA Thermoplastic Road Marking Paint</h2>
+      <p class="lead">100% solid, environment and user safe compound of pigments, glass beads, binder and filler. It turns liquid when heated and is laid with standard applicators. Dries in 7 minutes, so the road reopens fast.</p>
+      <div class="tbl-wrap" style="background:transparent;border-color:rgba(255,255,255,.12)"><table class="spec-table"><thead><tr><th>Property</th><th><span class="dot-w"></span>White</th><th><span class="dot-y"></span>Yellow</th></tr></thead><tbody>
+        <tr><th>Daylight luminance at 45°C</th><td>&gt; 75%</td><td>&gt; 70%</td></tr><tr><th>Drying time</th><td>7 min</td><td>7 min</td></tr>
+        <tr><th>Softening point</th><td>105°C</td><td>105°C</td></tr><tr><th>Skid resistance</th><td>65</td><td>65</td></tr>
+        <tr><th>Yellowness index</th><td>0.07</td><td>&mdash;</td></tr><tr><th>Cracking at low temperature</th><td>Pass</td><td>Pass</td></tr></tbody></table></div>
+      <div class="std-row"><span class="std">MoRTH 803</span><span class="std">BS 3262:1989</span><span class="std">BS EN 1871:2000</span><span class="std">AASHTO M249</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px"><a class="btn btn-yellow" href="#c-thermoplastic">See paint grades ${ARW}</a><a class="btn btn-ghost" style="color:#fff" href="${waLink('Hello, please share today\'s rate for ALPHA thermoplastic paint (25 kg bags).')}" target="_blank" rel="noopener">${WA} Today's rate</a></div>
+    </div>
+  </div><div class="lane" style="bottom:0"></div></section>
+
+  <section class="blk"><div class="wrap">
+    <div class="sec-hd"><div><span class="eyebrow">Most enquired</span><h2 class="sec-title">Contractor favourites</h2></div><a class="btn btn-ghost" href="#products">All ${P.length} products ${ARW}</a></div>
+    <div class="p-grid feat">${feat.map(card).join('')}</div>
+  </div></section>
+
+  ${appsSection()}
+
+  <section class="blk" style="padding-top:0"><div class="wrap">
+    <div class="sec-hd"><div><span class="eyebrow">Why ALPHA</span><h2 class="sec-title">Built for tender-grade work</h2></div></div>
+    <div class="why rv">
+      <div><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg><h3>Own manufacturing</h3><p>Thermoplastic paint made at our Wazirpur Industrial Area unit, with batch numbers on every bag.</p></div>
+      <div><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6M10 3v6L5 19a1.5 1.5 0 0 0 1.3 2h11.4a1.5 1.5 0 0 0 1.3-2L14 9V3"/><path d="M7.5 15h9"/></svg><h3>Independently tested</h3><p>Test certificates from Shriram Institute for Industrial Research and ARAI, ready for your tender file.</p></div>
+      <div><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="6" width="14" height="11"/><path d="M15 10h4l3 3v4h-7"/><circle cx="6" cy="18.5" r="1.8"/><circle cx="18" cy="18.5" r="1.8"/></svg><h3>Pan-India dispatch</h3><p>Stock in Delhi with warehouses in Varanasi and Siddharth Nagar for faster delivery to UP and Bihar sites.</p></div>
+      <div><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg><h3>Survey to install</h3><p>Design, survey, estimation, manufacturing and installation of signs and road furniture under one roof.</p></div>
+    </div>
+  </div></section>
+
+  <section class="blk" style="background:var(--surface);border-block:1px solid var(--line)"><div class="wrap">
+    <div class="sec-hd"><div><span class="eyebrow">How ordering works</span><h2 class="sec-title">From BOQ to site in four steps</h2></div></div>
+    <div class="steps rv" id="steps">
+      <div class="step" style="--i:0"><div class="bar"></div><h3>Build your list</h3><p>Add products and quantities to your enquiry list, or send us your BOQ on WhatsApp.</p></div>
+      <div class="step" style="--i:1"><div class="bar"></div><h3>Get a GST quote</h3><p>Receive slab pricing, specifications and test certificates for your project.</p></div>
+      <div class="step" style="--i:2"><div class="bar"></div><h3>Confirm &amp; dispatch</h3><p>Material is packed, batch-coded and dispatched from Delhi or our nearest warehouse.</p></div>
+      <div class="step" style="--i:3"><div class="bar"></div><h3>Install with support</h3><p>Our team guides your crew on application temperatures, stud fixing and sign mounting.</p></div>
+    </div>
+  </div></section>
+
+  ${certsSection()}
+  ${quoteBand()}`;
+}
+function appsSection() {
+  const A = [
+    { t: 'National & State Highways', d: 'Marking, studs, crash barriers, anti-glare and overhead signs.', img: 'highway', cats: ['thermoplastic', 'aluminium-studs', 'highway', 'signage'] },
+    { t: 'City Roads & Smart City', d: 'Spring posts, delineators, solar blinkers and signage.', art: 'sd03', cats: ['spring-posts', 'delineators', 'solar'] },
+    { t: 'Work Zones & Diversions', d: 'Cones, barriers, flashers and caution tape.', art: 'b104', cats: ['cones', 'barriers', 'misc'] },
+    { t: 'Parking, Malls & Hospitals', d: 'Car stoppers, corner guards, mirrors and breakers.', art: 'mirror40', cats: ['parking', 'speed-breakers'] },
+    { t: 'Railways', d: 'Level crossing, whistle and caution boards to IR format.', img: 'railway', cats: ['signage'] },
+    { t: 'Factories & Campuses', d: 'Speed breakers, jackets, wheel chocks and night glow exits.', art: 'j5', cats: ['speed-breakers', 'ppe'] }];
+  return `<section class="blk" id="apps"><div class="wrap">
+    <div class="sec-hd"><div><span class="eyebrow">Applications</span><h2 class="sec-title">Solutions by site</h2><p class="lead">Pick your site type and see the products contractors usually order together.</p></div></div>
+    <div class="apps">${A.map((a, i) => `<div class="app rv ${a.img ? '' : 'icon-app'}" style="--i:${i}">${a.img ? `<img src="${img(a.img)}" alt="" loading="lazy">` : `<img class="art" src="${img(a.art)}" alt="" loading="lazy">`}
+      <h3>${a.t}</h3><p>${a.d}</p><div class="links">${a.cats.map(c => `<a href="#c-${c}">${catOf(c).short}</a>`).join('')}</div></div>`).join('')}</div>
+  </div></section>`;
+}
+function certsSection() {
+  return `<section class="blk" id="certs"><div class="wrap">
+    <div class="sec-hd"><div><span class="eyebrow">Compliance</span><h2 class="sec-title">Certified &amp; tested</h2><p class="lead">Copies of our registrations and independent test reports. Tap any certificate to view it larger.</p></div></div>
+    <div class="certs">${CERTS.map((c, i) => `<button class="cert rv" style="--i:${i}" data-lb="${img(c.img)}"><img src="${img(c.img)}" alt="${esc(c.name)} certificate" loading="lazy"><b>${esc(c.name)}</b><small>${esc(c.by)}</small></button>`).join('')}</div>
+  </div></section>`;
+}
+function catPage(id) {
+  const c = catOf(id); if (!c) return notFound();
+  const items = inCat(id);
+  const pics = [c.img, ...items.map(p => p.img).filter(k => k !== c.img && !SCENES.has(k))].slice(0, 3);
+  const subs = [...new Set(items.map(p => (p.specs.find(s => s[0] === 'Material') || [])[1]).filter(Boolean))];
+  return `<section class="cat-hero"><div class="wrap">
+    <div><nav class="crumbs"><a href="#home">Home</a><span aria-hidden="true">/</span><a href="#products">Products</a><span aria-hidden="true">/</span><span>${esc(c.short)}</span></nav>
+      <h1>${esc(c.name)}</h1><p>${esc(c.blurb)}</p><div class="std-row">${c.std.map(s => `<span class="std">${esc(s)}</span>`).join('')}</div></div>
+    <div class="stack" aria-hidden="true">${pics.map(k => `<img src="${img(k)}" alt="">`).join('')}</div>
+  </div></section>
+  <section class="wrap" style="padding-bottom:80px">
+    <div class="toolbar"><div class="filters" id="filters">${subs.length > 1 ? ['All', ...subs].map((s, i) => `<button class="${i ? '' : 'on'}" data-f="${esc(s)}">${esc(s)}</button>`).join('') : `<button class="on">All ${esc(c.short)}</button>`}</div><span class="count-l"><b>${items.length}</b> products</span></div>
+    <div class="p-grid" id="grid">${items.map(card).join('')}</div>
+    <div style="margin-top:48px"><span class="eyebrow">More categories</span><div class="filters" style="margin-top:14px;flex-wrap:wrap">${CATS.filter(x => x.id !== id).map(x => `<a href="#c-${x.id}"><button>${esc(x.short)}</button></a>`).join('')}</div></div>
+  </section>${quoteBand()}`;
+}
+function allProducts() {
+  return `<section class="cat-hero"><div class="wrap"><div><nav class="crumbs"><a href="#home">Home</a><span aria-hidden="true">/</span><span>Products</span></nav>
+    <h1>Full product catalogue</h1><p>${P.length} road safety products across ${CATS.length} categories. Add items to your enquiry list and request one consolidated quote.</p></div>
+    <div class="stack" aria-hidden="true"><img src="${img('sr01')}" alt=""><img src="${img('c02')}" alt=""><img src="${img('ac1003n')}" alt=""></div></div></section>
+  <section class="wrap" style="padding-bottom:80px">
+    <div class="toolbar"><div class="filters" id="filters">${['All', ...CATS.map(c => c.short)].map((s, i) => `<button class="${i ? '' : 'on'}" data-c="${i ? CATS[i - 1].id : ''}">${esc(s)}</button>`).join('')}</div><span class="count-l"><b id="nRes">${P.length}</b> products</span></div>
+    <div class="p-grid" id="grid">${P.map(card).join('')}</div></section>${quoteBand()}`;
+}
+function productPage(id) {
+  const p = byId[id]; if (!p) return notFound();
+  const c = catOf(p.cat);
+  const related = inCat(p.cat).filter(x => x.id !== id).slice(0, 4);
+  const more = related.length < 4 ? P.filter(x => x.cat !== p.cat).slice(0, 4 - related.length) : [];
+  const scene = SCENES.has(p.img);
+  const msg = `Hello ALPHA team, please share price and availability for:\n${p.name} (Model ${p.model})`;
+  return `<div class="wrap"><nav class="crumbs" style="padding-top:22px"><a href="#home">Home</a><span aria-hidden="true">/</span><a href="#c-${c.id}">${esc(c.short)}</a><span aria-hidden="true">/</span><span>${esc(p.model)}</span></nav>
+  <div class="pdp">
+    <div class="gallery">${plate(p.img, 'main-plate')}<p class="note">${scene ? 'Tap image to view full size.' : 'Hover or tap the photo to zoom in.'}</p></div>
+    <div class="pdp-info">
+      <div style="display:grid;gap:10px"><span class="model">MODEL ${esc(p.model)} &middot; ${esc(c.short.toUpperCase())}</span><h1>${esc(p.name)}</h1><p class="desc">${esc(p.desc)}</p></div>
+      ${p.variants ? `<div><div class="lbl">Size</div><div class="variants" id="variants">${p.variants.map((v, i) => `<button class="${i === 1 ? 'on' : ''}" data-v="${esc(v)}">${esc(v)}</button>`).join('')}</div></div>` : ''}
+      ${p.colours ? `<div><div class="lbl">Available colours</div><div class="swatches" style="gap:8px">${p.colours.map(cl => `<i style="width:26px;height:26px;background:${SW[cl]}" title="${cl}"></i>`).join('')}</div></div>` : ''}
+      <div class="price-box">
+        <div class="row"><div class="por">Best rate on enquiry<small>Bulk slab pricing &middot; GST invoice</small></div><span class="instock">Ready stock</span></div>
+        <div class="slabs"><div><b>1–99</b><span>Retail rate</span></div><div><b>100–999</b><span>Contractor rate</span></div><div><b>1000+</b><span>Project rate</span></div></div>
+        <div class="pdp-acts"><div class="qty"><button data-q="-1" aria-label="Decrease quantity">&minus;</button><input id="qty" type="number" min="1" value="${/thermo/.test(p.cat) ? 40 : 100}" aria-label="Quantity"><button data-q="1" aria-label="Increase quantity">+</button></div>
+          <button class="btn btn-red" id="pdpAdd">${PLUS} Add to enquiry</button></div>
+        <div class="pdp-acts2"><a class="btn btn-wa" id="pdpWa" href="${waLink(msg)}" target="_blank" rel="noopener">${WA} WhatsApp</a><a class="btn btn-ghost" href="tel:${S.phone}">${PHONE} Call sales</a></div>
+      </div>
+      <div class="assure"><div><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>ISO 9001:2015 quality</div><div><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="14" height="11"/><path d="M15 10h4l3 3v4h-7"/></svg>Pan-India dispatch</div><div><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/></svg>Test reports on request</div></div>
+      <div><div class="lbl">Specifications</div><div class="tbl-wrap"><table class="spec-table"><tbody>
+        <tr><th>Model</th><td class="mono" style="font-size:14px">${esc(p.model)}</td></tr>${p.specs.map(s => `<tr><th>${esc(s[0])}</th><td>${esc(s[1])}</td></tr>`).join('')}
+        <tr><th>Brand</th><td>ALPHA&trade; by Amba Chem</td></tr></tbody></table></div></div>
+      <div><div class="lbl">Standards &amp; references</div><div class="std-row">${c.std.map(s => `<span class="std">${esc(s)}</span>`).join('')}</div></div>
+    </div>
+  </div>
+  <section style="padding-bottom:80px"><div class="sec-hd"><div><span class="eyebrow">Often ordered with</span><h2 class="sec-title" style="font-size:clamp(30px,4vw,44px)">Related products</h2></div></div>
+    <div class="p-grid feat">${[...related, ...more].map(card).join('')}</div></section></div>`;
+}
+function enquiryPage() {
+  return `<section class="cat-hero"><div class="wrap"><div><nav class="crumbs"><a href="#home">Home</a><span aria-hidden="true">/</span><span>Bulk quote</span></nav>
+    <h1>Request a bulk quote</h1><p>Tell us what you need and where. We reply with GST pricing, dispatch timelines and test certificates.</p></div>
+    <div class="stack" aria-hidden="true"><img src="${img('tp-white')}" alt=""><img src="${img('sb1016')}" alt=""><img src="${img('sr01')}" alt=""></div></div></section>
+  <section class="wrap" style="padding-block:40px 80px"><div class="contact-grid">
+    <div class="c-card"><h3 style="font-size:26px;text-transform:uppercase">Your enquiry list</h3><div id="pageCart"></div><a class="btn btn-ghost" href="#products">${PLUS} Add more products</a></div>
+    <div class="c-card">${formHtml('pg')}</div>
+  </div></section>`;
+}
+function formHtml(px) {
+  return `<form class="form" id="${px}Form" novalidate>
+    <h3 style="font-size:26px;text-transform:uppercase">Your details</h3>
+    <div class="two"><div class="field"><label for="${px}-name">Name</label><input id="${px}-name" name="name" required autocomplete="name"><span class="err"></span></div>
+    <div class="field"><label for="${px}-phone">Mobile number</label><input id="${px}-phone" name="phone" type="tel" required inputmode="tel" autocomplete="tel" placeholder="10-digit mobile"><span class="err"></span></div></div>
+    <div class="two"><div class="field"><label for="${px}-org">Company / department</label><input id="${px}-org" name="org" autocomplete="organization"></div>
+    <div class="field"><label for="${px}-city">Delivery city / pincode</label><input id="${px}-city" name="city" required><span class="err"></span></div></div>
+    <div class="field"><label for="${px}-type">Project type</label><select id="${px}-type" name="type"><option>NHAI / highway project</option><option>State PWD / municipal</option><option>Indian Railways</option><option>Smart City</option><option>Private / commercial site</option><option>Dealer / reseller</option></select></div>
+    <div class="field"><label for="${px}-msg">Notes, BOQ or timeline</label><textarea id="${px}-msg" name="msg" rows="3" placeholder="e.g. 2 km centre line, delivery in 10 days"></textarea></div>
+    <button class="btn btn-red" type="submit">Prepare my quote request ${ARW}</button>
+    <p style="font-size:12.5px;color:var(--muted)">Your request opens in WhatsApp with every item listed, ready to send to our sales desk.</p>
+  </form>`;
+}
+function aboutPage() {
+  return `<section class="cat-hero"><div class="wrap"><div><nav class="crumbs"><a href="#home">Home</a><span aria-hidden="true">/</span><span>About</span></nav>
+    <h1>About Amba Chem</h1><p>An ISO 9001:2015 certified company and a pioneer in solvents and chemicals for two decades. Since 2009, Amba Safety, our road safety division, has supplied the full range of traffic signage and road safety products under the ALPHA brand.</p></div>
+    <div class="stack" aria-hidden="true"><img src="${img('al1004')}" alt=""><img src="${img('d7')}" alt=""><img src="${img('c03')}" alt=""></div></div></section>
+  <section class="blk"><div class="wrap about-grid">
+    <img class="rv" src="${img('highway')}" alt="Highway with metal beam crash barrier" loading="lazy">
+    <div style="display:grid;gap:18px" class="rv"><span class="eyebrow">Who we are</span><h2 class="sec-title">Complete traffic safety, at honest prices</h2>
+      <p class="lead">We import, manufacture and trade every kind of traffic sign and road safety product. We are part of several road safety projects and work regularly with government contractors serving NHAI, Indian Railways and road construction companies.</p>
+      <p class="lead">Our team handles design, survey, estimation, manufacturing and installation of all types of traffic signs and road furniture, and we offer the best-suited product for every budget.</p>
+      <div class="facts"><div><b>Ankit Gupta</b><span>Director</span></div><div><b>Since 2009</b><span>In road safety</span></div><div><b>ISO 9001:2015</b><span>Certified quality</span></div><div><b>Delhi</b><span>Office &amp; factory</span></div></div>
+    </div></div></section>
+  ${certsSection()}${quoteBand()}`;
+}
+function contactPage() {
+  const row = (ic, label, val, copy) => `<div class="c-row">${ic}<div><b>${label}</b><span>${val}</span>${copy ? `<button class="copy" data-copy="${esc(copy)}">Copy</button>` : ''}</div></div>`;
+  const PIN = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+  const MAIL = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>';
+  return `<section class="cat-hero"><div class="wrap"><div><nav class="crumbs"><a href="#home">Home</a><span aria-hidden="true">/</span><span>Contact</span></nav>
+    <h1>Talk to our sales desk</h1><p>Monday to Saturday, 10 am to 7 pm. For urgent site requirements, WhatsApp is fastest.</p></div>
+    <div class="stack" aria-hidden="true"><img src="${img('t01')}" alt=""><img src="${img('sd01')}" alt=""><img src="${img('j1')}" alt=""></div></div></section>
+  <section class="wrap" style="padding-block:40px 80px"><div class="contact-grid">
+    <div class="c-card">
+      ${row(PHONE, 'Director, Ankit Gupta', `<a href="tel:+919911888336">+91 99118 88336</a> &middot; <a href="tel:+919810033618">+91 98100 33618</a>`, '+91 9911888336')}
+      ${row(WA, 'Sales, Jatin (WhatsApp)', `<a href="https://wa.me/917011299256" target="_blank" rel="noopener">+91 70112 99256</a>`, '+91 7011299256')}
+      ${row(MAIL, 'Email', `<a href="mailto:ambachem@yahoo.com">ambachem@yahoo.com</a>`, 'ambachem@yahoo.com')}
+      ${row(PIN, 'Head office', S.office)}
+      ${row(PIN, 'Factory', S.factory)}
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Pragati+Complex+Idgah+Circle+Jhandewalan+Delhi+110006" target="_blank" rel="noopener">${PIN} Open in Google Maps</a>
+    </div>
+    <div class="c-card">${formHtml('ct')}</div>
+  </div></section>`;
+}
+function certPage() {
+  return `<section class="cat-hero"><div class="wrap"><div><nav class="crumbs"><a href="#home">Home</a><span aria-hidden="true">/</span><span>Certifications</span></nav>
+  <h1>Certifications &amp; test reports</h1><p>ISO 9001:2015 quality management, MSME registration and independent product test reports from Shriram Institute for Industrial Research and ARAI.</p></div>
+  <div class="stack" aria-hidden="true"><img src="${img('cert-iso')}" alt=""><img src="${img('cert-sri1')}" alt=""><img src="${img('cert-arai')}" alt=""></div></div></section>
+  <section class="wrap" style="padding-block:40px 80px"><div class="p-grid">${CERTS.map((c, i) => `<button class="cert rv" style="--i:${i};flex:none" data-lb="${img(c.img)}"><img src="${img(c.img)}" alt="${esc(c.name)}" loading="lazy"><b>${esc(c.name)}</b><small>${esc(c.by)}</small></button>`).join('')}</div></section>${quoteBand()}`;
+}
+function notFound() { return `<section class="wrap blk"><h1 class="sec-title">Page not found</h1><p class="lead" style="margin-top:12px">That page doesn't exist. <a href="#products" style="color:var(--red-ink);text-decoration:underline">Browse all products</a>.</p></section>`; }
+
+/* ---------- Router ---------- */
+const view = $('#view');
+function route() {
+  const h = decodeURIComponent(location.hash.slice(1)) || 'home';
+  let html, after;
+  if (h === 'home') { html = home(); after = initHome; }
+  else if (h === 'applications') { html = home(); after = () => { initHome(); setTimeout(() => $('#apps')?.scrollIntoView({ behavior: 'smooth' }), 60); }; }
+  else if (h === 'products') { html = allProducts(); after = initAll; }
+  else if (h.startsWith('c-')) { html = catPage(h.slice(2)); after = initCat; }
+  else if (h.startsWith('p-')) { html = productPage(h.slice(2)); after = () => initPdp(h.slice(2)); }
+  else if (h === 'enquiry') { html = enquiryPage(); after = () => { renderCart(); bindForm('pg'); }; }
+  else if (h === 'about') { html = aboutPage(); }
+  else if (h === 'contact') { html = contactPage(); after = () => bindForm('ct'); }
+  else if (h === 'certifications') { html = certPage(); }
+  else html = notFound();
+  stopRoad();
+  view.innerHTML = html; view.classList.remove('enter'); void view.offsetWidth; view.classList.add('enter');
+  if (h !== 'applications') window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+  $$('.nav > a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + h));
+  closeAll(); after && after(); reveal();
+}
+window.addEventListener('hashchange', route);
+
+/* ---------- Reveal on scroll ---------- */
+let io;
+function reveal() {
+  const els = $$('.rv:not(.in)', view);
+  if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); return; }
+  io && io.disconnect();
+  io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+  els.forEach(e => io.observe(e));
+  const st = $('#steps'); if (st) new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { st.classList.add('in'); o.disconnect(); } }), { threshold: .3 }).observe(st);
+  setTimeout(() => els.forEach(e => e.classList.add('in')), 4000);
+}
+
+/* ---------- Page inits ---------- */
+function initHome() {
+  startRoad();
+  $$('.stat b[data-to]').forEach(el => {
+    const to = parseFloat(el.dataset.to), dec = +el.dataset.dec || 0, t0 = performance.now(), dur = 1600;
+    const suf = el.parentElement.textContent.includes('Years') || el.parentElement.textContent.includes('Products') ? '<sup>+</sup>' : (dec ? '<sup>&#9733;</sup>' : '');
+    const step = now => { const k = Math.min(1, (now - t0 - 900) / dur); const e = k < 0 ? 0 : 1 - Math.pow(1 - k, 3); el.innerHTML = (to * e).toFixed(dec) + (k >= 1 ? suf : ''); if (k < 1) requestAnimationFrame(step); };
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) el.innerHTML = to.toFixed(dec) + suf; else requestAnimationFrame(step);
+  });
+}
+function initAll() {
+  $$('#filters button').forEach(b => b.onclick = () => {
+    $$('#filters button').forEach(x => x.classList.toggle('on', x === b));
+    const c = b.dataset.c, list = c ? inCat(c) : P;
+    $('#grid').innerHTML = list.map(card).join(''); $('#nRes').textContent = list.length; reveal();
+  });
+}
+function initCat() {
+  $$('#filters button[data-f]').forEach(b => b.onclick = () => {
+    $$('#filters button').forEach(x => x.classList.toggle('on', x === b));
+    const f = b.dataset.f, id = location.hash.slice(3);
+    const list = inCat(id).filter(p => f === 'All' || (p.specs.find(s => s[0] === 'Material') || [])[1] === f);
+    $('#grid').innerHTML = list.map(card).join(''); reveal();
+  });
+}
+function initPdp(id) {
+  const p = byId[id]; if (!p) return;
+  const q = $('#qty');
+  $$('[data-q]').forEach(b => b.onclick = () => { q.value = Math.max(1, (+q.value || 1) + (+b.dataset.q) * (q.value >= 100 ? 10 : 1)); updWa(); });
+  q.oninput = updWa;
+  let variant = p.variants ? p.variants[1] : null;
+  $$('#variants button').forEach(b => b.onclick = () => { variant = b.dataset.v; $$('#variants button').forEach(x => x.classList.toggle('on', x === b)); updWa(); });
+  function updWa() { $('#pdpWa').href = waLink(`Hello ALPHA team, please share price and availability for:\n${p.name}${variant ? ' – ' + variant : ''} (Model ${p.model})\nQuantity: ${q.value}`); }
+  updWa();
+  $('#pdpAdd').onclick = e => { addToCart(id, Math.max(1, +q.value || 1), variant); flyTo(e.currentTarget); };
+  const pl = $('.main-plate');
+  if (pl.classList.contains('scene')) { pl.onclick = () => openLb(pl.querySelector('img').src); return; }
+  const im = pl.querySelector('img');
+  pl.addEventListener('mousemove', e => { const r = pl.getBoundingClientRect(); im.style.transformOrigin = `${(e.clientX - r.left) / r.width * 100}% ${(e.clientY - r.top) / r.height * 100}%`; });
+  pl.addEventListener('mouseenter', () => pl.classList.add('zoom'));
+  pl.addEventListener('mouseleave', () => pl.classList.remove('zoom'));
+  pl.addEventListener('click', e => { if (e.pointerType !== 'mouse') pl.classList.toggle('zoom'); });
+}
+
+/* Fly-to-cart animation */
+function flyTo(src) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const target = [...$$('[data-count]')].map(e => e.parentElement).find(e => e.offsetParent !== null); if (!target) return;
+  const s = src.getBoundingClientRect(), t = target.getBoundingClientRect();
+  const dot = document.createElement('div');
+  dot.style.cssText = `position:fixed;z-index:120;left:${s.left + s.width / 2 - 10}px;top:${s.top + s.height / 2 - 10}px;width:20px;height:20px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(200,16,46,.25);pointer-events:none`;
+  document.body.appendChild(dot);
+  const dx = t.left + t.width / 2 - (s.left + s.width / 2), dy = t.top + t.height / 2 - (s.top + s.height / 2);
+  dot.animate([{ transform: 'translate(0,0) scale(1)' }, { transform: `translate(${dx * .5}px,${dy - 120}px) scale(1.2)`, offset: .5 }, { transform: `translate(${dx}px,${dy}px) scale(.3)`, opacity: .6 }], { duration: 750, easing: 'cubic-bezier(.5,0,.6,1)' }).onfinish = () => dot.remove();
+}
+
+/* ---------- Delegated clicks ---------- */
+document.addEventListener('click', e => {
+  const a = e.target.closest('[data-add]');
+  if (a) { e.preventDefault(); addToCart(a.dataset.add, 1); flyTo(a); a.classList.add('added'); a.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Added'; setTimeout(() => { a.classList.remove('added'); a.innerHTML = PLUS + 'Enquire'; }, 1800); return; }
+  const lb = e.target.closest('[data-lb]'); if (lb) { openLb(lb.dataset.lb); return; }
+  const cp = e.target.closest('[data-copy]'); if (cp) { const t = cp.dataset.copy; (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast('Copied ' + t)).catch(() => toast(t)); return; }
+});
+
+/* ---------- Drawers, mega, search ---------- */
+const scrim = $('#scrim');
+function openDrawer(sel) { closeAll(); $(sel).classList.add('open'); scrim.classList.add('open'); document.body.style.overflow = 'hidden'; if (sel === '#cartDrawer') renderCart(); }
+function closeAll() { $$('.drawer.open').forEach(d => d.classList.remove('open')); scrim.classList.remove('open'); document.body.style.overflow = ''; $('#search').classList.remove('open'); mega(false); }
+scrim.onclick = closeAll; $$('[data-close]').forEach(b => b.onclick = closeAll);
+$('#menuBtn').onclick = () => openDrawer('#navDrawer');
+$('#cartBtn').onclick = () => openDrawer('#cartDrawer');
+$('#cartBtnM').onclick = () => openDrawer('#cartDrawer');
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); if ((e.key === '/' || (e.key === 'k' && (e.metaKey || e.ctrlKey))) && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) { e.preventDefault(); openSearch(); } });
+
+$('#megaList').innerHTML = CATS.map(c => `<a href="#c-${c.id}"><img src="${img(c.img)}" alt="" loading="lazy"><span>${esc(c.short)}<small>${inCat(c.id).length} products</small></span></a>`).join('');
+$('#mNav').innerHTML = [['#home', 'Home'], ['#products', 'All products'], ['#applications', 'Applications'], ['#certifications', 'Certifications'], ['#about', 'About'], ['#contact', 'Contact']].map(([h, t], i) => `<a class="m-main" style="--i:${i}" href="${h}">${t}</a>`).join('') +
+  CATS.map((c, i) => `<a style="--i:${i + 6}" href="#c-${c.id}"><img src="${img(c.img)}" alt="" loading="lazy">${esc(c.short)}</a>`).join('');
+$('#fCats').innerHTML = CATS.slice(0, 9).map(c => `<li><a href="#c-${c.id}">${esc(c.short)}</a></li>`).join('') + '<li><a href="#products">All products &rarr;</a></li>';
+$('#yr').textContent = new Date().getFullYear();
+const megaEl = $('#mega'), megaBtn = $('#megaBtn'); let mt;
+function mega(on) { megaEl.classList.toggle('open', on); megaBtn.setAttribute('aria-expanded', on); }
+megaBtn.onclick = () => mega(!megaEl.classList.contains('open'));
+[megaBtn, megaEl].forEach(el => { el.addEventListener('mouseenter', () => { clearTimeout(mt); mega(true); }); el.addEventListener('mouseleave', () => { mt = setTimeout(() => mega(false), 180); }); });
+window.addEventListener('scroll', () => $('#hdr').classList.toggle('scrolled', scrollY > 10), { passive: true });
+
+const qEl = $('#q'), qres = $('#qres');
+function openSearch() { closeAll(); $('#search').classList.add('open'); qEl.value = ''; doSearch(); setTimeout(() => qEl.focus(), 50); }
+$('#searchBtn').onclick = openSearch;
+$('#search').onclick = e => { if (e.target.id === 'search') closeAll(); };
+function doSearch() {
+  const t = qEl.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const list = (t.length ? P.filter(p => { const hay = (p.name + ' ' + p.model + ' ' + catOf(p.cat).name + ' ' + p.desc).toLowerCase(); return t.every(w => hay.includes(w)); }) : P.filter(p => p.tag)).slice(0, 12);
+  qres.innerHTML = list.length ? list.map((p, i) => `<a href="#p-${p.id}" class="${i ? '' : 'hl'}">${plate(p.img)}<span><small>${esc(p.model)}</small><br>${esc(p.name)}</span></a>`).join('') : `<div class="none">No products match "${esc(qEl.value)}". Try "stud", "cone" or a model number.</div>`;
+}
+qEl.oninput = doSearch;
+qEl.onkeydown = e => { if (e.key === 'Enter') { const f = $('a', qres); if (f) location.hash = f.getAttribute('href'); } };
+
+function openLb(src) { $('#lbImg').src = src; $('#lb').classList.add('open'); }
+$('#lb').onclick = () => $('#lb').classList.remove('open');
+
+/* ---------- Cart render + form ---------- */
+function cartLines() {
+  return Object.entries(cart).map(([k, q]) => { const [id, v] = k.split('|'); const p = byId[id]; return p ? { k, p, v, q } : null; }).filter(Boolean);
+}
+function renderCart() {
+  const L = cartLines();
+  const lines = L.length ? L.map(({ k, p, v, q }) => `<div class="cart-line">${plate(p.img)}<div style="min-width:0"><b>${esc(p.name)}</b><small>${esc(p.model)}${v ? ' · ' + esc(v) : ''}</small><br><button class="rm" data-rm="${esc(k)}">Remove</button></div>
+     <div class="qty"><button data-cq="${esc(k)}" data-d="-1" aria-label="Decrease">&minus;</button><input value="${q}" data-ci="${esc(k)}" type="number" min="1" aria-label="Quantity"><button data-cq="${esc(k)}" data-d="1" aria-label="Increase">+</button></div></div>`).join('')
+    : `<div class="empty"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 5h10l-1.5 9h-11L4 3H2"/><circle cx="8" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg><b>Your enquiry list is empty</b><span>Tap "Enquire" on any product to add it here, then request one combined quote.</span><a class="btn btn-ghost" href="#products">Browse products</a></div>`;
+  $('#cartBody').innerHTML = lines;
+  $('#cartFoot').innerHTML = L.length ? `<div style="display:flex;justify-content:space-between;font-weight:600"><span>${L.length} item${L.length > 1 ? 's' : ''}</span><span>${L.reduce((a, b) => a + b.q, 0).toLocaleString('en-IN')} units</span></div><a class="btn btn-red" href="#enquiry">Request quote ${ARW}</a><a class="btn btn-wa" href="${waLink(enquiryText())}" target="_blank" rel="noopener">${WA} Send list on WhatsApp</a>` : '';
+  const pc = $('#pageCart'); if (pc) pc.innerHTML = lines;
+}
+function enquiryText(f) {
+  const L = cartLines();
+  let t = 'Hello ALPHA team, please quote for:\n' + (L.length ? L.map(({ p, v, q }, i) => `${i + 1}. ${p.name}${v ? ' – ' + v : ''} [${p.model}] × ${q}`).join('\n') : '(products to be discussed)');
+  if (f) t += `\n\nName: ${f.name}\nMobile: ${f.phone}${f.org ? '\nCompany: ' + f.org : ''}\nDelivery: ${f.city}\nProject: ${f.type}${f.msg ? '\nNotes: ' + f.msg : ''}`;
+  return t;
+}
+document.addEventListener('click', e => {
+  const rm = e.target.closest('[data-rm]'); if (rm) { delete cart[rm.dataset.rm]; save(); syncCount(); renderCart(); return; }
+  const cq = e.target.closest('[data-cq]'); if (cq) { const k = cq.dataset.cq; cart[k] = Math.max(1, (cart[k] || 1) + (+cq.dataset.d) * (cart[k] >= 100 ? 10 : 1)); save(); renderCart(); }
+});
+document.addEventListener('change', e => { const ci = e.target.closest('[data-ci]'); if (ci) { cart[ci.dataset.ci] = Math.max(1, +ci.value || 1); save(); renderCart(); } });
+function bindForm(px) {
+  const f = $('#' + px + 'Form'); if (!f) return;
+  f.addEventListener('submit', e => {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(f)); let ok = true;
+    const err = (n, m) => { const el = f.querySelector(`[name=${n}]`).parentElement.querySelector('.err'); if (el) el.textContent = m; if (m) ok = false; };
+    err('name', d.name.trim() ? '' : 'Please enter your name.');
+    err('phone', /^[+\d][\d\s-]{8,}$/.test(d.phone.trim()) ? '' : 'Enter a valid mobile number, e.g. 98xxxxxxxx.');
+    err('city', d.city.trim() ? '' : 'Tell us where to deliver.');
+    if (!ok) { f.querySelector('.err:not(:empty)')?.parentElement.querySelector('input')?.focus(); return; }
+    const ref = 'ALP-' + Date.now().toString(36).toUpperCase().slice(-6), txt = enquiryText(d) + `\nRef: ${ref}`;
+    f.outerHTML = `<div class="done"><div class="tick"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h3 style="font-size:28px;text-transform:uppercase">Quote request ready</h3><p style="color:var(--muted)">Reference <b class="mono" style="font-size:14px">${ref}</b>. Send it to our sales desk on WhatsApp to get your quote.</p>
+      <pre>${esc(txt)}</pre><a class="btn btn-wa" style="width:100%" href="${waLink(txt)}" target="_blank" rel="noopener">${WA} Send on WhatsApp</a><button class="btn btn-ghost" style="width:100%" data-copy="${esc(txt)}">Copy request text</button></div>`;
+  });
+}
+
+/* ---------- Night-road hero canvas ---------- */
+let raf = 0, roadOn = false, use3d = false;
+function stopRoad() { roadOn = false; cancelAnimationFrame(raf); if (use3d && window.Hero3D) { Hero3D.stop(); use3d = false; } }
+function startRoad() {
+  const cv = $('#road'); if (!cv) return;
+  if (window.Hero3D) {
+    const kmh = $('#kmh');
+    use3d = Hero3D.start(cv, { hud: v => { if (kmh && kmh.textContent != v) kmh.textContent = v; } });
+    if (use3d) {
+      new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? Hero3D.resume() : Hero3D.pause())).observe($('#hero'));
+      document.addEventListener('visibilitychange', () => { if (!use3d) return; document.hidden ? Hero3D.pause() : Hero3D.resume(); });
+      return;
+    }
+  }
+  startRoad2D(cv);
+}
+function startRoad2D(cv) {
+  const ctx = cv.getContext('2d'); const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W, H, dpr;
+  const size = () => { dpr = Math.min(2, devicePixelRatio || 1); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+  size(); addEventListener('resize', size);
+  const mobile = () => W < 640;
+  function frame(t) {
+    const T = t / 1000;
+    const hy = H * (mobile() ? .5 : .42), vx = W * (mobile() ? .55 : .68);
+    // sky
+    const sky = ctx.createLinearGradient(0, 0, 0, hy);
+    sky.addColorStop(0, '#0B0D12'); sky.addColorStop(.7, '#171B24'); sky.addColorStop(1, '#2A2228');
+    ctx.fillStyle = sky; ctx.fillRect(0, 0, W, hy + 1);
+    const glow = ctx.createRadialGradient(vx, hy, 0, vx, hy, W * .5);
+    glow.addColorStop(0, 'rgba(255,140,60,.28)'); glow.addColorStop(1, 'rgba(255,140,60,0)');
+    ctx.fillStyle = glow; ctx.fillRect(0, 0, W, hy + 1);
+    // stars + distant city lights
+    for (let i = 0; i < 70; i++) { const sx = (i * 137.5 % 1) * W, sx2 = (i * 97.13) % W, sy = (i * 53.7) % (hy * .8); ctx.fillStyle = `rgba(255,255,255,${.15 + .25 * Math.abs(Math.sin(T * .8 + i))})`; ctx.fillRect(sx2, sy, 1.2, 1.2); }
+    for (let i = 0; i < 90; i++) { const lx = (i * 71.3) % W, lh = 2 + (i * 13) % 9; ctx.fillStyle = i % 5 ? 'rgba(255,190,110,.35)' : 'rgba(255,255,255,.4)'; ctx.fillRect(lx, hy - lh, 1.6, 1.6); }
+    // ground
+    const gr = ctx.createLinearGradient(0, hy, 0, H); gr.addColorStop(0, '#15171B'); gr.addColorStop(1, '#0C0D10');
+    ctx.fillStyle = gr; ctx.fillRect(0, hy, W, H - hy);
+    const bl = W * (mobile() ? -.1 : .34), br = W * (mobile() ? 1.2 : 1.08);
+    const X = (f, d) => vx + ((bl + (br - bl) * (f + 1) / 2) - vx) / d;
+    const Y = d => hy + (H - hy) / d;
+    // road surface
+    ctx.beginPath(); ctx.moveTo(vx, hy); ctx.lineTo(X(-1.08, 1), H); ctx.lineTo(X(1.08, 1), H); ctx.closePath();
+    const rs = ctx.createLinearGradient(0, hy, 0, H); rs.addColorStop(0, '#22252B'); rs.addColorStop(1, '#2E3238'); ctx.fillStyle = rs; ctx.fill();
+    // headlight wash
+    const hl = ctx.createRadialGradient(X(0, 1.4), H, 0, X(0, 1.4), H, H * .9);
+    hl.addColorStop(0, 'rgba(255,245,220,.16)'); hl.addColorStop(1, 'rgba(255,245,220,0)'); ctx.fillStyle = hl; ctx.fill();
+    // edge lines (yellow thermoplastic)
+    ctx.strokeStyle = 'rgba(242,183,5,.9)';
+    [-1, 1].forEach(f => { ctx.beginPath(); ctx.moveTo(vx, hy); ctx.lineTo(X(f, 1), H); ctx.lineWidth = 1; ctx.stroke(); for (let d = 1; d < 40; d *= 1.08) { } });
+    [-1, 1].forEach(f => { ctx.beginPath(); for (let i = 0; i <= 30; i++) { const d = 1 + i * i * .08; const x = X(f, d), y = Y(d); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.lineWidth = 3; ctx.stroke(); });
+    const speed = reduce ? 0 : 7, off = (T * speed) % 6;
+    // centre dashes (white)
+    for (let k = 0; k < 14; k++) {
+      const d0 = 1 + k * 6 - off * 1, d1 = d0 + 3; if (d1 < .9) continue;
+      const a = Math.max(.9, d0), b = d1;
+      const w0 = 10 / a, w1 = 10 / b;
+      ctx.beginPath(); ctx.moveTo(X(0, a) - w0, Y(a)); ctx.lineTo(X(0, b) - w1, Y(b)); ctx.lineTo(X(0, b) + w1, Y(b)); ctx.lineTo(X(0, a) + w0, Y(a)); ctx.closePath();
+      ctx.fillStyle = `rgba(240,242,245,${Math.min(.95, .25 + 1.6 / b)})`; ctx.fill();
+    }
+    // road studs: amber on edges, white centre; twinkle as headlight sweeps
+    for (let k = 0; k < 26; k++) {
+      const d = 1.2 + k * 3 - (off % 3); if (d < 1.1) continue;
+      [[-0.94, '255,176,40'], [0.94, '255,176,40'], [0, '255,255,255']].forEach(([f, c], j) => {
+        const fx = f === 0 ? .14 : f; const x = X(fx, d), y = Y(d); const r = Math.max(1.1, 14 / d);
+        const tw = .55 + .45 * Math.sin(T * 3 + k * 1.7 + j);
+        const g = ctx.createRadialGradient(x, y, 0, x, y, r * 5);
+        g.addColorStop(0, `rgba(${c},${tw})`); g.addColorStop(.18, `rgba(${c},${.6 * tw})`); g.addColorStop(1, `rgba(${c},0)`);
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r * 5, 0, 7); ctx.fill(); ctx.fillStyle = `rgba(255,255,240,${tw})`; ctx.beginPath(); ctx.arc(x, y, r * .55, 0, 7); ctx.fill();
+      });
+    }
+    // delineator posts on the right shoulder with reflective bands
+    for (let k = 0; k < 12; k++) {
+      const d = 1.4 + k * 6 - ((off * 1) % 6); if (d < 1.2) continue;
+      [1.32, -1.32].forEach(f => {
+        if (mobile() && f < 0) return;
+        const x = X(f, d), y = Y(d), h = (H - hy) * .55 / d, w = Math.max(1.5, 22 / d);
+        ctx.fillStyle = '#0E0F12'; ctx.fillRect(x - w / 2, y - h, w, h);
+        const tw = .6 + .4 * Math.sin(T * 2 + k);
+        ctx.fillStyle = `rgba(255,255,255,${.85 * tw})`; ctx.fillRect(x - w / 2, y - h * .92, w, h * .1);
+        ctx.fillStyle = `rgba(220,30,50,${.9 * tw})`; ctx.fillRect(x - w / 2, y - h * .78, w, h * .08);
+        ctx.shadowColor = 'rgba(255,255,255,.6)'; ctx.shadowBlur = 12 / d * 4; ctx.fillStyle = `rgba(255,255,255,${.3 * tw})`; ctx.fillRect(x - w / 2, y - h * .92, w, h * .1); ctx.shadowBlur = 0;
+      });
+    }
+    // overhead gantry sign far away
+    const gd = 9 - ((T * speed / 8) % 9) * 0; const gx0 = X(-1.25, 7), gx1 = X(1.25, 7), gy = Y(7) - (H - hy) * 1.15 / 7;
+    ctx.fillStyle = '#3A3F47'; ctx.fillRect(gx0, gy, 3, Y(7) - gy); ctx.fillRect(gx1 - 3, gy, 3, Y(7) - gy); ctx.fillRect(gx0, gy, gx1 - gx0, 3);
+    ctx.fillStyle = '#0F6B3A'; const sw = (gx1 - gx0) * .55; ctx.fillRect(vx - sw / 2 + (gx0 + gx1 - 2 * vx) / 2, gy + 4, sw, (Y(7) - gy) * .38);
+    ctx.strokeStyle = 'rgba(255,255,255,.7)'; ctx.lineWidth = 1; ctx.strokeRect(vx - sw / 2 + (gx0 + gx1 - 2 * vx) / 2 + 3, gy + 7, sw - 6, (Y(7) - gy) * .38 - 6);
+    // vignette
+    const vg = ctx.createRadialGradient(W * .6, H * .6, H * .2, W * .6, H * .6, W * .9); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,.55)');
+    ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
+    if (roadOn && !reduce) raf = requestAnimationFrame(frame);
+  }
+  roadOn = true; raf = requestAnimationFrame(frame);
+  const hero = $('#hero');
+  new IntersectionObserver(es => es.forEach(e => { if (!$('#road')) return; if (e.isIntersecting && !roadOn) { roadOn = true; raf = requestAnimationFrame(frame); } else if (!e.isIntersecting) { roadOn = false; cancelAnimationFrame(raf); } })).observe(hero);
+}
+
+syncCount(); renderCart(); route();
+})();
+</script>
+
+</body>
+</html>
